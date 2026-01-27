@@ -1,4 +1,4 @@
-import { QuartzConfig } from "./quartz/cfg"
+baseUrl: "everything-analyzed.github.io/fresh",import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
 
 /**
@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
+    baseUrl: "everything-analyzed.github.io/fresh",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
