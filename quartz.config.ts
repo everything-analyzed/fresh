@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
+    pageTitle: "Everything, Analyzed.",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -16,41 +16,39 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
+    baseUrl: "github.com/everything-analyzed/fresh",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
-        code: "IBM Plex Mono",
-      },
-      colors: {
-        lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
-        },
-        darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
-        },
-      },
+  header: "Inter",
+  body: "Inter",
+  code: "IBM Plex Mono",
+},
+    colors: {
+  lightMode: {
+    light: "#f0f0f0",       // Soft gray desk background
+    lightgray: "#e8e8e8",   // Border color
+    gray: "#b0b0b0",
+    darkgray: "#4a4a4a",    // Soft text color
+    dark: "#3d5261",        // Slate blue headings
+    secondary: "#5a7a91",   // Muted blue link
+    tertiary: "#8095a6",
+    highlight: "rgba(61, 82, 97, 0.05)",
+  },
+  darkMode: {
+    light: "#1a1a1a",       // Dark background
+    lightgray: "#2d2d2d",
+    gray: "#646464",
+    darkgray: "#d4d4d4",
+    dark: "#8095a6",        // Headings (Steel Blue)
+    secondary: "#8095a6",   // Links
+    tertiary: "#9cb0bf",
+    highlight: "rgba(128, 149, 166, 0.15)",
+  },
+},
     },
   },
   plugins: {

@@ -1,3 +1,354 @@
+@use "sass:map";
+@use "./variables.scss" as *;
+@use "./syntax.scss";
+@use "./callouts.scss";
 @use "./base.scss";
 
-// put your custom CSS here!
+// 1. THEME LOGIC (Dark Mode Colors)
+:root {
+  --sidepanel-width: 320px;
+  --steel-blue: #8095a6;
+  --slate-blue: #3d5261;
+  
+  // Graph Colors
+  --graph-node: var(--steel-blue);
+  --graph-node-active: var(--slate-blue);
+}
+
+// Automatically lighten colors for Dark Mode readability
+body[saved-theme="dark"] {
+  --steel-blue: #a0aec0; // Lightened Steel
+  --slate-blue: #cbd5e0; // Lightened Slate
+  --graph-node: #a0aec0;
+  --graph-node-active: #ffffff;
+}
+
+// 1. THEME & COLOR LOGIC
+:root {
+  --sidepanel-width: 320px;
+  --steel-blue: #8095a6;
+  --slate-blue: #3d5261;
+  
+  // Backgrounds
+  --page-bg: #f0f2f5;        // Light gray background
+  --panel-bg: #ffffff;       // White panels
+  --panel-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --panel-border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body[saved-theme="dark"] {
+  --steel-blue: #a0aec0;
+  --slate-blue: #cbd5e0;
+  
+  // Dark Mode Variations
+  --page-bg: #0d1117;        // Very dark background
+  --panel-bg: #161b22;       // Charcoal panels
+  --panel-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --panel-border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+// 2. DYNAMIC BODY
+body {
+  background-color: var(--page-bg) !important;
+  transition: background 0.3s ease;
+}
+
+// 3. THE FLOATING PANEL MIXIN (Fixes the @extend error)
+@mixin floating-panel {
+  background-color: var(--panel-bg) !important;
+  border: var(--panel-border) !important;
+  box-shadow: var(--panel-shadow);
+  border-radius: 8px !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+// 4. APPLYING TO SIDEBARS & CENTER
+@media (min-width: 1200px) {
+  .sidebar.left, .sidebar.right, .center {
+    @include floating-panel; // We use @include now, not @extend
+  }
+
+  .sidebar.left {
+    width: var(--sidepanel-width) !important;
+    padding: 2rem 1.5rem !important;
+    height: calc(100vh - 4rem) !important;
+    position: sticky !important;
+    top: 2rem;
+  }
+
+  .center {
+    padding: 3rem !important;
+    margin-bottom: 2rem;
+  }
+}
+
+// 3. PAGE TITLE & SEARCH BAR SPACING
+.page-title {
+  margin-bottom: 2.5rem !important; // Gap between Title and Search
+  & a {
+    color: var(--slate-blue) !important;
+    font-family: 'Inter';
+    font-weight: 500 !important;
+    font-size: 1.4rem !important;
+    letter-spacing: -0.03em;
+    text-decoration: none;
+  }
+}
+
+// HORIZONTAL SEARCH & DARKMODE
+.sidebar.left .flex {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-bottom: 2rem !important; // Gap between Search and Explorer
+
+  .search {
+    flex: 1 !important;
+    #search-button { margin: 0 !important; width: 100%; }
+  }
+
+  .darkmode {
+    flex: 0 0 auto !important;
+    #darkmode-toggle { margin: 0 !important; padding: 0; }
+  }
+}
+
+// 4. TYPOGRAPHY (Responsive to Theme)
+.article-title {
+  color: var(--slate-blue) !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500 !important;
+  font-size: 1.8rem !important;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500 !important;
+  color: var(--steel-blue);
+  margin-top: 2.5rem;
+}
+
+h3 { color: var(--slate-blue); }
+
+p, li {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--darkgray);
+}
+
+strong, b {
+  color: var(--slate-blue);
+  font-weight: 600;
+}
+
+// 5. HIGH-DENSITY EXPLORER
+.explorer {
+  h2 { margin-bottom: 0.5rem !important; }
+  
+  ul {
+    list-style: none !important;
+    margin: 0 0 0 0.8rem !important;
+    padding: 0 !important;
+    border-left: none;
+    
+    li { margin: 0 !important; padding: 0 !important; }
+  }
+
+  .explorer-item {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 0 !important;
+    padding: 2px 0 !important;
+    
+    .folder-container { padding: 0 !important; margin: 0 !important; }
+  }
+
+  a, button {
+    font-size: 0.8rem !important;
+    font-weight: 400;
+    color: var(--darkgray);
+    line-height: 1.3 !important;
+  }
+
+  .folder-icon {
+    transform: scale(0.8);
+    margin-right: 4px !important;
+  }
+}
+
+// 6. SEAMLESS GRAPH
+.graph {
+  border: none !important;
+  background: transparent !important;
+  height: 300px !important;
+  margin: 1.5rem 0 !important;
+
+  .graph-outer { border: none !important; box-shadow: none !important; }
+
+  circle {
+    fill: var(--graph-node) !important;
+    &.root { fill: var(--graph-node-active) !important; }
+  }
+  
+  line {
+    stroke: var(--lightgray) !important;
+    opacity: 0.3;
+  }
+}
+// LOCK IN ANALYST TYPOGRAPHY WEIGHTS
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400 !important; // Clean, standard weight for all body text
+  -webkit-font-smoothing: antialiased;
+}
+
+// Titles and Headers: Professional Medium (500)
+.page-title a, 
+.article-title, 
+h1, h2, h3, h4, 
+strong, b {
+  font-weight: 500 !important; 
+  color: var(--slate-blue) !important;
+}
+
+// Explorer & Meta: Keeping it light to avoid clutter
+.explorer a, 
+.explorer button, 
+.content-meta {
+  font-weight: 400 !important;
+  font-size: 0.85rem !important;
+}
+
+// Soften the headers specifically
+h1, h2, h3, h4 {
+  letter-spacing: -0.01em;
+  color: var(--steel-blue) !important;
+}
+// 1. CLEAN UP SEARCH BAR (Remove/Lighten Border)
+.search {
+  #search-button {
+    background: var(--light) !important; // Subtly different from the panel bg
+    border: 1px solid rgba(0, 0, 0, 0.05) !important; // Very faint edge
+    border-radius: 6px !important;
+    box-shadow: none !important;
+
+    // To remove it entirely, use this instead:
+    // border: none !important; 
+    
+    body[saved-theme="dark"] & {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    p {
+      color: var(--steel-blue) !important;
+      font-weight: 400 !important;
+    }
+  }
+}
+
+// 2. EXPLORER BORDER REMOVAL (Extra deep cleaning)
+.explorer {
+  ul, li, .explorer-item, .folder-container {
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+  }
+  
+  // This removes the "guide line" that appears when folders are open
+  ul {
+    margin-left: 0.8rem !important;
+    padding-left: 0 !important;
+  }
+}
+// 1. REMOVE TOP SPACING FROM CENTER CARD
+@media (min-width: 1200px) {
+  .center {
+    margin-top: 2rem !important; // Controls the gap above the card itself
+    padding-top: 2rem !important; // Controls the gap inside the card, above the title
+  }
+}
+
+// 2. TARGET THE BREADCRUMBS & HEADER
+// Quartz often adds a 'header' element that contains breadcrumbs
+header {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.breadcrumbs {
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important; // Keeps breadcrumbs tight to the title
+}
+
+// 3. REMOVE TOP MARGIN FROM FIRST ELEMENT (Usually Article Title)
+.article-title {
+  margin-top: 0 !important;
+}
+// 1. STABILIZE THE GRID
+@media all and ($desktop) {
+  #quartz-body {
+    // We use 'fr' units to let the browser calculate the gaps correctly
+    // 1fr (Left) | 3fr (Center) | 1.5fr (Right)
+    grid-template-columns: 1.2fr 3fr 1.5fr !important; 
+    column-gap: 32px !important; // Increase the DMZ between panels
+    display: grid !important;
+    width: 98% !important; // Use slightly more screen width to prevent crowding
+    max-width: 1600px;
+  }
+
+  // 2. PREVENT CENTER CARD FROM EXPANDING
+  .center {
+    min-width: 0; // Standard CSS fix to prevent flex/grid items from overflowing
+    width: 100% !important;
+    box-sizing: border-box; // Ensures padding doesn't add to the width
+  }
+
+  // 3. ENSURE SIDEBARS DON'T CREEP
+  .sidebar.left, .sidebar.right {
+    min-width: 0;
+  }
+}
+// 1. UNIFY COLUMN STARTING POSITION
+@media all and ($desktop) {
+  #quartz-body {
+    margin-top: 2rem !important; // Global "air" at the top of the whole site
+    align-items: start !important; // Ensures grid items don't stretch vertically
+  }
+
+  .sidebar.left, 
+  .sidebar.right, 
+  .center {
+    margin-top: 0 !important;   // Reset individual margins
+    top: 0 !important;          // Reset sticky positioning offsets
+    position: sticky !important;
+    top: 2rem !important;       // Lock them all to the same distance from the window top
+  }
+}
+
+// 2. TIGHTEN INTERNAL ARTICLE SPACING
+// This removes the "ghost" space inside the article card
+.center {
+  padding-top: 2.5rem !important; // Adjust this to match sidebar internal padding
+  
+  header {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .article-title {
+    margin-top: 0 !important; // Pulls the title to the very top of the card
+  }
+}
+
+// 3. SYNC SIDEBAR INTERNAL SPACING
+.sidebar.left, .sidebar.right {
+  padding-top: 2.5rem !important; // Match this to the .center padding-top
+}
