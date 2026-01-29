@@ -9,11 +9,26 @@
     margin-top: 1rem;
     padding-left: 0;
 
-    & > li {
-      margin: 1rem 0;
+   & > li {
+      margin: 4.5rem 0; // Increased from 1rem to 2.5rem for more gap
+      
+      // Optional: Add a separator line for better visual distinction
+      border-bottom: 1px solid var(--lightgray);
+      padding-bottom: 1.5rem;
+
+      &:last-child {
+        border-bottom: none;
+      }
+      
       .section > .desc > h3 > a {
         background-color: transparent;
       }
+
+      .section > .meta {
+        margin: 0.5rem 0; // Added some top margin to separate meta from description
+        opacity: 0.6;
+      }
+   }
 
       .section > .meta {
         margin: 0 0 0.5rem 0;
@@ -21,4 +36,3 @@
       }
     }
   }
-}

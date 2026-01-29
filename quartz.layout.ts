@@ -36,16 +36,17 @@ export const defaultContentPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer({
-      title: "Explorer",
-      folderClickBehavior: "link",
-      folderDefaultState: "collapsed",
-      useSavedState: true,
-      mapFn: (node) => {
-        node.displayName = node.displayName
-          .replace(/-/g, " ")
-          .replace(/\b\w/g, (l) => l.toUpperCase())
-      },
-    }),
+  title: "Explorer",
+  folderClickBehavior: "link",
+  folderDefaultState: "collapsed",
+  useSavedState: true,
+  displayClass: "desktop-only", // <--- This is the magic line
+  mapFn: (node) => {
+    node.displayName = node.displayName
+      .replace(/-/g, " ")
+      .replace(/\b\w/g, (l) => l.toUpperCase())
+  },
+}),
   ],
   afterBody: [Component.RecentNotes({ showDescription: true }),
   Component.Backlinks(),],

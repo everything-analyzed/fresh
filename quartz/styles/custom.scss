@@ -4,34 +4,15 @@
 @use "./callouts.scss";
 @use "./base.scss";
 
-// 1. THEME LOGIC (Dark Mode Colors)
+// =============================================================================
+// 1. THEME & COLOR VARIABLES
+// =============================================================================
 :root {
   --sidepanel-width: 320px;
   --steel-blue: #8095a6;
   --slate-blue: #3d5261;
-  
-  // Graph Colors
-  --graph-node: var(--steel-blue);
-  --graph-node-active: var(--slate-blue);
-}
-
-// Automatically lighten colors for Dark Mode readability
-body[saved-theme="dark"] {
-  --steel-blue: #a0aec0; // Lightened Steel
-  --slate-blue: #cbd5e0; // Lightened Slate
-  --graph-node: #a0aec0;
-  --graph-node-active: #ffffff;
-}
-
-// 1. THEME & COLOR LOGIC
-:root {
-  --sidepanel-width: 320px;
-  --steel-blue: #8095a6;
-  --slate-blue: #3d5261;
-  
-  // Backgrounds
-  --page-bg: #f0f2f5;        // Light gray background
-  --panel-bg: #ffffff;       // White panels
+  --page-bg: #f0f2f5;
+  --panel-bg: #ffffff;
   --panel-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   --panel-border: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -39,171 +20,19 @@ body[saved-theme="dark"] {
 body[saved-theme="dark"] {
   --steel-blue: #a0aec0;
   --slate-blue: #cbd5e0;
-  
-  // Dark Mode Variations
-  --page-bg: #0d1117;        // Very dark background
-  --panel-bg: #161b22;       // Charcoal panels
+  --page-bg: #0d1117;
+  --panel-bg: #161b22;
   --panel-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   --panel-border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-// 2. DYNAMIC BODY
+// =============================================================================
+// 2. GLOBAL TYPOGRAPHY (THE ANALYST SETTINGS)
+// =============================================================================
 body {
   background-color: var(--page-bg) !important;
-  transition: background 0.3s ease;
-}
-
-// 3. THE FLOATING PANEL MIXIN (Fixes the @extend error)
-@mixin floating-panel {
-  background-color: var(--panel-bg) !important;
-  border: var(--panel-border) !important;
-  box-shadow: var(--panel-shadow);
-  border-radius: 8px !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-// 4. APPLYING TO SIDEBARS & CENTER
-@media (min-width: 1200px) {
-  .sidebar.left, .sidebar.right, .center {
-    @include floating-panel; // We use @include now, not @extend
-  }
-
-  .sidebar.left {
-    width: var(--sidepanel-width) !important;
-    padding: 2rem 1.5rem !important;
-    height: calc(100vh - 4rem) !important;
-    position: sticky !important;
-    top: 2rem;
-  }
-
-  .center {
-    padding: 3rem !important;
-    margin-bottom: 2rem;
-  }
-}
-
-// 3. PAGE TITLE & SEARCH BAR SPACING
-.page-title {
-  margin-bottom: 2.5rem !important; // Gap between Title and Search
-  & a {
-    color: var(--slate-blue) !important;
-    font-family: 'Inter';
-    font-weight: 500 !important;
-    font-size: 1.4rem !important;
-    letter-spacing: -0.03em;
-    text-decoration: none;
-  }
-}
-
-// HORIZONTAL SEARCH & DARKMODE
-.sidebar.left .flex {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  align-items: center !important;
-  gap: 12px !important;
-  margin-bottom: 2rem !important; // Gap between Search and Explorer
-
-  .search {
-    flex: 1 !important;
-    #search-button { margin: 0 !important; width: 100%; }
-  }
-
-  .darkmode {
-    flex: 0 0 auto !important;
-    #darkmode-toggle { margin: 0 !important; padding: 0; }
-  }
-}
-
-// 4. TYPOGRAPHY (Responsive to Theme)
-.article-title {
-  color: var(--slate-blue) !important;
   font-family: 'Inter', sans-serif;
-  font-weight: 500 !important;
-  font-size: 1.8rem !important;
-  letter-spacing: -0.04em;
-  line-height: 1.2;
-}
-
-h1, h2, h3, h4 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500 !important;
-  color: var(--steel-blue);
-  margin-top: 2.5rem;
-}
-
-h3 { color: var(--slate-blue); }
-
-p, li {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--darkgray);
-}
-
-strong, b {
-  color: var(--slate-blue);
-  font-weight: 600;
-}
-
-// 5. HIGH-DENSITY EXPLORER
-.explorer {
-  h2 { margin-bottom: 0.5rem !important; }
-  
-  ul {
-    list-style: none !important;
-    margin: 0 0 0 0.8rem !important;
-    padding: 0 !important;
-    border-left: none;
-    
-    li { margin: 0 !important; padding: 0 !important; }
-  }
-
-  .explorer-item {
-    display: flex !important;
-    align-items: center !important;
-    min-height: 0 !important;
-    padding: 2px 0 !important;
-    
-    .folder-container { padding: 0 !important; margin: 0 !important; }
-  }
-
-  a, button {
-    font-size: 0.8rem !important;
-    font-weight: 400;
-    color: var(--darkgray);
-    line-height: 1.3 !important;
-  }
-
-  .folder-icon {
-    transform: scale(0.8);
-    margin-right: 4px !important;
-  }
-}
-
-// 6. SEAMLESS GRAPH
-.graph {
-  border: none !important;
-  background: transparent !important;
-  height: 300px !important;
-  margin: 1.5rem 0 !important;
-
-  .graph-outer { border: none !important; box-shadow: none !important; }
-
-  circle {
-    fill: var(--graph-node) !important;
-    &.root { fill: var(--graph-node-active) !important; }
-  }
-  
-  line {
-    stroke: var(--lightgray) !important;
-    opacity: 0.3;
-  }
-}
-// LOCK IN ANALYST TYPOGRAPHY WEIGHTS
-body {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400 !important; // Clean, standard weight for all body text
+  font-weight: 400 !important;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -212,359 +41,195 @@ body {
 .article-title, 
 h1, h2, h3, h4, 
 strong, b {
+  font-family: 'Inter', sans-serif;
   font-weight: 500 !important; 
   color: var(--slate-blue) !important;
+  letter-spacing: -0.02em;
 }
 
-// Explorer & Meta: Keeping it light to avoid clutter
-.explorer a, 
-.explorer button, 
-.content-meta {
-  font-weight: 400 !important;
-  font-size: 0.85rem !important;
-}
-
-// Soften the headers specifically
 h1, h2, h3, h4 {
-  letter-spacing: -0.01em;
   color: var(--steel-blue) !important;
-}
-// 1. CLEAN UP SEARCH BAR (Remove/Lighten Border)
-.search {
-  #search-button {
-    background: var(--light) !important; // Subtly different from the panel bg
-    border: 1px solid rgba(0, 0, 0, 0.05) !important; // Very faint edge
-    border-radius: 6px !important;
-    box-shadow: none !important;
-
-    // To remove it entirely, use this instead:
-    // border: none !important; 
-    
-    body[saved-theme="dark"] & {
-      background: rgba(255, 255, 255, 0.05) !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    }
-
-    p {
-      color: var(--steel-blue) !important;
-      font-weight: 400 !important;
-    }
-  }
+  margin-top: 2.5rem;
 }
 
-// 2. EXPLORER BORDER REMOVAL (Extra deep cleaning)
-.explorer {
-  ul, li, .explorer-item, .folder-container {
-    border-left: none !important;
-    border-right: none !important;
-    border-top: none !important;
-    border-bottom: none !important;
-    box-shadow: none !important;
-  }
-  
-  // This removes the "guide line" that appears when folders are open
-  ul {
-    margin-left: 0.8rem !important;
-    padding-left: 0 !important;
-  }
-}
-// 1. REMOVE TOP SPACING FROM CENTER CARD
-@media (min-width: 1200px) {
-  .center {
-    margin-top: 2rem !important; // Controls the gap above the card itself
-    padding-top: 2rem !important; // Controls the gap inside the card, above the title
-  }
+p, li {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--darkgray);
 }
 
-// 2. TARGET THE BREADCRUMBS & HEADER
-// Quartz often adds a 'header' element that contains breadcrumbs
-header {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
+// =============================================================================
+// 3. GLOBAL GRID & ALIGNMENT (FORCE RESET - NO OVERLAP)
+// =============================================================================
+@mixin floating-panel {
+  background-color: var(--panel-bg) !important;
+  border: var(--panel-border) !important;
+  box-shadow: var(--panel-shadow);
+  border-radius: 12px !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.breadcrumbs {
-  margin-top: 0 !important;
-  margin-bottom: 0.5rem !important; // Keeps breadcrumbs tight to the title
-}
-
-// 3. REMOVE TOP MARGIN FROM FIRST ELEMENT (Usually Article Title)
-.article-title {
-  margin-top: 0 !important;
-}
-// 1. STABILIZE THE GRID
-@media all and ($desktop) {
+// 1200px is the standard threshold for Quartz desktop layout
+@media all and (min-width: 1200px) {
   #quartz-body {
-    // We use 'fr' units to let the browser calculate the gaps correctly
-    // 1fr (Left) | 3fr (Center) | 1.5fr (Right)
-    grid-template-columns: 1.2fr 3fr 1.5fr !important; 
-    column-gap: 32px !important; // Increase the DMZ between panels
     display: grid !important;
-    width: 98% !important; // Use slightly more screen width to prevent crowding
-    max-width: 1600px;
+    // Fixes sidebars, center column minmax(0, 1fr) prevents pushing sidebar
+    grid-template-columns: 280px minmax(0, 1fr) 320px !important; 
+    column-gap: 32px !important;
+    width: 95% !important;
+    max-width: 1440px !important;
+    margin: 2rem auto !important;
+    align-items: start !important;
+    flex-direction: unset !important; // Kill default flex
   }
 
-  // 2. PREVENT CENTER CARD FROM EXPANDING
-  .center {
-    min-width: 0; // Standard CSS fix to prevent flex/grid items from overflowing
-    width: 100% !important;
-    box-sizing: border-box; // Ensures padding doesn't add to the width
-  }
-
-  // 3. ENSURE SIDEBARS DON'T CREEP
-  .sidebar.left, .sidebar.right {
-    min-width: 0;
-  }
-}
-// 1. UNIFY COLUMN STARTING POSITION
-@media all and ($desktop) {
-  #quartz-body {
-    margin-top: 2rem !important; // Global "air" at the top of the whole site
-    align-items: start !important; // Ensures grid items don't stretch vertically
-  }
-
-  .sidebar.left, 
-  .sidebar.right, 
-  .center {
-    margin-top: 0 !important;   // Reset individual margins
-    top: 0 !important;          // Reset sticky positioning offsets
+  .sidebar.left {
+    @include floating-panel;
+    grid-column: 1 !important;
     position: sticky !important;
-    top: 2rem !important;       // Lock them all to the same distance from the window top
+    top: 2rem !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  .center {
+    @include floating-panel;
+    grid-column: 2 !important;
+    min-width: 0 !important; // CRITICAL: stops center from shoving sidebar
+    padding: 2.5rem 3rem !important;
+    box-sizing: border-box !important;
+    z-index: 1;
+  }
+
+  .sidebar.right {
+    @include floating-panel;
+    grid-column: 3 !important;
+    position: sticky !important;
+    top: 2rem !important;
+    width: 100% !important;
+    display: block !important;
   }
 }
 
-// 2. TIGHTEN INTERNAL ARTICLE SPACING
-// This removes the "ghost" space inside the article card
-.center {
-  padding-top: 2.5rem !important; // Adjust this to match sidebar internal padding
-  
-  header {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
+// Mobile/Tablet: Stack them normally
+@media all and (max-width: 1199px) {
+  #quartz-body {
+    display: flex !important;
+    flex-direction: column !important;
   }
-
-  .article-title {
-    margin-top: 0 !important; // Pulls the title to the very top of the card
-  }
+  .center { width: 100% !important; padding: 1.5rem !important; }
 }
+// =============================================================================
+// 4. RECENT NOTES SECTION (GRID & TEXT)
+// =============================================================================
 
-// 3. SYNC SIDEBAR INTERNAL SPACING
-.sidebar.left, .sidebar.right {
-  padding-top: 2.5rem !important; // Match this to the .center padding-top
-}
-// ANDY MATUSCHAK STYLE BACKLINKS
-.backlinks {
-  margin-top: 4rem !important; // Massive gap from the article text
-  padding-top: 2rem;
-  border-top: 1px solid var(--lightgray); // Subtle "Sources" line
-  
-  h3 {
-    font-size: 0.9rem !important;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--steel-blue) !important;
-    margin-bottom: 1.5rem !important;
-  }
-
-  ul {
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-
-    li {
-      margin-bottom: 0.75rem !important;
-      
-      a {
-        font-size: 0.95rem;
-        font-weight: 400 !important;
-        color: var(--slate-blue) !important;
-        text-decoration: none;
-        display: block;
-        transition: color 0.2s ease;
-
-        &:hover {
-          color: var(--secondary) !important;
-          background: rgba(var(--secondary-rgb), 0.05);
-        }
-      }
-    }
-  }
-
-  // Hide the section if there are no backlinks
-  &:empty {
-    display: none;
-  }
-}
-// MAGGIE APPLETON GRID STYLE
-// MAGGIE APPLETON GRID STYLE
-.page-listing {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
-  gap: 1.5rem !important;
-  margin-top: 2rem;
-
-  .section-li {
-    @include floating-panel; 
-    margin: 0 !important;
-    padding: 1.5rem !important;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgba(0,0,0,0.05) !important;
-    
-    &:hover {
-      border-color: var(--steel-blue) !important;
-      transform: translateY(-4px);
-    }
-
-    // THE TITLE
-    & > a {
-      font-family: 'Inter', sans-serif;
-      font-weight: 500 !important;
-      font-size: 1.1rem !important;
-      color: var(--slate-blue) !important;
-      text-decoration: none;
-      margin-bottom: 0.5rem;
-    }
-
-    // THE SUMMARY (Description)
-    .desc {
-      font-size: 0.85rem !important;
-      line-height: 1.5 !important;
-      color: var(--gray) !important;
-      display: -webkit-box !important;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;  
-      overflow: hidden;
-      margin-bottom: 1rem !important;
-    }
-  }
-}
-// EDITORIAL BADGES
-// TARGET THE CONTAINER FIRST
-.tag-list, .tags {
-  font-size: 0 !important; // Collapse any ghost spacing/sizes
-  line-height: 0 !important;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-// THE BADGES
-.content-meta, 
-.tag-link, 
-.tag-list li a, 
-.tags a {
-  font-family: 'Inter', sans-serif !important;
-  font-size: .55rem !important;  // Change to 0.9rem if 0.65 is too small
-  font-weight: 600 !important;
-  text-transform: uppercase;
-  letter-spacing: 0.1em !important;
-  padding: 3px 8px !important;
-  border-radius: 6px !important;
-  background: rgba(128, 149, 166, 0.15) !important;
+// The "Recent Notes" Header
+.recent-notes > h3 {
+  font-size: 0.9rem !important;
   color: var(--steel-blue) !important;
-  display: inline-block !important;
-  line-height: 1.2 !important; // Ensures the text doesn't get cut off vertically
-  text-decoration: none !important;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 2rem !important;
+  font-weight: 600 !important;
 }
 
-.tags a:hover {
-  background: var(--steel-blue) !important;
-  color: white !important;
-}
-// TARGET RECENT NOTES AND FOLDER LISTS
-.section-ul, .recent-notes {
+.section-ul, .recent-notes > ul.recent-ul {
   display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
-  gap: 1.5rem !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; 
+  gap: 2rem !important;
   list-style: none !important;
   padding: 0 !important;
 
-  li {
-    @include floating-panel; // Applying your editorial white cards
-    padding: .5rem !important;
-    margin: 0 !important;
-    
-    // Maggie Appleton hover lift
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1) !important;
-    }
+  & > li {
+    background-color: transparent !important;
+    border: 1px solid transparent !important;
+    box-shadow: none !important;
+    padding: 1.25rem !important;
+    border-radius: 6px !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
-    // Adjust the titles inside the cards
-    a {
-      font-weight: 500 !important;
-      font-size: 1.1rem !important;
-      color: var(--slate-blue) !important;
-      display: block;
-      margin-bottom: 0.5rem;
+    &:hover {
+      background-color: var(--panel-bg) !important;
+      border: var(--panel-border) !important;
+      box-shadow: var(--panel-shadow) !important;
+      transform: translateY(-4px);
     }
   }
+
+  // Card TITLE text
+  .desc h3 a {
+    font-size: 1.15rem !important;
+    font-weight: 500 !important;
+    color: var(--slate-blue) !important;
+    text-decoration: none !important;
+    line-height: 1.3 !important;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  // Card DESCRIPTION text
+  .desc {
+    font-size: 0.85rem !important;
+    color: var(--gray) !important;
+    line-height: 1.5 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
-// TARGET TAGS SPECIFICALLY INSIDE CARDS
-.section-li .tags a, 
-.recent-notes .tags a,
-.page-listing .tags a {
-  font-size: 0.65rem !important; // Match your tiny note tag size
-  padding: 2px 6px !important;
-  margin-top: 8px !important;
-  display: inline-block !important;
-  border-radius: 4px !important;
-  background: rgba(128, 149, 166, 0.1) !important;
+
+// =============================================================================
+// 5. FURTHER READING (ANDY STYLE)
+// =============================================================================
+[id$="further-reading"], 
+h3:has(a[href$="further-reading"]) {
+  margin-top: 4rem !important;
+  padding-top: 2rem !important;
+  border-top: 1px solid var(--lightgray) !important;
+  font-size: 0.85rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   color: var(--steel-blue) !important;
+}
+
+[id$="further-reading"] ~ a,
+h3:has(a[href$="further-reading"]) ~ a {
+  display: block !important;
+  font-size: 0.95rem;
+  color: var(--slate-blue) !important;
+  text-decoration: none !important;
+  padding: 0.8rem 0 !important;
+  border-bottom: 1px solid rgba(0,0,0,0.03);
+  transition: all 0.2s ease;
+
+  &.external { background: none !important; padding-right: 0 !important; &::after { content: none !important; } }
+
+  &:hover {
+    color: var(--secondary) !important;
+    padding-left: 12px !important;
+    background: rgba(var(--secondary-rgb), 0.05) !important;
+  }
+}
+
+// =============================================================================
+// 6. EDITORIAL BADGES (TAGS)
+// =============================================================================
+.tag-link, .tag-list li a, .tags a {
+  font-size: .6rem !important; 
   font-weight: 600 !important;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-// Ensure the list container in the card doesn't add extra padding
-.section-li ul.tags {
-  padding-left: 0 !important;
-  margin: 0 !important;
-  list-style: none !important;
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 4px !important;
-}
-.section-li .desc, 
-.recent-notes .desc {
-  display: block !important;
-  font-size: 0.85rem !important; // Smaller than title, larger than tags
-  line-height: 1.5 !important;
-  color: var(--gray) !important;
-  margin: 0.5rem 0 !important;
+  letter-spacing: 0.05em !important;
+  padding: 4px 10px !important;
+  border-radius: 4px !important;
+  color: var(--steel-blue) !important;
+  background: rgba(128, 149, 166, 0.1) !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  margin-top: 10px;
   
-  // Limits the summary to 3 lines so cards stay uniform
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;  
-  overflow: hidden;
-}
-/* NUCLEAR FIX FOR DESCRIPTIONS */
-.section-li .desc, 
-.recent-notes .desc, 
-.page-listing .desc {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  color: #4a4a4a !important; /* A dark gray to ensure visibility */
-  font-size: 0.85rem !important;
-  margin-top: 8px !important;
-  min-height: 1.2em !important;
-}
-// Force visibility for RecentNotes descriptions
-.recent-notes .note-entry .desc {
-  display: block !important;
-  visibility: visible !important;
-  font-size: 0.85rem !important;
-  color: var(--gray) !important;
-  margin-top: 0.5rem !important;
-  line-height: 1.5 !important;
+  &:hover { background: var(--steel-blue) !important; color: white !important; }
 }
 
-// And for FolderContent (the grid)
-.folder-outer .desc {
-  display: block !important;
-  font-size: 0.85rem !important;
-  color: var(--gray) !important;
-}
+// Nuke list bullets inside cards
+.tags li { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; list-style: none !important; &::before { content: none !important; } }

@@ -1,9 +1,7 @@
 ---
 title: The Scanner's Library
-cssclasses:
-  - card-list
+hom: list
 ---
-## What is a Scanner? 
  
 Most people are taught to pick one lane and stay there. A "Scanner" does the opposite. I’m a researcher who prefers to move horizontally—checking under the hood of several different worlds at once.  
 
