@@ -1,1 +1,1 @@
-[[content/Seedlings/Kevorkian Case]]and-crime/Kevorkian Case]]
+[[The Cost of Having the Last Word]]and-crime/Kevorkian Case]]

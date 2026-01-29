@@ -1,10 +1,11 @@
 ---
-title: Kevorkian Case
+title: The Cost of Having the Last Word
 publish: "true"
 tags:
   - autonomy
   - "#society"
-description: this is a test
+  - "#law"
+description: There’s a thin, messy line between 'mercy' and 'murder,' and Jack Kevorkian spent a decade trying to erase it. This is a look at how his own ego eventually handed the State the win, and what that tells us about how much control we actually have over our own suffering.
 ---
 
  
@@ -56,27 +57,17 @@ Dr. Jack Kevorkian, aka "Dr. Death", was most well known for his strong advocacy
 
 </details>
 
-## Commentary
-
 
 Dr. Kevorkian had noble intentions – to provide a decent and dignified exit from suffering for the terminally ill. His unfortunate decision to allow his ego to guide him made his antics, rather than his philosophy, the star of the show.
 
 >In November 1998, Dr. Kevorkian made an extraordinarily bold and public challenge to his opposers when he broadcast the videotaped death of Thomas Youk on *60 Minutes*.  The video shows Kevorkian administering the lethal injection to Youk. 
 
->The key difference between the first four trials and the last was the level of Dr. Kevorkian's involvement in the patient's suicide, and the resulting criminal charge. In Youk's case, Kevorkian was not accused of not only *assisting* in a suicide; he was also accused of first-degree murder and administering a controlled substance.
+>This was  key difference between the first four trials and the last. His involvement in the patient's suicide was direct, no assistive, and the resulting criminal charge was murder amongst others. 
 
 
-Without dismissing the fact that he did commit a crime when he administered a lethal injection to Thomas Youk in 1998, his public taunt of the District Attorney in the form of a televised medicide and his subsequent decision to represent himself was what convicted him.   
+Without dismissing the fact that he did commit a crime in this instance, his public taunt of the District Attorney and his subsequent decision to represent himself in court was what convicted him. The result was his inability to do the very thing he was fighting for -- he stifled his own ability to aid the suffering.
 
-What's more important than the man himself is what he was advocating for: the right of a person to choose for him or herself, whether that be life or death.
-
-Kevorkian's relationships with his local law enforcement and the greater medical community was adversarial to say the least. His position was that a terminally ill person with a desire to end their suffering should be allowed to do so in a dignified and compassionate way. Assisted suicide, or "medicide", reportedly offered suffering people a sense of peace for the remainder of their life and spared the families the trauma of other methods of suicide. He felt that the criminalization of this choice was immoral.
-
-Determined the prove the inherit rightness of his position (and to taunt the Michigan DA), he veered from his usual process which, to that point, been effective in terms of avoiding legal consequences. 
-
- 
-- In the context of law, one of the only crimes which has consequences that are influenced by context is the taking of a human life. There are "degrees" of murder, state-sanctioned homicides (capital punishment), justifiable homicide (line of duty, war), amongst other circumstances.
-
+The discourse involving Dr. Kevorkian was assisted suicide, but the more salient matter is the right of an individual to choose for him or herself. [[What level of personal autonomy do any of us truly have when if even our life, death, or suffering is can be dictated by law?]]
 
 ### Further Reading 
 
@@ -88,3 +79,19 @@ Determined the prove the inherit rightness of his position (and to taunt the Mic
 [lat link](https://law.justia.com/cases/michigan/supreme-court/1994/99591-6.html))
 
 https://www.baptistpress.com/resource-library/news/cbs-criticized-for-showing-kevorkian-euthanasia-video/
+
+<div class="related-cards-wrapper">
+
+## Related Legal Files
+<ul>
+  <li>
+    [[Euthanasia Legislation]]
+    <span>Analysis of state-level assisted suicide statutes.</span>
+  </li>
+  <li>
+    [[Thomas Youk Case]]
+    <span>The 1998 trial resulting in a murder conviction.</span>
+  </li>
+</ul>
+
+</div>

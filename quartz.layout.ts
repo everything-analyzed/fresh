@@ -66,6 +66,7 @@ export const defaultContentPageLayout: PageLayout = {
       },
     }),
     Component.DesktopOnly(Component.TableOfContents()),
+    
   ],
 }
 
@@ -84,6 +85,8 @@ export const defaultListPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer({ folderClickBehavior: "link" }),
+  ],
+  afterBody: [Component.RecentNotes({ showDescription: true }),
   ],
   right: [],
   center: [
