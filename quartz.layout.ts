@@ -37,7 +37,7 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     Component.Explorer({
       title: "Explorer",
-      folderClickBehavior: "collapse",
+      folderClickBehavior: "link",
       folderDefaultState: "collapsed",
       useSavedState: true,
       mapFn: (node) => {
@@ -47,7 +47,8 @@ export const defaultContentPageLayout: PageLayout = {
       },
     }),
   ],
-  afterBody: [Component.RecentNotes()],
+  afterBody: [Component.RecentNotes({ showDescription: true }),
+  Component.Backlinks(),],
   right: [
     Component.Graph({
       localGraph: {
@@ -64,7 +65,6 @@ export const defaultContentPageLayout: PageLayout = {
       },
     }),
     Component.DesktopOnly(Component.TableOfContents()),
-    Component.Backlinks(),
   ],
 }
 
@@ -82,7 +82,10 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({ folderClickBehavior: "link" }),
   ],
   right: [],
+  center: [
+    Component.FolderContent({ showDescription: true }), // <--- Add it here too
+  ],
 }

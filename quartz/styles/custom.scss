@@ -352,3 +352,219 @@ header {
 .sidebar.left, .sidebar.right {
   padding-top: 2.5rem !important; // Match this to the .center padding-top
 }
+// ANDY MATUSCHAK STYLE BACKLINKS
+.backlinks {
+  margin-top: 4rem !important; // Massive gap from the article text
+  padding-top: 2rem;
+  border-top: 1px solid var(--lightgray); // Subtle "Sources" line
+  
+  h3 {
+    font-size: 0.9rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--steel-blue) !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    li {
+      margin-bottom: 0.75rem !important;
+      
+      a {
+        font-size: 0.95rem;
+        font-weight: 400 !important;
+        color: var(--slate-blue) !important;
+        text-decoration: none;
+        display: block;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: var(--secondary) !important;
+          background: rgba(var(--secondary-rgb), 0.05);
+        }
+      }
+    }
+  }
+
+  // Hide the section if there are no backlinks
+  &:empty {
+    display: none;
+  }
+}
+// MAGGIE APPLETON GRID STYLE
+// MAGGIE APPLETON GRID STYLE
+.page-listing {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+  gap: 1.5rem !important;
+  margin-top: 2rem;
+
+  .section-li {
+    @include floating-panel; 
+    margin: 0 !important;
+    padding: 1.5rem !important;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0,0.05) !important;
+    
+    &:hover {
+      border-color: var(--steel-blue) !important;
+      transform: translateY(-4px);
+    }
+
+    // THE TITLE
+    & > a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500 !important;
+      font-size: 1.1rem !important;
+      color: var(--slate-blue) !important;
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+    }
+
+    // THE SUMMARY (Description)
+    .desc {
+      font-size: 0.85rem !important;
+      line-height: 1.5 !important;
+      color: var(--gray) !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;  
+      overflow: hidden;
+      margin-bottom: 1rem !important;
+    }
+  }
+}
+// EDITORIAL BADGES
+// TARGET THE CONTAINER FIRST
+.tag-list, .tags {
+  font-size: 0 !important; // Collapse any ghost spacing/sizes
+  line-height: 0 !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+// THE BADGES
+.content-meta, 
+.tag-link, 
+.tag-list li a, 
+.tags a {
+  font-family: 'Inter', sans-serif !important;
+  font-size: .55rem !important;  // Change to 0.9rem if 0.65 is too small
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em !important;
+  padding: 3px 8px !important;
+  border-radius: 6px !important;
+  background: rgba(128, 149, 166, 0.15) !important;
+  color: var(--steel-blue) !important;
+  display: inline-block !important;
+  line-height: 1.2 !important; // Ensures the text doesn't get cut off vertically
+  text-decoration: none !important;
+}
+
+.tags a:hover {
+  background: var(--steel-blue) !important;
+  color: white !important;
+}
+// TARGET RECENT NOTES AND FOLDER LISTS
+.section-ul, .recent-notes {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+  gap: 1.5rem !important;
+  list-style: none !important;
+  padding: 0 !important;
+
+  li {
+    @include floating-panel; // Applying your editorial white cards
+    padding: .5rem !important;
+    margin: 0 !important;
+    
+    // Maggie Appleton hover lift
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1) !important;
+    }
+
+    // Adjust the titles inside the cards
+    a {
+      font-weight: 500 !important;
+      font-size: 1.1rem !important;
+      color: var(--slate-blue) !important;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+// TARGET TAGS SPECIFICALLY INSIDE CARDS
+.section-li .tags a, 
+.recent-notes .tags a,
+.page-listing .tags a {
+  font-size: 0.65rem !important; // Match your tiny note tag size
+  padding: 2px 6px !important;
+  margin-top: 8px !important;
+  display: inline-block !important;
+  border-radius: 4px !important;
+  background: rgba(128, 149, 166, 0.1) !important;
+  color: var(--steel-blue) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// Ensure the list container in the card doesn't add extra padding
+.section-li ul.tags {
+  padding-left: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 4px !important;
+}
+.section-li .desc, 
+.recent-notes .desc {
+  display: block !important;
+  font-size: 0.85rem !important; // Smaller than title, larger than tags
+  line-height: 1.5 !important;
+  color: var(--gray) !important;
+  margin: 0.5rem 0 !important;
+  
+  // Limits the summary to 3 lines so cards stay uniform
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+/* NUCLEAR FIX FOR DESCRIPTIONS */
+.section-li .desc, 
+.recent-notes .desc, 
+.page-listing .desc {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #4a4a4a !important; /* A dark gray to ensure visibility */
+  font-size: 0.85rem !important;
+  margin-top: 8px !important;
+  min-height: 1.2em !important;
+}
+// Force visibility for RecentNotes descriptions
+.recent-notes .note-entry .desc {
+  display: block !important;
+  visibility: visible !important;
+  font-size: 0.85rem !important;
+  color: var(--gray) !important;
+  margin-top: 0.5rem !important;
+  line-height: 1.5 !important;
+}
+
+// And for FolderContent (the grid)
+.folder-outer .desc {
+  display: block !important;
+  font-size: 0.85rem !important;
+  color: var(--gray) !important;
+}

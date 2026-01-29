@@ -1,12 +1,21 @@
 {
 	"nodes":[
-		{"id":"a11b3a7be73ab1e2","x":-60,"y":-400,"width":290,"height":240,"type":"group","label":"Untitled group"},
+		{"id":"a11b3a7be73ab1e2","type":"group","x":-60,"y":-400,"width":290,"height":240,"label":"Untitled group"},
 		{"id":"3fae9a05dc00646d","type":"file","file":"Fire.md","x":-453,"y":-380,"width":400,"height":400},
-		{"id":"9e3cb2c583a5707f","x":-453,"y":160,"width":400,"height":400,"type":"file","file":"everything, analyzed./content/Law & Crime/Palisades Fires.md"},
-		{"id":"0c2899f3f68e2ccc","x":-420,"y":20,"width":250,"height":120,"type":"text","text":"the natural, unpredicatable nature of fire up against legal responsibility -- is it truly unpredictable?"},
-		{"id":"a19bf4f3b28a0077","x":-378,"y":220,"width":250,"height":140,"type":"text","text":"one guy being held responsible for a fire a week later"},
-		{"id":"c5c0cd9b476794b8","x":-40,"y":-380,"width":250,"height":60,"type":"text","text":"Fire temperatures, how do things \"burst\" into flames"},
-		{"id":"105e3bf167e06723","x":-40,"y":-240,"width":250,"height":60,"type":"text","text":"How do some trees not burn in a wildfire"}
+		{"id":"0c2899f3f68e2ccc","type":"text","text":"the natural, unpredicatable nature of fire up against legal responsibility -- is it truly unpredictable?","x":-420,"y":20,"width":250,"height":120},
+		{"id":"a19bf4f3b28a0077","type":"text","text":"one guy being held responsible for a fire a week later","x":-378,"y":220,"width":250,"height":140},
+		{"id":"c5c0cd9b476794b8","type":"text","text":"Fire temperatures, how do things \"burst\" into flames","x":-40,"y":-380,"width":250,"height":60},
+		{"id":"105e3bf167e06723","type":"text","text":"How do some trees not burn in a wildfire","x":-40,"y":-240,"width":250,"height":60},
+		{"id":"282fa31c05ce9a60","x":-545,"y":500,"width":250,"height":60,"type":"text","text":"Kevorkian "},
+		{"id":"7e974653db212fc9","x":-546,"y":681,"width":250,"height":60,"type":"text","text":"Sanctioned/justifiable homicides"},
+		{"id":"d142732730ecf8ce","x":-154,"y":502,"width":250,"height":60,"type":"text","text":"Death with dignity "},
+		{"id":"da342e26d45be188","x":-540,"y":318,"width":250,"height":60,"type":"text","text":"Criminalized suicide"},
+		{"id":"014e08f04bd20d8f","x":-987,"y":543,"width":250,"height":60,"type":"text","text":"Our freedom to choose our own life and death/rule of law/personal autonomy "}
 	],
-	"edges":[]
+	"edges":[
+		{"id":"7da78c194ed5eabf","fromNode":"282fa31c05ce9a60","fromSide":"bottom","toNode":"7e974653db212fc9","toSide":"top"},
+		{"id":"d510ee62062ee24d","fromNode":"282fa31c05ce9a60","fromSide":"right","toNode":"d142732730ecf8ce","toSide":"left"},
+		{"id":"1b3c2cefd9731290","fromNode":"282fa31c05ce9a60","fromSide":"top","toNode":"da342e26d45be188","toSide":"bottom"},
+		{"id":"b46b63e94b7d9b03","fromNode":"282fa31c05ce9a60","fromSide":"left","toNode":"014e08f04bd20d8f","toSide":"right"}
+	]
 }
