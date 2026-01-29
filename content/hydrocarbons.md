@@ -1,1 +1,0 @@
-naturally occurring organic compounds composed of primarily  carbon and hydrogen atoms 

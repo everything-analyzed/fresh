@@ -233,3 +233,283 @@ h3:has(a[href$="further-reading"]) ~ a {
 
 // Nuke list bullets inside cards
 .tags li { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; list-style: none !important; &::before { content: none !important; } }
+// Add this to your custom.scss
+.callout {
+  background-color: var(--panel-bg) !important;
+  border: 1px solid var(--panel-border) !important;
+  border-left: 4px solid var(--steel-blue) !important; // The accent line
+  border-radius: 8px !important;
+  box-shadow: var(--panel-shadow) !important;
+  margin: 1.5rem 0 !important;
+  padding: 1rem 1.25rem !important;
+
+  // Header Typography
+  .callout-title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--slate-blue) !important;
+    gap: 8px !important;
+    
+    .callout-icon {
+      color: var(--steel-blue) !important;
+      opacity: 0.8;
+    }
+  }
+
+  // Content Typography
+  .callout-content {
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    color: var(--darkgray) !important;
+    
+    p { margin: 0.5rem 0 0 0 !important; }
+  }
+}
+/* Target lists specifically inside details tags */
+details ul, details ol {
+  margin-top: 0.5rem;    /* Space between the summary and the first item */
+  margin-bottom: 0.5rem;
+}
+
+details li {
+  /* CHANGE THIS VALUE to adjust spacing */
+  margin-bottom: 6px;    /* Vertical gap between items */
+  
+  line-height: 1.5;      /* Space between lines within a single item */
+}
+
+/* Remove margin from the very last item so it doesn't create extra bottom space */
+details li:last-child {
+  margin-bottom: 0;
+}
+/* All top-level details tags */
+details {
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  background-color: var(--curr-bg);
+
+  & > summary {
+    font-size: 1.1rem;
+    color: var(--steel-blue);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+  }
+}
+
+/* Any details tag nested inside another details tag */
+details details {
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  border-left: 2px solid var(--lightgray); /* The Visual Thread */
+  border-right: none; /* Removes the outer border from the sub-item */
+  border-top: none;
+  border-bottom: none;
+  border-radius: 0;
+  padding-left: 1rem;
+  background-color: transparent;
+
+  & > summary {
+    font-weight: 600;
+    font-style: italic;
+    color: var(--secondary);
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 0.95rem;
+  }
+
+  &:hover {
+    border-left-color: var(--steel-blue);
+  }
+}
+/* Force background to stay white on all screen sizes */
+:root {
+  --light: #ffffff; /* This is the main background variable in Quartz */
+}
+
+body, 
+#quartz-body, 
+.page {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+/* Specifically targeting the mobile view container */
+@media (max-width: 800px) {
+  body {
+    background-color: #ffffff !important;
+  }
+}
+/* --- Sidebar Container --- */
+.left.sidebar {
+  padding-right: 1rem;
+  border-right: 1px solid var(--lightgray); /* Adds a subtle divider */
+}
+
+/* --- Explorer (File Tree) --- */
+.explorer {
+  & > button {
+    color: var(--steel-blue);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .folder-container {
+    font-size: 0.9rem;
+    
+    /* Folder Names */
+    .folder-title {
+      color: var(--secondary);
+      font-weight: 500;
+      
+      &:hover {
+        color: var(--steel-blue);
+      }
+    }
+
+    /* Individual File Links */
+    li > a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+      
+      
+
+      &:hover {
+        color: var(--steel-blue);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/* --- Mobile Sidebar Fix --- */
+@media (max-width: 800px) {
+  .left.sidebar {
+    border-right: none;
+    padding-right: 0;
+  }
+}
+/* --- Sidebar Variables --- */
+:root {
+  --side-panel-width: 320px; /* Widened slightly for a better Analyst look */
+}
+
+/* --- Sidebar Header & Layout --- */
+.left.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .page-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--steel-blue);
+  }
+
+  /* Create a row for Search and Darkmode */
+  .search, .darkmode {
+    display: flex;
+    align-items: center;
+  }
+
+  /* The magic to put them side-by-side */
+  & > .search {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    gap: 10px; /* Space between Search and Darkmode */
+    
+    width: 100%;
+  }
+}
+
+/* --- Specific Search Bar Styling --- */
+.search {
+  flex-grow: 1; 
+  
+  & > .search-button {
+    width: 100%; 
+    min-width: 180px; 
+    justify-content: flex-start; 
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--lightgray);
+    border-radius: 6px;
+    background: var(--light);
+    color: var(--gray);
+    font-family: var(--bodyFont);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    
+    /* Ensure the search icon and text look professional */
+    & > p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+  }
+
+/* --- Darkmode Icon Alignment --- */
+.darkmode {
+  flex-shrink: 0; /* Keeps the sun/moon from squishing */
+  cursor: pointer;
+  padding: 0.4rem;
+  
+  & > svg {
+    fill: var(--steel-blue);
+    transition: transform 0.3s ease;
+  }
+}
+  
+  /* Page Title Styling */
+  .page-title {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--steel-blue);
+    
+    & > a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+}
+
+/* Flex wrapper for Search and Darkmode if they are inside the same container */
+.side-by-side-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+
+/* Target every text element inside the Explorer */
+.explorer, 
+.explorer a, 
+.explorer span, 
+.explorer li, 
+.explorer .folder-title {
+  font-weight: 400 !important; /* Forces Regular weight */
+  text-decoration: none !important;
+}
+
+/* Optional: Keep the folder titles just a tiny bit visible */
+.explorer .folder-title {
+  font-weight: 600 !important; /* Medium weight */
+}
+
+/* Remove the bolding specifically for the 'Active' page */
+.explorer li > a[data-for="active"] {
+  font-weight: 400 !important;
+  color: var(--steel-blue) !important;
+}
