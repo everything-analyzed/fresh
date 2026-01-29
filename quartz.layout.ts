@@ -48,23 +48,27 @@ export const defaultContentPageLayout: PageLayout = {
   },
 }),
   ],
-  afterBody: [Component.RecentNotes({ showDescription: true }),
-  Component.Backlinks(),],
+  afterBody: [
+    (props) => props.fileData.slug === "index" 
+      ? Component.RecentNotes({ 
+          title: "Recent Analysis",
+          showDescription: true, 
+          limit: 4 
+        })(props) 
+      : null,
+    Component.Backlinks(),
+  ],
   right: [
     Component.Graph({
-      localGraph: {
-        drag: true,
-        zoom: true,
-        depth: 1,
-        fontSize: 0.6,
-      },
-      globalGraph: {
-        drag: true,
-        zoom: true,
-        depth: -1,
-        fontSize: 0.6,
-      },
-    }),
+  localGraph: {
+    opacityScale: 3,        // Makes the lines brighter
+    fontSize: 0.6,
+  },
+  globalGraph: {
+    opacityScale: 3,
+    fontSize: 0.6,
+  },
+}),
     Component.DesktopOnly(Component.TableOfContents()),
     
   ],
@@ -86,10 +90,17 @@ export const defaultListPageLayout: PageLayout = {
     }),
     Component.Explorer({ folderClickBehavior: "link" }),
   ],
-  afterBody: [Component.RecentNotes({ showDescription: true }),
+  afterBody: [
+    (props) => props.fileData.slug === "index" 
+      ? Component.RecentNotes({ 
+          title: "Recent Analysis",
+          showDescription: true, 
+          limit: 4 
+        })(props) 
+      : null,
+  ],
+  center: [
+    Component.FolderContent({ showDescription: true }),
   ],
   right: [],
-  center: [
-    Component.FolderContent({ showDescription: true }), // <--- Add it here too
-  ],
 }

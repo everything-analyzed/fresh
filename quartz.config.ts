@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "github.com/everything-analyzed/fresh",
+    baseUrl: "github.com/everything-analyzed.io",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
@@ -39,16 +39,16 @@ const config: QuartzConfig = {
     highlight: "rgba(61, 82, 97, 0.05)",
   },
   darkMode: {
-    light: "#1a1a1a",       // Dark background
-    lightgray: "#2d2d2d",
-    gray: "#646464",
-    darkgray: "#d4d4d4",
-    dark: "#8095a6",        // Headings (Steel Blue)
-    secondary: "#8095a6",   // Links
-    tertiary: "#9cb0bf",
-    highlight: "rgba(128, 149, 166, 0.15)",
-  },
+  light: "#000000",          // Pure Black Background
+  lightgray: "#1a1a1a",      // Borders
+  gray: "#646464",           // Dates/Metadata
+  darkgray: "#d4d4d4",       // Body text (soft white)
+  dark: "#ebebeb",           // Headers
+  secondary: "#5f9ea0",      // Your Blue (links)
+  tertiary: "#84a59d",       // Hover state
+  highlight: "rgba(143, 159, 169, 0.15)",
 },
+    },
     },
   },
   plugins: {
