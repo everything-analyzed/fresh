@@ -4,120 +4,105 @@
 @use "./callouts.scss";
 @use "./base.scss";
 
-:root {
-  /* This forces the 'light' variable to be black regardless of mode */
-  [user-color-scheme="dark"] {
-    --light: #000000 !important;
-    --lightgray: #1a1a1a !important;
-  }
-}
-
-/* Hard override for the body and root containers */
-body[user-color-scheme="dark"], 
-body[user-color-scheme="dark"] #quartz-root {
-  background-color: #000000 !important;
-  background: #000000 !important;
-}
-/* GLOBAL DARK MODE FIXES */
-body[user-color-scheme="dark"] {
-  background-color: var(--light) !important; // Forces the #000000
-  color: var(--darkgray) !important;
-
-  /* Fix for the Sidebar/Explorer Backgrounds */
-  .left.sidebar, .right.sidebar {
-    background-color: transparent !important;
-  }
-
-  /* Fix for the Search Bar */
-  .search-button {
-    background-color: #111 !important;
-    border: 1px solid #222 !important;
-    &:hover {
-      border-color: var(--secondary) !important;
-    }
-  }
-
-  /* Popover/Hover Preview Fix */
-  .popover {
-    background-color: #0a0a0a !important;
-    border: 1px solid #333 !important;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 1) !important;
-  }
-  
-  /* The Sidebar Explorer Items */
-  .explorer-content .folder-button:hover,
-  .explorer-content li > a:hover {
-    background-color: #111 !important;
-    color: var(--secondary) !important;
-  }
-}
 // =============================================================================
 // 1. VARIABLES & CORE THEME
 // =============================================================================
 :root {
-  --sidepanel-width: 320px;
   --steel-blue: #8095a6;
   --slate-blue: #3d5261;
-  --page-bg: #f0f2f5;
   --panel-bg: #ffffff;
-  --panel-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  --panel-border: 1px solid rgba(0, 0, 0, 0.05);
   --light: #ffffff; 
+  --darkgray: #2b2b2b;
 }
 
-body[saved-theme="dark"] {
-  --steel-blue: #a0aec0;
-  --slate-blue: #cbd5e0;
-  --page-bg: #0d1117;
-  --panel-bg: #161b22;
-  --panel-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  --panel-border: 1px solid rgba(255, 255, 255, 0.1);
+[user-color-scheme="darkMode"], [saved-theme="dark"] {
+  --light: #000000 !important;
+  --panel-bg: #050505 !important; 
+  --panel-border: 1px solid #222 !important;
+  --darkgray: #d4d4d4 !important;
+  --secondary: #8095a6 !important; // Your Steel Blue
+  --highlight: rgba(128, 149, 166, 0.15) !important;
 }
 
 @mixin floating-panel {
   background-color: var(--panel-bg) !important;
   border: var(--panel-border) !important;
-  box-shadow: var(--panel-shadow);
-  border-radius: 12px !important;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
 }
 
 // =============================================================================
-// 2. GLOBAL TYPOGRAPHY & BODY
+// 2. TYPOGRAPHY & WIKI LINKS
 // =============================================================================
 body {
-  background-color: #ffffff !important;
-  background-image: none !important;
-  font-family: 'Inter', sans-serif;
+  background-color: var(--light) !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+// FIX: Wiki Links and all Internal Links to weight 400
+a, .internal, .alias, article a {
   font-weight: 400 !important;
-  -webkit-font-smoothing: antialiased;
+  text-decoration: none !important;
 }
 
-.page-title a, .article-title, h1, h2, h3, h4, strong, b {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500 !important; 
+// Keep headers at 500
+h1, h2, h3, h4, .article-title {
+  font-weight: 500 !important;
   color: var(--slate-blue) !important;
-  letter-spacing: -0.02em;
-}
-
-h1, h2, h3, h4 {
-  color: var(--steel-blue) !important;
-  margin-top: 2.5rem;
-}
-
-p, li {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--darkgray);
-}
-
-.content-meta {
-  margin-top: 0.1rem !important;
-  margin-bottom: 0.1rem !important;
+  letter-spacing: -0.02em !important;
 }
 
 // =============================================================================
-// 3. DESKTOP GRID LAYOUT
+// 3. TAG CARDS (Restored from the Working Version)
+// =============================================================================
+/* This targets the div containing your tag list */
+.tag-list, .tags, .tag-container {
+  margin: 1.5rem 0 !important;
+  
+  ul {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important; // Kills the bullet dots
+  }
+
+  li {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    
+    /* Stronger bullet kill in case of pseudo-elements */
+    &::before {
+      content: none !important;
+      display: none !important;
+    }
+  }
+
+  /* The actual Card/Pill styling */
+  a, .tag-link {
+    @include floating-panel;
+    display: inline-flex !important;
+    padding: 0.2rem 0.8rem !important;
+    font-size: 0.8rem !important;
+    font-weight: 400 !important; // Force weight back to 400
+    color: var(--secondary) !important; // Your Steel Blue
+    background: var(--highlight) !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var(--secondary) !important;
+      color: white !important;
+      transform: translateY(-2px);
+    }
+  }
+}
+// =============================================================================
+// 4. GRID & BLACKOUT
 // =============================================================================
 @media all and (min-width: 1200px) {
   #quartz-body {
@@ -125,260 +110,139 @@ p, li {
     grid-template-columns: 280px minmax(0, 1fr) 320px !important; 
     column-gap: 32px !important;
     width: 95% !important;
-    max-width: 1440px !important;
     margin: 2rem auto !important;
-    align-items: start !important;
-    flex-direction: unset !important;
   }
-
-  .sidebar.left {
-    @include floating-panel;
-    grid-column: 1 !important;
-    position: sticky !important;
-    top: 2rem !important;
-    width: 100% !important;
-    display: block !important;
-  }
-
-  .center {
-    @include floating-panel;
-    grid-column: 2 !important;
-    min-width: 0 !important;
-    padding: 2.5rem 3rem !important;
-    box-sizing: border-box !important;
-    z-index: 1;
-  }
-
-  .sidebar.right {
-    @include floating-panel;
-    grid-column: 3 !important;
-    position: sticky !important;
-    top: 2rem !important;
-    width: 100% !important;
-    display: block !important;
-  }
+  .sidebar.left, .center, .sidebar.right { @include floating-panel; min-width: 0; }
+  .center { padding: 2.5rem 3rem !important; }
 }
 
-@media all and (max-width: 1199px) {
-  #quartz-body { display: flex !important; flex-direction: column !important; }
-  .center { width: 100% !important; padding: 1.5rem !important; }
-  body { background-color: #ffffff !important; }
+[user-color-scheme="darkMode"], [saved-theme="dark"] {
+  &, body, #quartz-root, .page, #quartz-body, .wrapper {
+    background-color: #000000 !important;
+  }
 }
 
 // =============================================================================
-// 4. SIDEBARS: EXPLORER, SEARCH & DARKMODE
+// 5. SIDEBAR WEIGHT FIX (Left & Right)
 // =============================================================================
-.left.sidebar {
-  padding-right: 1rem;
-  border-right: 1px solid var(--lightgray);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  .page-title {
-    margin: 1rem 0 1.5rem 0;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--steel-blue);
-    & > a { color: inherit; text-decoration: none; }
-  }
-
-  & > .search {
-    display: flex;
-    flex-direction: row; 
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-  }
-}
-
-.search-button {
-  width: 100%; min-width: 180px; justify-content: flex-start; 
-  padding: 0.4rem 0.8rem; border: 1px solid var(--lightgray);
-  border-radius: 6px; background: var(--light); color: var(--gray);
-  margin-top: 2rem; margin-bottom: 2rem;
-  & > p { margin: 0; font-size: 0.9rem; }
-}
-
-.darkmode {
-  flex-shrink: 0; cursor: pointer; padding: 0.4rem;
-  & > svg { fill: var(--steel-blue); transition: transform 0.3s ease; }
-}
-
-.explorer {
-  & > button {
-    color: var(--steel-blue); font-weight: 600; text-transform: uppercase;
-    font-size: 0.8rem; letter-spacing: 0.05em; margin-bottom: 1rem;
-  }
+.sidebar.left a, .sidebar.right a, 
+.folder-title, .folder-button, .toc a {
   font-weight: 400 !important;
-  a, span, li, .folder-title { font-weight: 400 !important; text-decoration: none !important; }
-  .folder-title { color: var(--secondary); font-weight: 600 !important; &:hover { color: var(--steel-blue); } }
-  li > a { color: var(--gray); transition: color 0.2s; &:hover { color: var(--steel-blue); text-decoration: underline; } }
-  li > a[data-for="active"] { font-weight: 400 !important; color: var(--steel-blue) !important; }
 }
 
+.explorer > button, .toc > button {
+  font-weight: 600 !important;
+  color: var(--steel-blue);
+  font-size: 0.8rem;
+}
 // =============================================================================
-// 5. HOMEPAGE: RECENT NOTES DASHBOARD
+// 7. TAGLIST COMPONENT (The Footer "Cards")
 // =============================================================================
 
-/* 1. HIDE globally - targeted specifically to the footer container */
-.page-footer .recent-notes {
-  display: none !important;
+// Target the container ul and ensure it's a flex row, not a vertical list
+ul.section-ul, 
+ul.tag-list, 
+.tag-list ul {
+  list-style: none !important;
+  list-style-type: none !important;
+  padding: 0 !important;
+  margin: 2rem 0 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
 }
 
-/* 2. SHOW only on the index page */
-body[data-slug="index"] .recent-notes {
-  display: block !important;
-  margin-top: 2rem !important;
-
-  & > h3 {
-    font-size: 0.9rem !important;
-    color: var(--steel-blue) !important;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 1.5rem !important;
-    font-weight: 600 !important;
-  }
+// Remove the bullets from the li elements
+ul.section-ul li, 
+ul.tag-list li, 
+.tag-list li {
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
   
-  .recent-ul {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; 
-    gap: 1rem !important;
-    list-style: none !important; 
-    padding: 0 !important;
+  // This kills the actual bullet character if it's added via CSS
+  &::before {
+    content: none !important;
+    display: none !important;
+  }
+}
 
-    .recent-li {
-      @include floating-panel;
-      padding: 1.25rem !important;
-      margin: 0 !important;
-      
-      &:hover {
-        border-color: var(--steel-blue) !important;
-        transform: translateY(-3px);
-      }
+// Turn the links inside those list items into the Cards
+ul.section-ul li a, 
+ul.tag-list li a, 
+.tag-list a.tag-link {
+  @include floating-panel;
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 0.3rem 0.8rem !important;
+  
+  // THE TYPOGRAPHY FIX
+  font-weight: 400 !important; // Force normal weight
+  font-size: 0.8rem !important;
+  text-decoration: none !important;
+  
+  color: var(--secondary) !important; // Steel Blue
+  background-color: var(--highlight) !important;
+  border-radius: 8px !important;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 
-      /* Fix Title Appearance */
-      .desc h3 {
-        margin-top: 0 !important;
-        margin-bottom: 0.5rem !important;
-        a {
-           font-size: 1.1rem !important;
-           line-height: 1.3 !important;
-           text-decoration: none !important;
-        }
-      }
-
-      /* THE MULTI-LINE DESCRIPTION FIX */
-      .recent-description {
-        font-size: 0.85rem !important;
-        color: var(--gray) !important;
-        line-height: 1.5 !important;
-        margin: 0 !important;
-        
-        /* Forces the browser to show multiple lines instead of one */
-        display: -webkit-box !important;
-        -webkit-line-clamp: 4 !important; 
-        -webkit-box-orient: vertical !important;
-        overflow: hidden !important;
-        white-space: normal !important; /* Overrides Quartz default 'nowrap' */
-      }
-    }
+  &:hover {
+    background-color: var(--secondary) !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
   }
 }
 // =============================================================================
-// 6. ARTICLE COMPONENTS (CALLOUTS, TAGS, DETAILS, FURTHER READING)
-// =============================================================================
-.callout {
-  background-color: var(--panel-bg) !important; border: 1px solid var(--panel-border) !important;
-  border-left: 4px solid var(--steel-blue) !important; border-radius: 8px !important;
-  box-shadow: var(--panel-shadow) !important; margin: 1.5rem 0 !important; padding: 1rem 1.25rem !important;
-  .callout-title {
-    font-size: 0.9rem !important; font-weight: 600 !important; text-transform: uppercase;
-    color: var(--slate-blue) !important; gap: 8px !important;
-    .callout-icon { color: var(--steel-blue) !important; opacity: 0.8; }
-  }
-  .callout-content { font-size: 0.9rem !important; line-height: 1.6 !important; color: var(--darkgray) !important; }
-}
-
-.tag-link, .tag-list li a, .tags a {
-  font-size: .6rem !important; font-weight: 600 !important; text-transform: uppercase;
-  padding: 4px 10px !important; border-radius: 4px !important; color: var(--steel-blue) !important;
-  background: rgba(128, 149, 166, 0.1) !important; display: inline-block !important;
-  margin-top: 10px; text-decoration: none !important;
-  &:hover { background: var(--steel-blue) !important; color: white !important; }
-}
-
-.tags li { background: transparent !important; border: none !important; padding: 0 !important; list-style: none !important; &::before { content: none !important; } }
-
-details {
-  border: 1px solid var(--lightgray); border-radius: 8px; padding: 0.5rem 1rem;
-  margin-bottom: 1rem; background-color: var(--curr-bg);
-  & > summary { font-size: 1.1rem; color: var(--steel-blue); font-weight: 700; text-transform: uppercase; cursor: pointer; }
-  ul, ol { margin-top: 0.5rem; margin-bottom: 0.5rem; }
-  li { margin-bottom: 6px; line-height: 1.5; &:last-child { margin-bottom: 0; } }
-}
-
-details details {
-  margin-left: 1rem; margin-top: 0.5rem; border-left: 2px solid var(--lightgray);
-  border-right: none; border-top: none; border-bottom: none; border-radius: 0; padding-left: 1rem; background-color: transparent;
-  & > summary { font-weight: 600; font-style: italic; color: var(--secondary); text-transform: none; font-size: 0.95rem; }
-  &:hover { border-left-color: var(--steel-blue); }
-}
-
-[id$="further-reading"], h3:has(a[href$="further-reading"]) {
-  margin-top: 4rem !important; padding-top: 2rem !important; border-top: 1px solid var(--lightgray) !important;
-  font-size: 0.85rem !important; text-transform: uppercase; color: var(--steel-blue) !important;
-}
-
-[id$="further-reading"] ~ a, h3:has(a[href$="further-reading"]) ~ a {
-  display: block !important; font-size: 0.95rem; color: var(--slate-blue) !important;
-  text-decoration: none !important; padding: 0.8rem 0 !important; border-bottom: 1px solid rgba(0,0,0,0.03);
-  transition: all 0.2s ease;
-  &:hover { color: var(--secondary) !important; padding-left: 12px !important; background: rgba(var(--secondary-rgb), 0.05) !important; }
-}
-
-// =============================================================================
-// 7. CUSTOM CARD HELPERS (MAGGIE APPLETON STYLE)
+// 8. CUSTOM RELATED CARDS (Restored Section)
 // =============================================================================
 .related-cards-wrapper {
-  margin-top: 4rem; border-top: 1px solid var(--lightgray); padding-top: 2rem;
-  h2 { font-size: 0.9rem !important; text-transform: uppercase; color: var(--steel-blue); margin-bottom: 1.5rem !important; }
-  ul { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important; gap: 1.5rem !important; list-style: none !important; padding: 0 !important; }
-  li {
-    background-color: var(--panel-bg) !important; border: 1px solid var(--lightgray) !important;
-    border-radius: 8px !important; padding: 1.25rem !important; transition: all 0.3s ease;
-    display: flex; flex-direction: column;
-    &:hover { border-color: var(--steel-blue) !important; transform: translateY(-4px); box-shadow: var(--panel-shadow); }
-    a { font-weight: 600 !important; font-size: 1.1rem !important; color: var(--slate-blue) !important; text-decoration: none !important; margin-bottom: 0.5rem; }
-    span { font-size: 0.85rem !important; color: var(--gray); line-height: 1.5; }
+  margin-top: 3rem !important;
+
+  h2 {
+    margin-bottom: 1.5rem !important;
+    font-weight: 500 !important; // Keep header at 500
+    font-size: 1.2rem !important;
   }
-}
-/* 1. Hide the Recent Notes component on EVERY page by default */
-.recent-notes {
-  display: none !important;
-}
 
-/* 2. ONLY show it if we are on the home page */
-body[data-slug="index"] .recent-notes {
-  display: block !important;
-}
-/* THE NUCLEAR BLACKOUT */
-html[user-color-scheme="dark"],
-html[user-color-scheme="dark"] body,
-html[user-color-scheme="dark"] #quartz-root,
-html[user-color-scheme="dark"] .page,
-html[user-color-scheme="dark"] #quartz-body {
-  background-color: #000000 !important;
-  background: #000000 !important;
-}
+  ul {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: 1.25rem !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
 
-/* Fix for the grid background if you have one enabled */
-html[user-color-scheme="dark"] .wrapper {
-  background-color: #000000 !important;
-}
+  li {
+    @include floating-panel;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 1.25rem !important;
+    margin: 0 !important;
+    list-style: none !important;
+    transition: transform 0.2s ease;
 
-/* Ensure the center content area isn't holding onto a gray color */
-html[user-color-scheme="dark"] main, 
-html[user-color-scheme="dark"] article {
-  background-color: transparent !important;
+    &:hover {
+      transform: translateY(-3px);
+      border-color: var(--secondary) !important;
+    }
+
+    &::before { content: none !important; } // Kills any bullets
+
+    // The Wiki Link inside the card
+    a, .internal {
+      font-weight: 400 !important; // Force normal weight
+      font-size: 1.05rem !important;
+      color: var(--secondary) !important;
+      margin-bottom: 0.5rem !important;
+      display: block !important;
+    }
+
+    // The Description Span
+    span {
+      font-size: 0.85rem !important;
+      line-height: 1.4 !important;
+      color: var(--gray) !important;
+      font-weight: 400 !important;
+    }
+  }
 }

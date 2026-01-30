@@ -23,32 +23,32 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-  header: "Inter",
-  body: "Inter",
-  code: "IBM Plex Mono",
-},
-    colors: {
-  lightMode: {
-    light: "#f0f0f0",       // Soft gray desk background
-    lightgray: "#e8e8e8",   // Border color
-    gray: "#b0b0b0",
-    darkgray: "#4a4a4a",    // Soft text color
-    dark: "#3d5261",        // Slate blue headings
-    secondary: "#5a7a91",   // Muted blue link
-    tertiary: "#8095a6",
-    highlight: "rgba(61, 82, 97, 0.05)",
-  },
-  darkMode: {
-  light: "#000000",          // Pure Black Background
-  lightgray: "#1a1a1a",      // Borders
-  gray: "#646464",           // Dates/Metadata
-  darkgray: "#d4d4d4",       // Body text (soft white)
-  dark: "#ebebeb",           // Headers
-  secondary: "#5f9ea0",      // Your Blue (links)
-  tertiary: "#84a59d",       // Hover state
-  highlight: "rgba(143, 159, 169, 0.15)",
-},
-    },
+        header: "Inter",
+        body: "Inter",
+        code: "IBM Plex Mono",
+      },
+      colors: {
+        lightMode: {
+          light: "#f0f0f0",
+          lightgray: "#e8e8e8",
+          gray: "#b0b0b0",
+          darkgray: "#4a4a4a",
+          dark: "#3d5261",
+          secondary: "#5a7a91",
+          tertiary: "#8095a6",
+          highlight: "rgba(61, 82, 97, 0.05)",
+        },
+        darkMode: {
+          light: "#000000",
+          lightgray: "#1a1a1a",
+          gray: "#646464",
+          darkgray: "#d4d4d4",
+          dark: "#ebebeb",
+          secondary: "#5f9ea0",
+          tertiary: "#84a59d",
+          highlight: "rgba(143, 159, 169, 0.15)",
+        },
+      },
     },
   },
   plugins: {
@@ -68,7 +68,7 @@ const config: QuartzConfig = {
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
-      Plugin.Description({descriptionLength: 300,}),
+      Plugin.Description({ descriptionLength: 300 }),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
     filters: [Plugin.RemoveDrafts()],
@@ -86,7 +86,6 @@ const config: QuartzConfig = {
       Plugin.Static(),
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
-      // Comment out CustomOgImages to speed up build time
       Plugin.CustomOgImages(),
     ],
   },
