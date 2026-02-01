@@ -1,7 +1,6 @@
 ---
 tags:
   - budding
-  - petroleum
   - braindeath
 pillar: The Human Body, Law and Crime
 publish: "true"

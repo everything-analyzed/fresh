@@ -60,14 +60,26 @@ Dr. Jack Kevorkian, aka "Dr. Death", was most well known for his strong advocacy
 
 Dr. Kevorkian had noble intentions – to provide a decent and dignified exit from suffering for the terminally ill. His unfortunate decision to allow his ego to guide him made his antics, rather than his philosophy, the star of the show.
 
->In November 1998, Dr. Kevorkian made an extraordinarily bold and public challenge to his opposers when he broadcast the videotaped death of Thomas Youk on *60 Minutes*.  The video shows Kevorkian administering the lethal injection to Youk. 
+In November 1998, Dr. Kevorkian made an extraordinarily bold and public challenge to his opposers when he broadcast the videotaped death of Thomas Youk on *60 Minutes*.  The video shows Kevorkian administering the lethal injection to Youk. 
 
->This was  key difference between the first four trials and the last. His involvement in the patient's suicide was direct, no assistive, and the resulting criminal charge was murder amongst others. 
+This was  key difference between the first four trials and the last. His involvement in the patient's suicide was direct, no assistive, and the resulting criminal charge was murder amongst others. 
 
 
 Without dismissing the fact that he did commit a crime in this instance, his public taunt of the District Attorney and his subsequent decision to represent himself in court was what convicted him. The result was his inability to do the very thing he was fighting for -- he stifled his own ability to aid the suffering.
 
-The discourse involving Dr. Kevorkian was assisted suicide, but the more salient matter is the right of an individual to choose for him or herself. [[What level of personal autonomy do any of us truly have when if even our life, death, or suffering is can be dictated by law?]]
+The discourse involving Dr. Kevorkian was assisted suicide, but the more salient matter is the right of an individual to choose for him or herself. [[Personal  Autonomy in Modern Society]]
+<br>
+<br>
+
+<div class="related-cards-wrapper">
+
+### Kevorkian Archive
+  <li>
+    [[p]]
+    <span>Analysis of state-level assisted suicide statutes.</span>
+  </li>
+</div>
+<br>
 
 ### Further Reading 
 
@@ -80,18 +92,4 @@ The discourse involving Dr. Kevorkian was assisted suicide, but the more salient
 
 https://www.baptistpress.com/resource-library/news/cbs-criticized-for-showing-kevorkian-euthanasia-video/
 
-<div class="related-cards-wrapper">
 
-## Related Legal Files
-<ul>
-  <li>
-    [[Euthanasia Legislation]]
-    <span>Analysis of state-level assisted suicide statutes.</span>
-  </li>
-  <li>
-    [[Thomas Youk Case]]
-    <span>The 1998 trial resulting in a murder conviction.</span>
-  </li>
-</ul>
-
-</div>

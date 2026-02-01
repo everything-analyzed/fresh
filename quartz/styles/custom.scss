@@ -5,244 +5,738 @@
 @use "./base.scss";
 
 // =============================================================================
-// 1. VARIABLES & CORE THEME
+// 1. CORE THEME & VARIABLES
 // =============================================================================
 :root {
   --steel-blue: #8095a6;
   --slate-blue: #3d5261;
   --panel-bg: #ffffff;
+  --panel-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --panel-border: 1px solid rgba(0, 0, 0, 0.1);
   --light: #ffffff; 
   --darkgray: #2b2b2b;
 }
 
 [user-color-scheme="darkMode"], [saved-theme="dark"] {
   --light: #000000 !important;
+  --page-bg: #000000 !important;
   --panel-bg: #050505 !important; 
   --panel-border: 1px solid #222 !important;
+  --panel-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
   --darkgray: #d4d4d4 !important;
-  --secondary: #8095a6 !important; // Your Steel Blue
+  --slate-blue: #ebebeb !important;
+  --secondary: #8095a6 !important;
   --highlight: rgba(128, 149, 166, 0.15) !important;
+}
+body, .article-title + p, section {
+  /* #555 is a standard 'professional' gray for long-form reading */
+  color: #555555 !important;
+  font-size: .9rem !important;
+  -webkit-font-smoothing: antialiased;
 }
 
 @mixin floating-panel {
   background-color: var(--panel-bg) !important;
   border: var(--panel-border) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border-radius: 8px !important;
+  box-shadow: var(--panel-shadow);
+  border-radius: 12px !important;
   box-sizing: border-box !important;
 }
 
 // =============================================================================
-// 2. TYPOGRAPHY & WIKI LINKS
+// 2. TYPOGRAPHY (Headers 500 / Links & Explorer 400)
 // =============================================================================
 body {
   background-color: var(--light) !important;
   font-family: 'Inter', sans-serif !important;
+  color: var(--darkgray) !important;
 }
 
-// FIX: Wiki Links and all Internal Links to weight 400
-a, .internal, .alias, article a {
+/* Headers: Weight 500 */
+.article-title, h1, h2, h3, h4 {
+  font-weight: 500 !important; 
+  color: var(--slate-blue) !important;
+  letter-spacing: 0.00em !important;
+}
+/* Headers: Weight 500 */
+h3, h4 {
+  font-weight: 500 !important; 
+  color: var(--slate-blue) !important;
+  letter-spacing: 0.00em !important;
+  
+}
+/* Page Title: Weight 500 */
+.page-title a, .page-title {
+  font-weight: 500 !important; 
+  color: var(--slate-blue) !important;
+  letter-spacing: 0.00em !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* ALL Links (Wiki, Sidebar, Footer): Weight 400 */
+a, .internal, .alias, .footer a {
   font-weight: 400 !important;
   text-decoration: none !important;
 }
-
-// Keep headers at 500
-h1, h2, h3, h4, .article-title {
-  font-weight: 500 !important;
-  color: var(--slate-blue) !important;
-  letter-spacing: -0.02em !important;
+/* Sidebar: Weight 400 */
+.explorer a, .toc a {
+font-weight: 400 !important;
+text-decoration: none !important;
+font-size: .9rem !important;
+line-height: .1rem !important;
+color: var(--slate-blue) !important;
 }
 
-// =============================================================================
-// 3. TAG CARDS (Restored from the Working Version)
-// =============================================================================
-/* This targets the div containing your tag list */
-.tag-list, .tags, .tag-container {
-  margin: 1.5rem 0 !important;
-  
-  ul {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 0.5rem !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    list-style: none !important; // Kills the bullet dots
-  }
 
-  li {
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    
-    /* Stronger bullet kill in case of pseudo-elements */
-    &::before {
-      content: none !important;
-      display: none !important;
-    }
-  }
-
-  /* The actual Card/Pill styling */
-  a, .tag-link {
-    @include floating-panel;
-    display: inline-flex !important;
-    padding: 0.2rem 0.8rem !important;
-    font-size: 0.8rem !important;
-    font-weight: 400 !important; // Force weight back to 400
-    color: var(--secondary) !important; // Your Steel Blue
-    background: var(--highlight) !important;
-    border-radius: 8px !important;
-    text-decoration: none !important;
-    transition: all 0.2s ease;
-
-    &:hover {
-      background-color: var(--secondary) !important;
-      color: white !important;
-      transform: translateY(-2px);
-    }
-  }
-}
-// =============================================================================
-// 4. GRID & BLACKOUT
-// =============================================================================
-@media all and (min-width: 1200px) {
-  #quartz-body {
-    display: grid !important;
-    grid-template-columns: 280px minmax(0, 1fr) 320px !important; 
-    column-gap: 32px !important;
-    width: 95% !important;
-    margin: 2rem auto !important;
-  }
-  .sidebar.left, .center, .sidebar.right { @include floating-panel; min-width: 0; }
-  .center { padding: 2.5rem 3rem !important; }
-}
-
-[user-color-scheme="darkMode"], [saved-theme="dark"] {
-  &, body, #quartz-root, .page, #quartz-body, .wrapper {
-    background-color: #000000 !important;
-  }
-}
 
 // =============================================================================
-// 5. SIDEBAR WEIGHT FIX (Left & Right)
+// 3. TAG CARDS (The "Footer" Fix)
 // =============================================================================
-.sidebar.left a, .sidebar.right a, 
-.folder-title, .folder-button, .toc a {
-  font-weight: 400 !important;
-}
-
-.explorer > button, .toc > button {
-  font-weight: 600 !important;
-  color: var(--steel-blue);
-  font-size: 0.8rem;
-}
-// =============================================================================
-// 7. TAGLIST COMPONENT (The Footer "Cards")
-// =============================================================================
-
-// Target the container ul and ensure it's a flex row, not a vertical list
-ul.section-ul, 
-ul.tag-list, 
-.tag-list ul {
+/* Targeting the TagList component specifically to kill bullets */
+.tags, .tag-list, .tag-container, ul.section-ul {
   list-style: none !important;
-  list-style-type: none !important;
   padding: 0 !important;
   margin: 2rem 0 !important;
   display: flex !important;
   flex-wrap: wrap !important;
   gap: 10px !important;
-}
-
-// Remove the bullets from the li elements
-ul.section-ul li, 
-ul.tag-list li, 
-.tag-list li {
-  padding: 0 !important;
-  margin: 0 !important;
-  list-style: none !important;
-  
-  // This kills the actual bullet character if it's added via CSS
-  &::before {
-    content: none !important;
-    display: none !important;
-  }
-}
-
-// Turn the links inside those list items into the Cards
-ul.section-ul li a, 
-ul.tag-list li a, 
-.tag-list a.tag-link {
-  @include floating-panel;
-  display: inline-flex !important;
-  align-items: center !important;
-  padding: 0.3rem 0.8rem !important;
-  
-  // THE TYPOGRAPHY FIX
-  font-weight: 400 !important; // Force normal weight
-  font-size: 0.8rem !important;
-  text-decoration: none !important;
-  
-  color: var(--secondary) !important; // Steel Blue
-  background-color: var(--highlight) !important;
-  border-radius: 8px !important;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-
-  &:hover {
-    background-color: var(--secondary) !important;
-    color: #ffffff !important;
-    transform: translateY(-2px);
-  }
-}
-// =============================================================================
-// 8. CUSTOM RELATED CARDS (Restored Section)
-// =============================================================================
-.related-cards-wrapper {
-  margin-top: 3rem !important;
-
-  h2 {
-    margin-bottom: 1.5rem !important;
-    font-weight: 500 !important; // Keep header at 500
-    font-size: 1.2rem !important;
-  }
-
-  ul {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
-    gap: 1.25rem !important;
-    padding: 0 !important;
-    list-style: none !important;
-  }
 
   li {
-    @include floating-panel;
-    display: flex !important;
-    flex-direction: column !important;
-    padding: 1.25rem !important;
-    margin: 0 !important;
     list-style: none !important;
-    transition: transform 0.2s ease;
+    padding: 0 !important;
+    margin: 0 !important;
+    &::before { content: none !important; display: none !important; }
+  }
+
+  /* The Card Design */
+  a, .tag-link {
+    @include floating-panel;
+    display: inline-flex !important;
+    padding: 0.3rem 0.8rem !important;
+    font-size: 0.8rem !important;
+    font-weight: 400 !important; // Slim text in cards
+    color: var(--secondary) !important;
+    background: transparent !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease;
 
     &:hover {
-      transform: translateY(-3px);
-      border-color: var(--secondary) !important;
+      background-color: var(--secondary) !important;
+      color: #ffffff !important;
+      transform: translateY(-2px);
     }
+  }
+}
 
-    &::before { content: none !important; } // Kills any bullets
+// =============================================================================
+// 4. GRID & PANEL PERSISTENCE (Surgical Overlap Fix)
+// =============================================================================
 
-    // The Wiki Link inside the card
-    a, .internal {
-      font-weight: 400 !important; // Force normal weight
-      font-size: 1.05rem !important;
-      color: var(--secondary) !important;
-      margin-bottom: 0.5rem !important;
-      display: block !important;
+/* 1. THE CENTER PANEL: Look & Feel */
+.center {
+  background-color: #ffffff !important;
+  border-radius: 4px !important;
+  box-shadow: var(--panel-shadow);
+  padding: 1.5rem !important; 
+  margin-bottom: 2rem !important;
+  /* This prevents the panel from ever expanding beyond its grid boundaries */
+  max-width: 100% !important; 
+  box-sizing: border-box !important;
+}
+
+/* 2. THE BACKGROUND FLOOR */
+body, #quartz-root, .page {
+  background-color: #f5f5f5 !important; 
+}
+
+@media all and (min-width: 1200px) {
+  #quartz-body {
+    display: grid !important;
+    /* We specify exact widths for sidebars and let the center take the rest */
+    grid-template-columns: 280px minmax(0, 1fr) 320px !important; 
+    column-gap: 32px !important;
+    width: 95% !important;
+    margin: 0.5rem auto !important;
+    background-color: transparent !important;
+    /* This is the secret: it keeps everything in its own row/column */
+    align-items: start !important; 
+  }
+
+  .center { 
+    padding: 0rem 3rem 2.5rem 3rem !important;
+    /* Resetting the width here specifically for the grid */
+    width: auto !important; 
+  }
+
+  /* SIDEBAR FIX: The "Anti-Overlap" block */
+  .sidebar.left, .sidebar.right { 
+    @include floating-panel; 
+    border: none !important; 
+    
+    /* These lines strip Quartz's default 'floating' behavior */
+    position: relative !important; 
+    transform: none !important;
+    width: 100% !important; /* Makes it fill its 280px or 320px slot exactly */
+    min-width: 0 !important;
+    overflow-wrap: break-word !important;
+  }
+}
+
+/* Dark Mode */
+[user-color-scheme="darkMode"], [saved-theme="dark"] {
+  body, #quartz-root, .page, .center {
+    background-color: #000000 !important;
+    box-shadow: none !important;
+  }
+}
+// =============================================================================
+// 5. GRAPH VIEW FIX
+// =============================================================================
+[user-color-scheme="darkMode"], [saved-theme="dark"] {
+  .graph-view {
+    --color-fill: #8095a6 !important;
+    --color-line: #333 !important;
+    --color-text: #eee !important;
+  }
+}
+
+// Target the specific list where your cards live
+.recent-notes, 
+.related-cards-wrapper,
+[id$="recent-notes"] + ul {
+  
+  li {
+    list-style: none !important;
+    list-style-type: none !important;
+    padding-left: 0 !important; // Removes the indent where the bullet sat
+    margin-left: 0 !important;
+
+    // This specifically kills the Quartz "dot"
+    &::before {
+      content: none !important;
+      display: none !important;
     }
+  }
+}
+// =============================================================================
+// RECENT NOTES: PERFECT LEFT ALIGNMENT
+// =============================================================================
 
-    // The Description Span
-    span {
-      font-size: 0.85rem !important;
-      line-height: 1.4 !important;
-      color: var(--gray) !important;
-      font-weight: 400 !important;
+/* 1. THE HEADER */
+.recent-notes > h3, 
+.recent-notes > h2 {
+  margin-left: 2rem !important;
+  padding-left: 0 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: var(--slate-blue) !important;
+  text-transform: uppercase !important;
+  margin-bottom: 1rem !important;
+}
+
+/* 2. THE LIST CONTAINER */
+.recent-notes ul {
+  list-style: none !important;
+  padding: 0 !important; /* Forces the list to the far left */
+  margin-top: 1.5rem !important;
+  margin-left: 2rem !important;
+  
+  
+}
+
+/* 3. THE LINKS (The Pill) */
+.recent-notes li a {
+  display: inline-block !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  color: var(--steel-blue) !important;
+  
+  
+  /* PADDING: The highlight area */
+  padding: 4px 12px !important; 
+  margin-left: -.5rem;
+  
+  /* THE ALIGNMENT TRICK: 
+     Negative margin pulls the text back to the left so it aligns with the header,
+     even though there is 12px of padding. */
+  
+  
+  border-radius: 4px !important;
+  text-decoration: none !important;
+}
+
+/* 4. THE DESCRIPTION (Meta/Date text) */
+.recent-notes li .meta,
+.recent-notes li time,
+.recent-notes li p {
+  padding: 0 !important;
+  font-size: 0.85rem !important;
+  color: #666666 !important; /* Lighter body color */
+  line-height: 1.2 !important;
+  /* Keeps the description aligned with the header and link text */
+  display: block !important; 
+  margin-top: 1.5rem !important;
+
+  
+  /* 3. AESTHETICS */
+  font-family: 'Inter', sans-serif !important;
+  font-size: .85rem !important;
+  font-weight: 400 !important;
+  color: var(--darkgray) !important;
+  text-decoration: none !important;
+  border-radius: 4px !important;
+  transition: background 0.2s ease;
+  
+
+  /* Ensure the links don't stack horizontally if they are short */
+  width: auto !important;
+}
+
+/* Ensure the list item doesn't force a weird alignment */
+.recent-notes li {
+  display: block !important;
+  margin-bottom: 6px !important; /* Space between the 'pills' */
+
+  
+  /* PADDING is what gives the highlight its shape */
+  padding: 4px 8px !important; 
+  margin: 2px 0 !important;
+  border-radius: 4px !important;
+  transition: background 0.2s ease, color 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+/* 3. ENSURING THE HIGHLIGHT STAYS VISIBLE */
+.recent-notes li a:hover {
+  background-color: var(--highlight) !important; /* The subtle gray/blue tint */
+  color: var(--secondary) !important;
+}
+
+/* 4. THE ACTIVE STATE (If currently viewing that note) */
+.recent-notes li a.active, 
+.recent-notes li a[aria-current="page"] {
+  background-color: rgba(128, 149, 166, 0.15) !important; 
+  color: var(--secondary) !important;
+  font-weight: 500 !important;
+}
+/* 1. Target the Date/Meta container */
+.recent-notes li .meta, 
+.recent-notes li time {
+  margin-bottom: 2px !important; /* Tiny gap below the date */
+  display: block !important;
+  line-height: 1.2 !important;   /* Tighter line height prevents "ghost" spacing */
+}
+
+/* 2. Target the Tags container */
+.recent-notes li .tags {
+  margin-top: 0 !important;      /* Pulls the tags up toward the date */
+  padding-top: 0 !important;
+  display: flex !important;
+  gap: 6px !important;           /* Horizontal space between tags */
+}
+
+/* 3. If there is a description in between, tighten it too */
+.recent-notes li .desc {
+  margin-bottom: 2px !important;
+}
+// =============================================================================
+// RECENT NOTES: DESCRIPTION - RECOVERY VERSION
+// =============================================================================
+
+.recent-notes li .desc,
+.recent-notes li p:not(.meta) {
+  /* 1. FORCE VISIBILITY */
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  overflow: visible !important;
+
+  /* 2. FONT STYLE */
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 400 !important;
+  color: #666666 !important; 
+  line-height: 1.6 !important;
+  
+  /* 3. ALIGNMENT */
+  /* Ensures it starts at the exact same left-pixel as your Title */
+  margin: 1rem 0 5 0 !important; 
+  padding: 0 !important;
+  text-align: left !important;
+}
+// =============================================================================
+// RECENT NOTES: TAG ALIGNMENT
+// =============================================================================
+
+/* 1. THE TAG CONTAINER */
+.recent-notes .tags {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 4px !important;
+  
+  /* Reset any default list padding */
+  padding: 0 !important;
+  margin: 0 !important;
+  
+  /* This ensures the tags start at the same 'Zero Point' as the header */
+  justify-content: flex-start !important;
+}
+
+/* 2. THE TAG LINKS */
+.recent-notes .tags a {
+  /* We use inline-flex to keep the '#' and text together */
+  display: inline-flex !important;
+  align-items: center !important;
+  
+  /* Resetting looks to text-only for alignment precision */
+  background: transparent !important;
+  border: none !important;
+  padding: .25rem !important;
+  margin: 0 !important;
+  
+  /* Font & Color to match your secondary metadata (Date) */
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.75rem !important;
+  color: var(--steel-blue) !important; 
+  text-decoration: none !important;
+}
+
+/* 3. THE SPACING FIX */
+/* If your tags still look pushed in, it's often because the parent <li> 
+   has an indent. This ensures the <li> itself isn't pushing them. */
+.recent-notes li {
+  padding-left: 0 !important;
+  margin-bottom: 1rem !important;
+  align-items: flex-start !important;
+
+}
+// =============================================================================
+// RECENT NOTES: INDIVIDUAL CARD HOVER
+// =============================================================================
+
+.recent-notes li {
+  /* 1. STRUCTURE: Each entry is a container */
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 12px 16px !important;  /* Space inside the 'card' */
+  margin-left: -16px !important;  /* Pulls it back to align text with the header */
+  margin-bottom: 8px !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease-in-out !important;
+  cursor: pointer;
+  background-color: transparent; /* Invisible until hover */
+}
+
+/* 2. THE HOVER EFFECT */
+.recent-notes li:hover {
+  /* LIGHT MODE: Very subtle grey-blue tint */
+  background-color: rgba(0, 0, 0, 0.02) !important; 
+  
+  /* OR use your theme color with transparency (e.g., Slate Blue) */
+  // background-color: rgba(106, 115, 125, 0.08) !important;
+
+  box-shadow: none !important; /* Optional: remove shadow to keep it flat */
+}
+
+/* If you have a specific Dark Mode toggle, use this for the hover: */
+[saved-theme="dark"] .recent-notes li:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* 3. RESET LINK BEHAVIOR (Since the card is now the focus) */
+.recent-notes li a {
+  background: none !important; /* Remove the individual title highlight */
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block !important;
+  font-weight: 500 !important;
+}
+
+/* 4. KEEPING THE TEXT ALIGNED */
+/* Since the card has 16px padding, we ensured the margin-left is -16px 
+   so the text still hits the same vertical line as your Page Header. */
+// =============================================================================
+// EXPLORER: COMPONENT-LEVEL OVERRIDE
+// =============================================================================
+
+/* 1. THE ARTICLE TITLES (Files) 
+   Component path: .explorer-content ul li > a
+*/
+.explorer-content ul li > a {
+  all: unset !important; /* Wipes the global .internal and component opacity */
+  display: inline-block !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 0.9rem !important;      /* Adjust size here */
+  color: var(--steel-blue) !important; /* Your signature article color */
+  opacity: 1 !important;             /* Fixes the 0.75 ghosting in component */
+  line-height: 1.2 !important;
+  cursor: pointer !important;
+  padding: 2px 4px !important;
+  margin-bottom: .3rem !important;
+  
+  &:hover {
+    color: var(--secondary) !important;
+    background-color: var(--highlight) !important;
+  }
+
+  &.active {
+    color: var(--secondary) !important;
+    font-weight: 500 !important;
+    opacity: 1 !important;
+  }
+}
+
+/* 2. THE FOLDER TITLES (Categories)
+   Component path: .folder-container div > a OR .folder-container div > button span
+*/
+.folder-container div > a,
+.folder-container div > button span {
+  all: unset !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.90rem !important;      /* Adjust folder size here */
+  font-weight: 500 !important;        /* Bolder category header */
+  color: var(--slate-blue) !important; /* Your signature folder color */
+  line-height: 1.5rem !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* 3. THE FOLDER ICON (Arrow) 
+   To match your Steel Blue theme
+*/
+.folder-icon {
+  color: var(--steel-blue) !important;
+  opacity: 1 !important;
+}
+// =============================================================================
+// EXPLORER HEADER (The "Archive" Title) - ZERO-RISK VERSION
+// =============================================================================
+
+/* We target the H2 directly inside the button without touching the button's layout */
+.explorer button.desktop-explorer h2, 
+.explorer button.mobile-explorer h2 {
+  /* Font & Color */
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1.1rem !important; 
+  font-weight: 500 !important;   
+  color: var(--slate-blue) !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase;
+  
+  
+  /* Resetting only the spacing that causes "disappearing" acts */
+  margin-bottom: .5rem !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
+  display: inline-block !important;
+  visibility: visible !important;
+}
+
+/* Specifically style the Chevron icon to match */
+.explorer button.desktop-explorer svg,
+.explorer button.mobile-explorer svg {
+  stroke: var(--steel-blue) !important;
+  width: .9rem !important;
+  height: .9rem !important;
+  visibility: visible !important;
+  /* Prevent the icon from disappearing if the container is tight */
+  min-width: .9rem !important; 
+  margin-bottom: .5rem !important;
+}
+
+/* Ensure the container itself hasn't collapsed */
+.explorer {
+  min-height: 2rem !important;
+  visibility: visible !important;
+  display: flex !important;
+}
+/* Target the list of articles inside a folder */
+.explorer .folder-outer > ul {
+  margin-top: 0.5rem !important;    /* This creates the vertical gap */
+  margin-bottom: 0.8rem !important; /* Gap before the next folder starts */
+  
+  /* High-density legal look usually benefits from a slightly 
+     larger indent when you add vertical space */
+  padding-left: 1.2rem !important; 
+}
+
+/* Optional: Add a tiny bit of space below the folder title row itself */
+.explorer .folder-container {
+  margin-bottom: 2px !important;
+}
+// =============================================================================
+// GRID TOP MARGIN REDUCTION
+// =============================================================================
+
+@media all and (min-width: 1200px) {
+  #quartz-body {
+    /* Reduced margin-top from 2rem to 0.5rem */
+    margin: 0.5rem auto !important; 
+  }
+
+  .center {
+    /* Reduced the top padding from 2.5rem to 1rem */
+    padding: 0rem 3rem 2.5rem 3rem !important; 
+  }
+}
+
+/* Adjust for mobile as well, where the header often adds bulk */
+@media all and (max-width: 1199px) {
+  .center {
+    padding-top: 1rem !important;
+  }
+}
+// =============================================================================
+// INTERNAL NOTE DETAILS (COLLAPSIBLE BLOCKS)
+// =============================================================================
+
+/* 1. THE MAIN CONTAINER */
+details {
+  border: 0px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 4px !important;
+  padding: 0.5rem 1rem !important;
+  margin-bottom: 1rem !important;
+  background-color: transparent !important;
+  transition: all 0.3s ease !important;
+}
+
+/* 2. THE HEADER (Summary) */
+details summary {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 1.1rem !important;
+  color: var(--slate-blue) !important;
+  cursor: pointer !important;
+  outline: none !important;
+  /* Space between summary and content when open */
+  padding: 4px 0 !important;
+}
+
+/* 3. THE "OPEN" STATE BACKGROUND */
+/* This makes the block look like a card once expanded */
+details[open] {
+  background-color: rgba(0, 0, 0, 0.02) !important;
+  
+}
+
+/* 4. THE CONTENT INSIDE THE DETAILS */
+details > *:not(summary) {
+  margin-top: 1rem !important;
+  color: var(--darkgray) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+}
+
+// =============================================================================
+// COLLAPSIBLE: EXPLORER-STYLE CHEVRON
+// =============================================================================
+
+/* 1. HIDE THE DEFAULT TRIANGLE */
+details summary {
+  list-style: none !important;
+  display: flex !important; /* Helps with vertical alignment */
+  align-items: center !important;
+}
+
+details summary::-webkit-details-marker {
+  display: none !important;
+}
+
+/* 2. ADD THE CHEVRON */
+details summary::before {
+  /* Using a standard chevron character */
+  content: '›' !important; 
+  
+  display: inline-block;
+  font-family: var(--font-family); /* Matches your site font */
+  font-size: 1.1rem !important;    /* Size of the arrow */
+  font-weight: 300 !important;    /* Light weight looks more like the explorer */
+  color: var(--gray) !important;
+  
+  /* SPACING CONTROL */
+  margin-right: 8px !important;  /* Space between arrow and text */
+  width: 12px;                   /* Fixed width prevents text jumping */
+  
+  /* ANIMATION */
+  transition: transform 0.2s ease !important;
+  transform-origin: center;
+}
+
+/* 3. ROTATE ON OPEN */
+details[open] summary::before {
+  transform: rotate(90deg) !important;
+  color: var(--secondary) !important; /* Arrow changes color when open */
+}
+// =============================================================================
+// NESTED DETAILS: ELIMINATE INTERNAL GAPS
+// =============================================================================
+
+/* This targets any 'details' block that is INSIDE another 'details' block */
+details details {
+  margin-top: 0 !important;
+  margin-bottom: 2px !important; /* Extremely tight vertical stack */
+  border-left: 2px solid rgba(0, 0, 0, 0.05) !important; /* Subtle guide line */
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-radius: 0 !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
+
+/* Remove the background from nested toggles so they don't "stack" colors */
+details details[open] {
+  background-color: transparent !important;
+  margin-bottom: 8px !important; /* Give it a little room only when expanded */
+}
+
+/* Align the nested text precisely */
+details details summary {
+  font-size: 0.9rem !important; /* Slightly smaller for hierarchy */
+  padding-left: 4px !important;
+}
+// =============================================================================
+// 3. TAG CARDS (Floating but Borderless)
+// =============================================================================
+.tags, .tag-list, .tag-container, ul.section-ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 1.5rem 0 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+
+  li {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    &::before { content: none !important; display: none !important; }
+  }
+
+  /* The Card Design */
+  a, .tag-link, .internal.tag {
+    @include floating-panel; // Pulls in the shadow and background
+    border: none !important; // STRIKES the outline immediately
+    
+    display: inline-flex !important;
+    padding: 0.3rem 0.8rem !important;
+    font-size: 0.8rem !important;
+    font-weight: 400 !important; 
+    color: var(--secondary) !important;
+    border-radius: 4px !important; // Slightly softer corners look better without borders
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var(--secondary) !important;
+      color: #ffffff !important;
+      transform: translateY(-2px);
+      border: none !important; // Ensure no border pops in on hover
     }
   }
 }
