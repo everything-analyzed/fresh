@@ -1,5 +1,5 @@
 ---
-title: The Cost of Having the Last Word
+title: The Cost of the Last Word
 publish: "true"
 tags:
   - autonomy
