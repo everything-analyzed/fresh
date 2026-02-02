@@ -71,26 +71,8 @@ The discourse involving Dr. Kevorkian was assisted suicide, but the more salient
 <br>
 <br>
 
-<div class="related-cards-wrapper">
-
-### Kevorkian Archive
-  <li>
-    [[p]]
-    <span>Analysis of state-level assisted suicide statutes.</span>
-  </li>
-</div>
-<br>
-
 ### Roots
 
-[a link what if i make this longer]([[Kevorkian Archive]])here's some additional text to help me figure out how this is going to look.
+[[Kevorkian Archive]]  A collection of materials related to Dr. Jack Kevorikian. Explore trial footage, news articles, and court opinions.
 
-[another link add some text to this](https://www.courttv.com/trials/mi-v-kevorkian-1994/)
-[a third link](https://journalofethics.ama-assn.org/article/kevorkian-when-physicians-take-controversial-public-stands/2005-12)
-[Supreme Court of Michigan Opinion (1994 Appeal)]
-[lat link](https://law.justia.com/cases/michigan/supreme-court/1994/99591-6.html))
-
-https://www.baptistpress.com/resource-library/news/cbs-criticized-for-showing-kevorkian-euthanasia-video/
-
-https://www.pbs.org/wgbh/pages/frontline/kevorkian/chronology.html) 
 
