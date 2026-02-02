@@ -56,7 +56,9 @@ export const defaultContentPageLayout: PageLayout = {
           limit: 4 
         })(props) 
       : null,
-    Component.Backlinks(),
+    Component.Backlinks({
+  showExcerpts: true, // This enables the text snippets
+}),
   ],
   right: [
     Component.Graph({

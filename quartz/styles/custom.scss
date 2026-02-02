@@ -740,3 +740,34 @@ details details summary {
     }
   }
 }
+/* Andy-Style Backlink Formatting */
+.backlinks {
+  .backlink-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--lightgray);
+    list-style: none !important;
+
+    /* The Page Title */
+    & > a {
+      font-family: var(--headerFont);
+      font-weight: 600 !important;
+      font-size: 1.1rem !important;
+      text-decoration: none !important;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    /* The Excerpt (Description) */
+    .excerpt {
+      color: var(--gray) !important;
+      font-size: 0.9rem !important;
+      line-height: 1.5 !important;
+      display: block;
+      /* Limits excerpt to 3 lines so it stays clean */
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+}

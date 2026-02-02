@@ -81,9 +81,9 @@ The discourse involving Dr. Kevorkian was assisted suicide, but the more salient
 </div>
 <br>
 
-### Further Reading 
+### Roots
 
-[a link what if i make this longer](https://www.pbs.org/wgbh/pages/frontline/kevorkian/chronology.html) here's some additional text to help me figure out how this is going to look.
+[a link what if i make this longer]([[Kevorkian Archive]])here's some additional text to help me figure out how this is going to look.
 
 [another link add some text to this](https://www.courttv.com/trials/mi-v-kevorkian-1994/)
 [a third link](https://journalofethics.ama-assn.org/article/kevorkian-when-physicians-take-controversial-public-stands/2005-12)
@@ -92,4 +92,5 @@ The discourse involving Dr. Kevorkian was assisted suicide, but the more salient
 
 https://www.baptistpress.com/resource-library/news/cbs-criticized-for-showing-kevorkian-euthanasia-video/
 
+https://www.pbs.org/wgbh/pages/frontline/kevorkian/chronology.html) 
 
