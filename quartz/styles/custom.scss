@@ -740,34 +740,34 @@ details details summary {
     }
   }
 }
-/* Andy-Style Backlink Formatting */
 .backlinks {
-  .backlink-item {
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--lightgray);
-    list-style: none !important;
+  .backlinks-list {
+    list-style: none;    /* Removes the bullets */
+    padding: 0;          /* Removes default indentation */
+    margin: 0;           /* Resets margins */
 
-    /* The Page Title */
-    & > a {
-      font-family: var(--headerFont);
-      font-weight: 600 !important;
-      font-size: 1.1rem !important;
-      text-decoration: none !important;
-      display: block;
-      margin-bottom: 0.2rem;
-    }
+    li {
+      list-style-type: none; /* Secondary fallback to ensure bullets are gone */
+      margin-bottom: 1.5rem;  /* Space between backlink blocks */
+      
+      .backlink-title {
+        display: block;      /* Makes the title its own line */
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--secondary);
+        
+        &:hover {
+          color: var(--tertiary);
+          text-decoration: underline;
+        }
+      }
 
-    /* The Excerpt (Description) */
-    .excerpt {
-      color: var(--gray) !important;
-      font-size: 0.9rem !important;
-      line-height: 1.5 !important;
-      display: block;
-      /* Limits excerpt to 3 lines so it stays clean */
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      .backlink-excerpt {
+        margin: 0.3rem 0 0 0; /* Tighten space between title and excerpt */
+        font-size: 0.85rem;
+        color: var(--gray);
+        line-height: 1.5;
+      }
     }
   }
 }
