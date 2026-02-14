@@ -42,7 +42,7 @@ body, .article-title + p, section {
   background-color: var(--panel-bg) !important;
   border: var(--panel-border) !important;
   box-shadow: var(--panel-shadow);
-  border-radius: 12px !important;
+  border-radius: 4px !important;
   box-sizing: border-box !important;
 }
 
@@ -129,7 +129,7 @@ color: var(--slate-blue) !important;
     font-weight: 400 !important; // Slim text in cards
     color: var(--secondary) !important;
     background: transparent !important;
-    border-radius: 8px !important;
+    border-radius: 4px !important;
     transition: all 0.2s ease;
 
     &:hover {
@@ -960,4 +960,36 @@ details details summary {
 /* Add a clean space between the date and reading time instead */
 .content-meta > span:first-child {
   margin-right: 8px !important;
+}
+// =============================================================================
+// SIDEBAR ELEVATION (Left & Right)
+// =============================================================================
+
+/* 1. Remove padding from the sidebar containers */
+.left, .right {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  
+  /* Targets the internal components like Explorer or TOC */
+  & > .sidebar {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+}
+
+/* 2. Adjust the main Page Wrapper gap */
+.page {
+  /* This is the master gap at the very top of the site */
+  margin-top: 1rem !important; 
+  
+  /* If your layout uses a Header, reduce its bottom margin */
+  header {
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+/* 3. Specific Component Adjustments */
+.page-title a, .page-title, .graph {
+  margin-top: 3rem !important;
+  padding-top: 0 !important;
 }
