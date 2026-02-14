@@ -637,7 +637,7 @@ body, #quartz-root, .page {
 details {
   border: 0px solid rgba(0, 0, 0, 0.1) !important;
   border-radius: 4px !important;
-  padding: 0.5rem 1rem !important;
+  padding: 0.5rem 0rem !important;
   margin-bottom: 1rem !important;
   background-color: transparent !important;
   transition: all 0.3s ease !important;
@@ -932,7 +932,7 @@ details details summary {
 /* MOBILE OVERRIDE: Prevent the desktop padding from squishing the phone view */
 @media all and (max-width: 768px) {
   .center {
-    padding: 1.25rem 2rem 4rem 2rem !important; // Tighter for mobile
+    padding: 1.25rem 1.45rem 4rem 2rem !important; // Tighter for mobile
     max-width: 100% !important;
 
 article {
@@ -1011,3 +1011,4 @@ article {
   margin-top: 3rem !important;
   padding-top: 0 !important;
 }
+
