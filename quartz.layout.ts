@@ -20,7 +20,7 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     Component.ArticleTitle(),
     Component.ContentMeta(),
-    Component.TagList(),
+    
   ],
   left: [
     Component.PageTitle(),
@@ -33,6 +33,7 @@ export const defaultContentPageLayout: PageLayout = {
           grow: true,
         },
         { Component: Component.Darkmode() },
+        Component.TagList(),
       ],
     }),
     Component.Explorer({
