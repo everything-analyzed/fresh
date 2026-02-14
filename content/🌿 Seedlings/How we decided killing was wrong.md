@@ -3,7 +3,7 @@ tags:
   - society
   - law
 ---
-[[The Cost of the Last Word]] Last Word]]
+[[The cost of the last word]] Last Word]]
 [[Personal  Autonomy in Modern Society]]
 
 -irony of true crime and violence 
