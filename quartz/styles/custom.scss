@@ -888,7 +888,7 @@ details details summary {
 .center {
   /* 1. THE PADDING: [TOP] [RIGHT] [BOTTOM] [LEFT] */
   /* Adjust these values to find your perfect 'Terminal' frame */
-  padding: 3rem 5.5rem 8rem 5rem !important;
+  padding: 3rem 3rem 8rem 5rem !important;
 
   /* 2. THE SYMMETRY LOCK */
   margin-left: auto !important;
@@ -903,8 +903,8 @@ details details summary {
 
   /* 4. CONTENT ALIGNMENT */
   article {
-    width: 100% !important;
-    margin: 0 !important;
+    width: 97% !important;
+    margin-top: 2.5rem !important;
     padding: 0rem 0rem 0rem 0rem !important;
     // Optional: Uncomment the next line if you want perfectly flush edges on both sides
     // text-align: justify; 

@@ -33,7 +33,6 @@ export const defaultContentPageLayout: PageLayout = {
           grow: true,
         },
         { Component: Component.Darkmode() },
-        Component.TagList(),
       ],
     }),
     Component.Explorer({
@@ -72,6 +71,7 @@ export const defaultContentPageLayout: PageLayout = {
     fontSize: 0.6,
   },
 }),
+Component.TagList(),
     Component.DesktopOnly(Component.TableOfContents()),
     
   ],
