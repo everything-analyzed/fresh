@@ -62,10 +62,9 @@ Dr. Kevorkian had noble intentions – to provide a decent and dignified exit fr
 
 In November 1998, Dr. Kevorkian made an extraordinarily bold and public challenge to his opposers when he broadcast the videotaped death of Thomas Youk on *60 Minutes*.  The video shows Kevorkian administering the lethal injection to Youk. 
 
-This was  key difference between the first four trials and the last. His involvement in the patient's suicide was direct, not assistive, and the resulting criminal charge was murder amongst others. 
+This was  key difference between the first four trials and the last. His involvement in the patient's suicide was direct, not assistive, providing the opening to be criminally charged with murder. 
 
-
-Without dismissing the fact that he did commit a crime in this instance, his public taunt of the District Attorney and his subsequent decision to represent himself in court was what convicted him. The result was his inability to do the very thing he was fighting for -- he stifled his own ability to aid the suffering.
+Without dismissing the fact that, according to our laws, he did commit a crime in this instance, his public taunt of the District Attorney and his subsequent decision to represent himself in court was what convicted him. The result was his inability to do the very thing he was fighting for -- he stifled his own ability to aid the suffering.
 
 The discourse involving Dr. Kevorkian was assisted suicide, but the more salient matter is the right of an individual to choose for him or herself. [[Personal  Autonomy in Modern Society]]
 <br>

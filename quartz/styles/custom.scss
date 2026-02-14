@@ -98,6 +98,23 @@ line-height: .1rem !important;
 color: var(--slate-blue) !important;
 
 }
+/* 2. MOBILE SETTINGS (Phones and small tablets) */
+@media all and (max-width: 768px) {
+  .article-title {
+    /* Shrink the title so it doesn't take up the whole screen */
+    font-size: 1.75rem !important; 
+    line-height: 1.3 !important;
+    margin-bottom: 0.75rem !important;
+    letter-spacing: -0.02em !important; // Tighter tracking looks better on mobile
+    padding: 0rem 0rem 0rem 0rem !important;
+  }
+
+  /* You can also shrink the body text slightly for mobile if needed */
+  article p, article li {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+}
 
 
 
@@ -577,7 +594,7 @@ body, #quartz-root, .page {
 }
 /* Target the list of articles inside a folder */
 .explorer .folder-outer > ul {
-  margin-top: 0.5rem !important;    /* This creates the vertical gap */
+  margin-top: .5rem !important;    /* This creates the vertical gap */
   margin-bottom: 0.8rem !important; /* Gap before the next folder starts */
   
   /* High-density legal look usually benefits from a slightly 
@@ -588,6 +605,7 @@ body, #quartz-root, .page {
 /* Optional: Add a tiny bit of space below the folder title row itself */
 .explorer .folder-container {
   margin-bottom: 2px !important;
+  margin-top: .5rem !important; 
 }
 // =============================================================================
 // GRID TOP MARGIN REDUCTION
@@ -914,9 +932,17 @@ details details summary {
 /* MOBILE OVERRIDE: Prevent the desktop padding from squishing the phone view */
 @media all and (max-width: 768px) {
   .center {
-    padding: 1.5rem 1rem 4rem 1rem !important; // Tighter for mobile
+    padding: 1.25rem 2rem 4rem 2rem !important; // Tighter for mobile
     max-width: 100% !important;
-  }
+
+article {
+    width: 100% !important;
+    margin-top: 2.5rem !important;
+    padding: 0rem 0rem 0rem 0rem !important;
+    // Optional: Uncomment the next line if you want perfectly flush edges on both sides
+    // text-align: justify; 
+}
+}
 }
 .page-header {
   margin-top: 0 !important;
@@ -941,25 +967,18 @@ details details summary {
     display: inline-block;
   }
 
-  /* Add a little space between the date and time since the comma is gone */
-  & > span:not(:last-child):after {
-    content: "\00a0\00a0"; /* Adds two non-breaking spaces instead of a comma */
+}
+@media all and (max-width: 768px) {
+  .content-meta {
+    /* Shrink the title so it doesn't take up the whole screen */
+    font-size: .85rem !important; 
+    line-height: 1.3 !important;
+    margin-bottom: 0.75rem !important;
+    letter-spacing: -0.02em !important; // Tighter tracking looks better on mobile
+    padding: 0rem 0rem 0rem 0rem !important;
   }
 }
-/* Target the comma separator specifically */
-.content-meta span::after,
-.content-meta span::before,
-.content-meta > span:after,
-.content-meta .reading-time::before {
-  content: "" !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
 
-/* Add a clean space between the date and reading time instead */
-.content-meta > span:first-child {
-  margin-right: 8px !important;
-}
 // =============================================================================
 // SIDEBAR ELEVATION (Left & Right)
 // =============================================================================
