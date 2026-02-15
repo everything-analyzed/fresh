@@ -75,6 +75,6 @@ Ironically, where Dr. Kevorkian had much success was in demonstrating our lack o
 
 ### Roots
 
-[[Kevorkian Archive]]  A collection of materials related to Dr. Jack Kevorikian. Explore trial footage, news articles, and court opinions.
+[[Archive – The Kevorkian Papers]]  A collection of materials related to Dr. Jack Kevorikian. Explore trial footage, news articles, and court opinions.
 
 

@@ -1011,4 +1011,126 @@ article {
   margin-top: 3rem !important;
   padding-top: 0 !important;
 }
+/* 1. The Container - Standard State */
+details {
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 0rem .5rem 1rem .5rem !important;
+  background-color: transparent;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth lift transition */
+  margin-left: -1rem; /* Ensures the box starts at the exact edge of the text container */
+  margin-right: 0;
+  width: 100%;    /* Ensures it spans the same width as your paragraphs */
+  box-sizing: border-box; /* Prevents padding from pushing the box wider than the text */
+}
 
+
+/* 3. The Chevron (Steel Blue) */
+details summary {
+  display: flex;
+  align-items: center;   /* This is the magic for vertical centering */
+  cursor: pointer;
+  list-style: none;
+  font-weight: bold;
+  color: #4682B4;
+  padding: 1rem 0;       /* Adds vertical breathing room to the clickable area */
+
+}
+
+/* Remove the default chevron in browsers like Chrome/Safari */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary::before {
+  content: '❯';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0rem 0.5rem 0rem 0rem;
+  font-size: 1.4em;      
+  margin-right: 12px; 
+  margin-top: 1.8rem;
+ 
+  
+  /* REMOVED: margin-top: 20px and !important padding */
+  /* These were causing the "drift" when closed */
+  
+  transition: transform 0.2s ease;
+  
+  /* Use a very small translate only if your specific font-family sits low */
+  transform: translateY(-1px); 
+}
+
+/* Ensure the rotation stays centered on its own axis */
+details[open] summary::before {
+  transform: translateY(-1px) rotate(90deg);
+  margin-top: 2.2rem !important;
+  
+}
+
+// =============================================================================
+// BREADCRUMB ALIGNMENT (Force Horizontal)
+// =============================================================================
+
+.breadcrumb-container, 
+.breadcrumbs,
+nav[aria-label="breadcrumbs"] {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important; // Prevents them from dropping to the next line
+  align-items: center !important;
+  gap: 0.5rem !important; // Space between items
+  overflow-x: auto !important; // Adds a scrollbar if they get too long on mobile
+  white-space: nowrap !important;
+  
+  /* Ensure the individual items behave */
+  & > a, & > span {
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  /* Optional: Style the separator (usually / or >) */
+  .separator {
+    margin: 0 0.25rem !important;
+    opacity: 0.5;
+  }
+}
+/* The container for the labels */
+.meta-line {
+  font-family: 'JetBrains Mono', 'Courier New', monospace; /* Monospace feels like a 'dossier' */
+  font-size: 0.75rem;
+  color: #6a737d; /* Muted gray */
+  margin-top: 2px;
+  display: block;
+}
+
+/* Individual labels inside the meta-line */
+.meta-label {
+  border-right: 1px solid #d1d5da;
+  padding-right: 8px;
+  margin-right: 8px;
+}
+
+/* The last label doesn't need a border */
+.meta-label:last-child {
+  border-right: none;
+}
+
+/* Optional: Highlight 'Processed' in your Steel Blue */
+.status-done {
+  color: #4682B4;
+  font-weight: bold;
+}
+/* Targets the main list items */
+li {
+  line-height: 1.6; /* The 'Golden Ratio' for readability */
+  margin-bottom: 1.2rem; /* Adds space between the 'blocks' of sources */
+}
+
+/* Keeps the metadata/summary sub-bullets slightly tighter but still readable */
+li li {
+  line-height: 1.4;
+  margin-top: 0.5rem;
+  color: #4a4a4a; /* Makes the summary slightly softer than the link */
+}
