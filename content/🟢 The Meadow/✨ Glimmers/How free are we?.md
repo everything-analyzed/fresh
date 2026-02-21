@@ -2,10 +2,10 @@
 tags:
   - society
   - autonomy
-  - planting
-title: Personal  Autonomy in Modern Society
+title:
 description:
 publish: "true"
+status: ✨Glimmer
 ---
  **This is a work in progress.** These are my incomplete thoughts while I build a "thinking" framework. 
  

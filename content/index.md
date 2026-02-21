@@ -1,30 +1,42 @@
 ---
 title: The scanner's library
 ---
+## Welcome. 
 
-Most of the internet is built for a quick visit. This space is built for a deep dive. Think of this as a **private research studio**—a place where I map out the hidden threads between seemingly unrelated ideas.
+This is my digital garden—a simple place where I keep my thoughts, research, and the random things I notice every day.
 
-If you’re a **scanner**—someone who naturally hunts for the "why" behind the "what"—this was built for you. It’s a space designed for curiosity, structured so you can follow a trail of thought as far as it goes.
+I use this space to see how big, timeless ideas sit alongside the small, everyday sparks that grab my attention. It isn’t a collection of "final answers." It’s just a place for me to wonder out loud and see how things grow when I give them some room.
 
-### Navigation logic
+🧭 How to Find Your Way Around
+I organize my notes based on how much I’ve worked on them. This helps me capture a quick idea without feeling like I have to turn it into a giant project.
 
-I don’t organize my notes by the date I wrote them. Instead, I group them by how much they’ve grown. This helps you see exactly how "settled" an idea is before you dive in:
+🟢 The Meadow
+This is the "hodgepodge" zone. No pressure, no polished writing—just curiosity.
 
-- **[🌿] Seedlings:** These are my open questions. They’re raw, a little messy, and still in the active research phase.
-    
-- **[🌱] Budding:** These notes have found their footing. I’ve moved past just gathering facts and started building a real point of view.
-    
-- **[🌲] Evergreens:** These are the pillars. They’re my most distilled, "settled" conclusions—the anchors that hold the rest of the system together.
-    
+ * ✨ GLIMMER | A quick spark. A thought I wanted to grab before it got away.
+ 
+ * ☁️ DRIFTING | A lingering question. Something I’m thinking about but haven't "solved" yet.
+ 
+ * 🧵 COLLECTION | A common thread. A pile of quotes, links, or fragments that feel like they belong together.
+ 
+ 
+🔵 The Stacks
+This is where I do the heavy lifting. These notes have more research and "meat" on the bone.
 
-### What you'll find here
+ * 🪴 PLANTING | The Foundation. An idea that has a clear focus and a dedicated spot to grow.
+ 
+ * 🪣 IRRIGATING | Working on it. Notes I’m actively researching, adding links to, and digging into.
+ 
+ * 🏛️ SHELVED | A Finished Note. My current best understanding of a topic.
 
-I’m a fan of **distilled thinking**. You won't find long walls of text or aimless rambling; instead, I keep things crisp and modular. My goal is to give you the core of an idea without the filler. Every link is a deliberate path into a new layer of the archive.
 
-- **Roots, not exit signs:** I treat my sources as the foundation. In the footer of my notes, I’ll give you a quick brief on exactly _why_ a specific book, document, or experience changed my thinking.
-    
-- **Sunlight notes:** To keep things from getting too heavy, I plant "sunlight" entries. These are studies in the absurd, the niche, and the delightfully strange—essential contrast for a healthy system.
-    
+🖋️ A Note on the Process
+I don’t try to force links between everything. I’m a big believer in the "hodgepodge." Some notes will stay as tiny one-sentence sparks forever, and others will eventually turn into something much bigger.
+I'm less worried about being "right" and more interested in just noticing things. Whether it's a deep dive into history or a random observation about a red sweater, if it's here, it's because it made me stop and think.
+
+
+💡 A Quick Tip
+If you’re just browsing, look for the Green icons for quick thoughts and the Blue icons for deeper dives.
 
 ### A final thought
 
