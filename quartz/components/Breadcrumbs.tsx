@@ -36,12 +36,17 @@ const defaultOptions: BreadcrumbOptions = {
 }
 
 function formatCrumb(displayName: string, baseSlug: FullSlug, currentSlug: SimpleSlug): CrumbData {
+  // this regex identifies and removes emojis/symbols
+  const cleanName = displayName
+    .replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDC00-\uDFFF])/g, "")
+    .replaceAll("-", " ")
+    .trim()
+
   return {
-    displayName: displayName.replaceAll("-", " "),
+    displayName: cleanName,
     path: resolveRelative(baseSlug, currentSlug),
   }
 }
-
 export default ((opts?: Partial<BreadcrumbOptions>) => {
   const options: BreadcrumbOptions = { ...defaultOptions, ...opts }
   const Breadcrumbs: QuartzComponent = ({

@@ -2,7 +2,7 @@
 tags:
   - nature
   - animals
-status: ☁️ Drifting
+status: 🌸 Flowering
 ---
 In the movie *Violent Ends* they basically described a rattlesnake as a lethal killing machines with the patience of a saint. I think I remember hearing somewhere else [[the rattle isn't a threat, but a warning]].
 

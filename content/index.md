@@ -1,43 +1,27 @@
 ---
-title: The scanner's library
+title: Welcome to The Porch 🍵
+aliases:
+  - The porch
 ---
-## Welcome. 
 
-This is my digital garden—a simple place where I keep my thoughts, research, and the random things I notice every day.
+This is where I sit to watch The Meadow.
 
-I use this space to see how big, timeless ideas sit alongside the small, everyday sparks that grab my attention. It isn’t a collection of "final answers." It’s just a place for me to wonder out loud and see how things grow when I give them some room.
+My mind doesn't move in a straight line. I’m a scanner—I follow threads of thought wherever they lead, discovering how one stray observation connects to the next. This site is just a record of those connections.
 
-🧭 How to Find Your Way Around
-I organize my notes based on how much I’ve worked on them. This helps me capture a quick idea without feeling like I have to turn it into a giant project.
+### How to wander around
+Think of this space like a garden in motion. Ideas move through seasons as I follow them:
 
-🟢 The Meadow
-This is the "hodgepodge" zone. No pressure, no polished writing—just curiosity.
-
- * ✨ GLIMMER | A quick spark. A thought I wanted to grab before it got away.
+ * 🐝 **Pollinating**: Fresh sparks I’ve just landed on.<br>
+ * 🌸 **Flowering**: Thoughts growing roots and finding their way toward other notes.
+ * 🍯 **Honey**: Finished threads where the connectivity is clear and the thought is solid.
+ * 🌑 **Dormant**: The "seed bank." Raw data, PDFs, or cold leads waiting for a new connection to wake them up.
  
- * ☁️ DRIFTING | A lingering question. Something I’m thinking about but haven't "solved" yet.
- 
- * 🧵 COLLECTION | A common thread. A pile of quotes, links, or fragments that feel like they belong together.
- 
- 
-🔵 The Stacks
-This is where I do the heavy lifting. These notes have more research and "meat" on the bone.
+### Where to start?
+If you want to see the threads I’m currently following, head out into [The Meadow] If you want to see the thoughts that have already settled into something lasting, check **The Hive**.
 
- * 🪴 PLANTING | The Foundation. An idea that has a clear focus and a dedicated spot to grow.
- 
- * 🪣 IRRIGATING | Working on it. Notes I’m actively researching, adding links to, and digging into.
- 
- * 🏛️ SHELVED | A Finished Note. My current best understanding of a topic.
+You can also just click any label that catches your eye. It’ll show you exactly how my mind has been hopping from flower to flower.
+
+Take a seat. Let's see what’s drifting by today.
 
 
-🖋️ A Note on the Process
-I don’t try to force links between everything. I’m a big believer in the "hodgepodge." Some notes will stay as tiny one-sentence sparks forever, and others will eventually turn into something much bigger.
-I'm less worried about being "right" and more interested in just noticing things. Whether it's a deep dive into history or a random observation about a red sweater, if it's here, it's because it made me stop and think.
 
-
-💡 A Quick Tip
-If you’re just browsing, look for the Green icons for quick thoughts and the Blue icons for deeper dives.
-
-### A final thought
-
-I hope you can take a moment away from what you _have_ to think about and discover something here that you never really thought to question.

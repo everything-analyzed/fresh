@@ -4,7 +4,7 @@ tags:
   - law
   - crime
 draft: true
-status: ✨Glimmer
+status: 🐝 Pollinating
 ---
 [[The cost of the last word]] 
 [[How free are we?]]

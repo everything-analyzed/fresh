@@ -35,6 +35,16 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
+    Component.Graph({
+  localGraph: {
+    opacityScale: 3,        // Makes the lines brighter
+    fontSize: 0.6,
+  },
+  globalGraph: {
+    opacityScale: 3,
+    fontSize: 0.6,
+  },
+}),
     Component.Explorer({
   title: "Explorer",
   folderClickBehavior: "link",
@@ -51,7 +61,7 @@ export const defaultContentPageLayout: PageLayout = {
   afterBody: [
     (props) => props.fileData.slug === "index" 
       ? Component.RecentNotes({ 
-          title: "Recent Analysis",
+          title: "Recently Pollinated 🐝",
           showDescription: true, 
           limit: 4 
         })(props) 
@@ -59,20 +69,14 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Backlinks({
   showExcerpts: true, // This enables the text snippets
 }),
+Component.TagList(),
+  
+Component.DesktopOnly(Component.TableOfContents()),
   ],
   right: [
-    Component.Graph({
-  localGraph: {
-    opacityScale: 3,        // Makes the lines brighter
-    fontSize: 0.6,
-  },
-  globalGraph: {
-    opacityScale: 3,
-    fontSize: 0.6,
-  },
-}),
-Component.TagList(),
-    Component.DesktopOnly(Component.TableOfContents()),
+  
+
+    
     
   ],
 }

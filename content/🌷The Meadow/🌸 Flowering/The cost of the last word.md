@@ -6,6 +6,7 @@ tags:
   - "#society"
   - "#law"
 description: There’s a thin, messy line between 'mercy' and 'murder,' and Jack Kevorkian spent a decade trying to erase it. This is a look at how his own ego eventually handed the State the win, and what that tells us about how much control we actually have over our own suffering.
+status: 🌸 Flowering
 ---
 
  

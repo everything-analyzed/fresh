@@ -8,16 +8,12 @@
 // 1. CORE THEME & VARIABLES
 // =============================================================================
 :root {
-  /* page background: warm stone gray */
   --light: #efeeea !important; 
   --page-bg: #efeeea !important;
-
-  /* center panel: warm bone white */
   --panel-bg: #fdfdfc !important; 
-  
-  /* text: deep mocha gray */
   --darkgray: #4a4846 !important;
   --slate-blue: #5d676f !important;
+  --steel-blue: #4682B4 !important;
 }
 
 [user-color-scheme="darkMode"], [saved-theme="dark"] {
@@ -29,1021 +25,211 @@
 
 @mixin floating-panel {
   background-color: var(--panel-bg) !important;
-  border: var(--panel-border) !important;
-  box-shadow: var(--panel-shadow);
   border-radius: 4px !important;
   box-sizing: border-box !important;
 }
 
 // =============================================================================
-// 2. TYPOGRAPHY (Headers 500 / Links & Explorer 400)
+// 2. TYPOGRAPHY
 // =============================================================================
-body, .article-title + p, section {
-  color: #433f3d !important; /* deep warm charcoal */
-  font-size: 0.95rem !important; /* slightly larger for comfort */
-  line-height: 1.7 !important; /* more breathing room */
+body, section, p, li {
+  color: var(--darkgray) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.7 !important;
   -webkit-font-smoothing: antialiased;
 }
-/* Headers: Weight 500 */
-h1, h2, h3, h4, .article-title, .page-title a, .page-title {
-  font-weight: 400 !important; 
-  color: #5d6d7e !important; /* muted stone blue */
-  letter-spacing: -0.01em !important; /* tighter look */
-  margin-bottom: 0.5rem !important;
+
+h1, h2, h3, h4, .article-title {
+  font-weight: 300 !important; 
+  color: var(--dark) !important; /* Lighter taupe (#b2ada9) */
+  letter-spacing: -0.01em !important;
   line-height: 1.2 !important;
 }
-.explorer a, .toc a {
-  color: #7a8691 !important; /* softer stone gray-blue */
-  transition: color 0.2s ease;
 
-  &:hover {
-    color: #5d6d7e !important; /* darkens on hover */
-  }
-}
-.content-meta > span, 
-.content-meta > time,
-.content-meta > a {
-  color: #96918d !important; /* warm taupe */
-  font-size: 0.8rem !important;
-}
-
-
-
-
-
-// =============================================================================
-// 4. GRID & PANEL PERSISTENCE (Surgical Overlap Fix)
-// =============================================================================
-
-/* 1. THE CENTER PANEL: Look & Feel */
-.center {
-  background-color: var(--panel-bg) !important;
-  border-radius: 4px !important;
-  box-shadow: var(--panel-shadow);
-  padding: 1.5rem !important; 
+.page-title {
+  display: flex !important;
+  flex-direction: column !important; /* keeps the stack */
+  align-items: flex-end !important;   /* pushes both lines to the right */
+  text-align: left !important;      /* ensures text justifies right */
+width: auto !important; /* let it shrink to the text size */
+  margin-right: 8rem !important; 
+  margin-left: auto !important;
   margin-bottom: 2rem !important;
-  /* This prevents the panel from ever expanding beyond its grid boundaries */
-  max-width: 100% !important; 
-  box-sizing: border-box !important;
+  font-weight: 300 !important; 
+  margin-top: 1rem !important;
 }
 
-//* 2. THE BACKGROUND FLOOR */
-body, #quartz-root, .page {
-  background-color: var(--light) !important; 
+.page-title a {
+  display: block !important;
+  line-height: 1.1 !important;       /* tightens the stack gap */
+  max-width: 200px !important;       /* controls where it breaks */
+   font-weight: 300 !important; 
+   font-size: 2.35rem !important;
 }
 
+.article-title {
+  font-size: 1.6rem !important; 
+  margin-top: 0 !important;
+}
+
+strong {
+  color: #a39193 !important; /* soft clay accent */
+  font-weight: 600;
+}
+
+code {
+  background-color: var(--lightgray);
+  color: var(--darkgray);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+// =============================================================================
+// 3. LAYOUT & PANELS
+// =============================================================================
 @media all and (min-width: 1200px) {
   #quartz-body {
     display: grid !important;
-    /* We specify exact widths for sidebars and let the center take the rest */
-    grid-template-columns: 280px minmax(0, 1fr) 320px !important; 
-    column-gap: 32px !important;
-    width: 95% !important;
-    margin: 0.5rem auto !important;
-    background-color: transparent !important;
-    /* This is the secret: it keeps everything in its own row/column */
+    /* wider sidebar (400px) | main content | spacer */
+    grid-template-columns: 400px 900px 1fr !important; 
+    column-gap: 30px !important; /* tighter gap to save space */
+    width: 100% !important;
+    max-width: 1600px !important; /* increased max-width for the new size */
+    margin: 3rem auto !important; 
+    padding: 0 40px !important;
     align-items: start !important; 
-    }
-
+  }
   .center { 
-    padding: 0rem 3rem 2.5rem 3rem !important;
-    /* Resetting the width here specifically for the grid */
-    width: auto !important; 
-  }
-
-  /* SIDEBAR FIX: The "Anti-Overlap" block */
-  .sidebar.left, .sidebar.right { 
-    @include floating-panel; 
-    border: none !important; 
-    
-    /* These lines strip Quartz's default 'floating' behavior */
-    position: relative !important; 
-    transform: none !important;
-    width: 100% !important; /* Makes it fill its 280px or 320px slot exactly */
-    min-width: 0 !important;
-    overflow-wrap: break-word !important;
-  }
+  background-color: var(--panel-bg) !important;
+  border-radius: 24px !important; /* extra round for that soft look */
+  padding: 4rem 5rem !important;  /* big padding so text feels premium */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin-bottom: 4rem !important; /* space at the bottom of the page */
+  border: 1px solid rgba(0,0,0,0.02); /* tiny hint of a border */
 }
-// =============================================================================
-// 5. GRAPH VIEW FIX
-// =============================================================================
-[user-color-scheme="darkMode"], [saved-theme="dark"] {
-  .graph-view {
-    --color-fill: #8095a6 !important;
-    --color-line: #333 !important;
-    --color-text: #eee !important;
+
+  .sidebar.left {
+    width: 400px !important; /* matches the grid column */
+    background-color: var(--panel-bg) !important;
+    border-radius: 12px !important;
+    padding: 2.5rem !important; /* extra room for the graph edges */
+    position: sticky !important;
+    top: 2rem;
   }
 }
 
-// Target the specific list where your cards live
-.recent-notes, 
-.related-cards-wrapper,
-[id$="recent-notes"] + ul {
-  
-  li {
-    list-style: none !important;
-    list-style-type: none !important;
-    padding-left: 0 !important; // Removes the indent where the bullet sat
-    margin-left: 0 !important;
-
-    // This specifically kills the Quartz "dot"
-    &::before {
-      content: none !important;
-      display: none !important;
-    }
+/* ensure the graph fills the container */
+.graph {
+  width: 100% !important;
+  height: 400px !important; /* gives it a nice square-ish frame */
+  margin-top: 2rem;
+}
+  .sidebar.right {
+    display: none !important;
   }
-}
+
 // =============================================================================
-// RECENT NOTES: PERFECT LEFT ALIGNMENT
+// 4. EXPLORER & SIDEBAR
 // =============================================================================
-
-/* 1. THE HEADER */
-.recent-notes > h3, 
-.recent-notes > h2 {
-  margin-left: 2rem !important;
-  padding-left: 0 !important;
-  font-family: 'Inter', sans-serif !important;
-  font-size: 1.3rem !important;
-  font-weight: 500 !important;
-  
-
-}
-
-/* 2. THE LIST CONTAINER */
-.recent-notes ul {
-  list-style: none !important;
-  padding: 0 !important; /* Forces the list to the far left */
-  margin-top: 1rem !important;
-  margin-left: 2rem !important;
-  
-  
-}
-
-/* 3. THE LINKS (The Pill) */
-.recent-notes li a {
-  display: inline-block !important;
-  font-family: 'Inter', sans-serif !important;
+.folder-container div > a,
+.folder-container div > button span {
+  font-weight: 500 !important;   
   font-size: 1rem !important;
-  font-weight: 400 !important;
-  
-  
-  
-  /* PADDING: The highlight area */
-  padding: 4px 12px !important; 
-  margin-left: -.5rem;
-  
-  /* THE ALIGNMENT TRICK: 
-     Negative margin pulls the text back to the left so it aligns with the header,
-     even though there is 12px of padding. */
-  
-  
-  border-radius: 4px !important;
-  text-decoration: none !important;
+  color: var(--dark) !important;
+  margin-top: 2rem !important;
 }
 
-/* 4. THE DESCRIPTION (Meta/Date text) */
-.recent-notes li .meta,
-.recent-notes li time,
-.recent-notes li p {
-  padding: 0 !important;
-  font-size: 0.85rem !important;
-  line-height: 1.2 !important;
-  /* Keeps the description aligned with the header and link text */
-  display: block !important; 
-  margin-top: 1.5rem !important;
-
-  
-  /* 3. AESTHETICS */
-  font-family: 'Inter', sans-serif !important;
-  font-size: .85rem !important;
-  font-weight: 400 !important;
-  color: var(--darkgray) !important;
-  text-decoration: none !important;
-  border-radius: 4px !important;
-  transition: background 0.2s ease;
-  /* Ensure the links don't stack horizontally if they are short */
-  width: auto !important;
-}
-
-/* Ensure the list item doesn't force a weird alignment */
-.recent-notes li {
-  display: block !important;
-  margin-bottom: 6px !important; /* Space between the 'pills' */
-
-  
-  /* PADDING is what gives the highlight its shape */
-  padding: 4px 8px !important; 
-  margin: 2px 0 !important;
-  border-radius: 4px !important;
-  transition: background 0.2s ease, color 0.2s ease !important;
-  text-decoration: none !important;
-}
-
-/* 3. ENSURING THE HIGHLIGHT STAYS VISIBLE */
-
-/* 4. THE ACTIVE STATE (If currently viewing that note) */
-.recent-notes li a.active, 
-.recent-notes li a[aria-current="page"] {
-  background-color: rgba(128, 149, 166, 0.15) !important; 
-  color: var(--secondary) !important;
-  font-weight: 500 !important;
-}
-/* 1. Target the Date/Meta container */
-.recent-notes li .meta, 
-.recent-notes li time {
-  margin-bottom: 2px !important; /* Tiny gap below the date */
-  display: block !important;
-  line-height: 1.2 !important;   /* Tighter line height prevents "ghost" spacing */
-}
-
-/* 2. Target the Tags container */
-.recent-notes li .tags {
-  margin-top: 0 !important;      /* Pulls the tags up toward the date */
-  padding-top: 0 !important;
-  display: flex !important;
-  gap: 6px !important;           /* Horizontal space between tags */
-}
-
-/* 3. If there is a description in between, tighten it too */
-.recent-notes li .desc {
-  margin-bottom: 2px !important;
-}
-// =============================================================================
-// RECENT NOTES: DESCRIPTION - RECOVERY VERSION
-// =============================================================================
-
-.recent-notes li .desc,
-.recent-notes li p:not(.meta) {
-  /* 1. FORCE VISIBILITY */
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  height: auto !important;
-  overflow: visible !important;
-
-  /* 2. FONT STYLE */
-  font-family: 'Inter', sans-serif !important;
-  font-size: 0.9rem !important;
-  font-weight: 400 !important;
-  line-height: 1.6 !important;
-  
-  /* 3. ALIGNMENT */
-  /* Ensures it starts at the exact same left-pixel as your Title */
-  margin: 1rem 0 5 0 !important; 
-  padding: 0 !important;
-  text-align: left !important;
-}
-// =============================================================================
-// RECENT NOTES: TAG ALIGNMENT
-// =============================================================================
-
-/* 1. THE TAG CONTAINER */
-.recent-notes .tags {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 4px !important;
-  
-  /* Reset any default list padding */
-  padding: 0 !important;
-  margin: 0 !important;
-  
-  /* This ensures the tags start at the same 'Zero Point' as the header */
-  justify-content: flex-start !important;
-}
-
-/* 2. THE TAG LINKS */
-.recent-notes .tags a {
-  /* We use inline-flex to keep the '#' and text together */
-  display: inline-flex !important;
-  align-items: center !important;
-  
-  /* Resetting looks to text-only for alignment precision */
-  background: transparent !important;
-  border: none !important;
-  padding: .25rem !important;
-  margin: 0 !important;
-  
-  /* Font & Color to match your secondary metadata (Date) */
-  font-family: 'Inter', sans-serif !important;
-  font-size: 0.75rem !important; 
-  text-decoration: none !important;
-}
-
-/* 3. THE SPACING FIX */
-/* If your tags still look pushed in, it's often because the parent <li> 
-   has an indent. This ensures the <li> itself isn't pushing them. */
-.recent-notes li {
-  padding-left: 0 !important;
-  margin-bottom: 1rem !important;
-  align-items: flex-start !important;
-
-}
-// =============================================================================
-// RECENT NOTES: INTEGRATED CARD STYLE & HOVER
-// =============================================================================
-
-.recent-notes li {
-  /* 1. LAYOUT */
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  padding: 12px 16px !important;  
-  margin: 4px 0 8px -16px !important; /* pulls it left to align with header */
-  
-  /* 2. BASE LOOK */
-  list-style: none !important;
-  background-color: transparent !important; /* start invisible */
-  border-radius: 8px !important;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  cursor: pointer;
-  position: relative;
-
-  /* Kill the Quartz dot again just in case */
-  &::before { content: none !important; display: none !important; }
-}
-
-/* the soft-edge stone hover */
-.recent-notes li:hover {
-  /* pulls from your #efeeea background at a soft 60% opacity */
-  background-color: rgba(239, 238, 234, 0.6) !important; 
-  
-  /* smoother, rounder corners to soften the look */
-  border-radius: 12px !important; 
-
-  /* wide, very faint shadow to eliminate harsh lines */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
-  
-  /* slight move just to show life */
-  transform: translateX(4px) !important;
-}
-
-/* keeps title text warm */
-.recent-notes li:hover a {
-  color: #4a4846 !important;
-}
-.recent-notes li:hover .desc,
-.recent-notes li:hover p,
-.recent-notes li:hover time {
-  color: #333333 !important; /* darkens slightly for focus */
-}
-
-/* 5. LINK OVERRIDES (No more individual pills) */
-.recent-notes li a {
-  all: unset !important;
-  display: block !important;
-  font-family: 'Inter', sans-serif !important;
-  font-size: 1rem !important;
-  font-weight: 500 !important;
-  
-  cursor: pointer !important;
-  margin-bottom: 4px !important;
-}
-// =============================================================================
-// EXPLORER: COMPONENT-LEVEL OVERRIDE
-// =============================================================================
-
-/* 1. THE ARTICLE TITLES (Files) */
+/* 2. THE FILE TITLES (Articles) */
 .explorer-content ul li > a {
-  all: unset !important; 
-  display: inline-block !important;
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 500 !important;
-  font-size: 1rem !important;      
-  color: var(--steel-blue) !important; 
-  
-  /* TIGHT: The text itself stays compact */
-  line-height: 1.1 !important;
-  
-  /* LOOSER: This adds the "breathing room" between entries */
-  margin-bottom: 0.6rem !important; 
-  
-  cursor: pointer !important;
-  padding: 2px 4px !important;
-
+  font-weight: 500 !important; /* bumped up from 400 for weight */
+  font-size: 0.9rem !important; 
+  margin-bottom: 0.4rem !important;
+  color: var(--darkgray) !important; /* changed from --gray to --darkgray */
   text-transform: lowercase !important;
+  
   &::first-letter {
     text-transform: uppercase !important;
   }
-  
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.6) !important;
-    color: #433f3d !important;
-    border-radius: 4px;
-  }
 }
 
-/* Ensure the list items don't collapse the margin */
-.explorer li {
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
+.explorer-content ul li > a::first-letter {
+  text-transform: uppercase !important;
 }
-/* 2. THE FOLDER TITLES (Categories)
-   Component path: .folder-container div > a OR .folder-container div > button span
-*/
-.folder-container div > a,
-.folder-container div > button span {
+
+.explorer a:hover {
+  color: var(--secondary) !important;
+  text-decoration: underline dotted;
+}
+
+.folder-icon, .folder-container svg {
+  opacity: 0.4 !important;
+  color: var(--dark) !important;
+}
+
+// =============================================================================
+// 5. BREADCRUMBS & META
+// =============================================================================
+.breadcrumbs, nav[aria-label="breadcrumbs"] {
+  display: flex !important;
+  flex-direction: row !important; 
+  align-items: center !important;
+  gap: 0.4rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.breadcrumbs *, nav[aria-label="breadcrumbs"] * {
   all: unset !important;
-  font-family: 'Inter', sans-serif !important;
-  font-size: .95rem !important;      /* Adjust folder size here */
-  font-weight: 400 !important;        /* Bolder category header */
-  line-height: 1.2rem !important;
-  cursor: pointer !important;
-  display: inline-block !important;
-  letter-spacing: 0.0em !important;
-}
-
-/* 3. THE FOLDER ICON (Arrow) 
-   To match your Steel Blue theme
-*/
-.folder-icon {
-  
-  opacity: 1 !important;
-}
-// =============================================================================
-// EXPLORER HEADER (The "Archive" Title) - ZERO-RISK VERSION
-// =============================================================================
-
-/* We target the H2 directly inside the button without touching the button's layout */
-.explorer button.desktop-explorer h2, 
-.explorer button.mobile-explorer h2 {
-  /* Font & Color */
-  font-family: 'Inter', sans-serif !important;
-  font-size: 1.2rem !important; 
-  font-weight: 400 !important;   
-  letter-spacing: 0.0em !important;
-  margin-top: .5rem !important; 
- 
-  /* Resetting only the spacing that causes "disappearing" acts */
-  margin-bottom: 1rem !important;
-  padding: 0 !important;
-  line-height: 1.2 !important;
-  display: inline-block !important;
-  visibility: visible !important;
-}
-
-/* Specifically style the Chevron icon to match */
-.explorer button.desktop-explorer svg,
-.explorer button.mobile-explorer svg {
-  
-  width: .9rem !important;
-  height: .9rem !important;
-  visibility: visible !important;
-  /* Prevent the icon from disappearing if the container is tight */
-  min-width: .9rem !important; 
-  margin-bottom: .5rem !important;
-}
-
-/* Ensure the container itself hasn't collapsed */
-.explorer {
-  min-height: 2rem !important;
-  visibility: visible !important;
-  display: flex !important;
-}
-/* Target the list of articles inside a folder */
-.explorer .folder-outer > ul {
-  margin-top: .5rem !important;    /* This creates the vertical gap */
-  margin-bottom: 0.8rem !important; /* Gap before the next folder starts */
-  
-  /* High-density legal look usually benefits from a slightly 
-     larger indent when you add vertical space */
-  padding-left: 1.2rem !important; 
-}
-
-/* Optional: Add a tiny bit of space below the folder title row itself */
-.explorer .folder-container {
-  margin-bottom: 2px !important;
-  margin-top: .5rem !important; 
-}
-// =============================================================================
-// GRID TOP MARGIN REDUCTION
-// =============================================================================
-
-@media all and (min-width: 1200px) {
-  #quartz-body {
-    /* Reduced margin-top from 2rem to 0.5rem */
-    margin: 0.5rem auto !important; 
-  }
-
-  .center {
-    /* Reduced the top padding from 2.5rem to 1rem */
-    padding: 0rem 3rem 2.5rem 3rem !important; 
-  }
-}
-
-/* Adjust for mobile as well, where the header often adds bulk */
-@media all and (max-width: 1199px) {
-  .center {
-    padding-top: 1rem !important;
-  }
-}
-// =============================================================================
-// INTERNAL NOTE DETAILS (COLLAPSIBLE BLOCKS)
-// =============================================================================
-
-/* 1. THE MAIN CONTAINER */
-details {
-  border: 0px solid rgba(0, 0, 0, 0.1) !important;
-  border-radius: 4px !important;
-  padding: 0.5rem 0rem !important;
-  margin-bottom: 1rem !important;
-  background-color: transparent !important;
-  transition: all 0.3s ease !important;
-}
-
-/* 2. THE HEADER (Summary) */
-details summary {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 500 !important;
-  font-size: 1.1rem !important;
-  color: var(--slate-blue) !important;
-  cursor: pointer !important;
-  outline: none !important;
-  /* Space between summary and content when open */
-  padding: 4px 0 !important;
-}
-
-/* 3. THE "OPEN" STATE BACKGROUND */
-/* This makes the block look like a card once expanded */
-details[open] {
-  background-color: rgba(0, 0, 0, 0.02) !important;
-  
-}
-
-/* 4. THE CONTENT INSIDE THE DETAILS */
-details > *:not(summary) {
-  margin-top: 1rem !important;
-  color: var(--darkgray) !important;
-  font-size: 0.9rem !important;
-  line-height: 1.6 !important;
-}
-
-// =============================================================================
-// COLLAPSIBLE: EXPLORER-STYLE CHEVRON
-// =============================================================================
-
-/* 1. HIDE THE DEFAULT TRIANGLE */
-details summary {
-  list-style: none !important;
-  display: flex !important; /* Helps with vertical alignment */
-  align-items: center !important;
-}
-
-details summary::-webkit-details-marker {
-  display: none !important;
-}
-
-/* 2. ADD THE CHEVRON */
-details summary::before {
-  /* Using a standard chevron character */
-  content: '›' !important; 
-  
-  display: inline-block;
-  font-family: var(--font-family); /* Matches your site font */
-  font-size: 1.1rem !important;    /* Size of the arrow */
-  font-weight: 300 !important;    /* Light weight looks more like the explorer */
+  font-weight: 300 !important; 
+  font-size: 0.8rem !important;
   color: var(--gray) !important;
-  
-  /* SPACING CONTROL */
-  margin-right: 8px !important;  /* Space between arrow and text */
-  width: 12px;                   /* Fixed width prevents text jumping */
-  
-  /* ANIMATION */
-  transition: transform 0.2s ease !important;
-  transform-origin: center;
-}
-details[open] {
-  background-color: #fdfdfc !important; /* bone white */
-  border: 1px solid rgba(0, 0, 0, 0.03) !important;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+  text-transform: lowercase !important;
 }
 
-/* 3. ROTATE ON OPEN */
-details[open] summary::before {
-  transform: rotate(90deg) !important;
-  color: var(--secondary) !important; /* Arrow changes color when open */
+.content-meta, .content-meta * {
+  display: inline !important; 
+  font-size: 0.75rem !important;
+  color: var(--gray) !important; 
+  font-weight: 300 !important;
 }
+
 // =============================================================================
-// NESTED DETAILS: ELIMINATE INTERNAL GAPS
+// 6. RECENT NOTES
 // =============================================================================
-
-/* This targets any 'details' block that is INSIDE another 'details' block */
-details details {
-  margin-top: 0 !important;
-  margin-bottom: 2px !important; /* Extremely tight vertical stack */
-  border-left: 2px solid rgba(0, 0, 0, 0.05) !important; /* Subtle guide line */
-  border-right: none !important;
-  border-top: none !important;
-  border-bottom: none !important;
-  border-radius: 0 !important;
-  padding-top: 2px !important;
-  padding-bottom: 2px !important;
+.recent-notes li {
+  padding: 12px 16px !important;  
+  border-radius: 8px !important;
+  transition: all 0.25s ease !important;
 }
 
-/* Remove the background from nested toggles so they don't "stack" colors */
-details details[open] {
-  background-color: transparent !important;
-  margin-bottom: 8px !important; /* Give it a little room only when expanded */
+.recent-notes li:hover {
+  background-color: rgba(239, 238, 234, 0.6) !important; 
+  transform: translateX(4px) !important;
 }
 
-/* Align the nested text precisely */
-details details summary {
-  font-size: 0.9rem !important; /* Slightly smaller for hierarchy */
-  padding-left: 4px !important;
-}
-// =============================================================================
-// 3. TAG CARDS (Floating but Borderless)
-// =============================================================================
-.tags, .tag-list, .tag-container, ul.section-ul {
-  list-style: none !important;
-  padding: 0 !important;
-  margin: 1.5rem 0 !important;
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 8px !important;
-
-  li {
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    &::before { content: none !important; display: none !important; }
-  }
-
-  /* The Card Design */
-  a, .tag-link, .internal.tag {
-    @include floating-panel; // Pulls in the shadow and background
-    border: none !important; // STRIKES the outline immediately
-    
-    display: inline-flex !important;
-    padding: 0.3rem 0.8rem !important;
-    font-size: 0.8rem !important;
-    font-weight: 400 !important; 
-    color: var(--secondary) !important;
-    border-radius: 4px !important; // Slightly softer corners look better without borders
-    transition: all 0.2s ease;
-
-    &:hover {
-      background-color: var(--secondary) !important;
-      color: #ffffff !important;
-      transform: translateY(-2px);
-      border: none !important; // Ensure no border pops in on hover
-    }
-  }
-}
-.backlinks {
-  .backlinks-list {
-    list-style: none;    /* Removes the bullets */
-    padding: 0;          /* Removes default indentation */
-    margin: 0;           /* Resets margins */
-
-    li {
-      list-style-type: none; /* Secondary fallback to ensure bullets are gone */
-      margin-bottom: 1.5rem;  /* Space between backlink blocks */
-      
-      .backlink-title {
-        display: block;      /* Makes the title its own line */
-        font-weight: 600;
-        text-decoration: none;
-        color: var(--secondary);
-       
-        
-        &:hover {
-          color: var(--tertiary);
-          text-decoration: underline;
-        }
-      }
-
-      .backlink-excerpt {
-        margin: 0.3rem 0 0 0; /* Tighten space between title and excerpt */
-        font-size: 0.85rem;
-        color: var(--gray);
-        line-height: 1.5;
-      }
-    }
-  }
-}
-/* 1. THE WRAPPER: Ensure the shadow isn't clipped */
-.popover {
-  background: transparent !important;
-  box-shadow: none !important;
-  overflow: visible !important; 
-  /* Don't touch opacity/visibility; let Quartz handle that */
-}
-
-/* 2. THE CARD: The actual floating white box */
-.popover > .popover-inner {
-  /* Resetting only the visual 'box' properties */
-  background-color: #ffffff !important;
-  background: #ffffff !important;
-  border: 1px solid rgba(128, 149, 166, 0.2) !important;
-  border-radius: 4px !important;
-  
-  /* The Lift: Creating physical space */
-  margin: 20px !important; 
-  transform: translateY(-10px) !important;
-  
-  
-
-  /* The Shadow: Heavy enough to see on a light background */
-  box-shadow: 
-    0 15px 35px rgba(0, 0, 0, 0.15), 
-    0 5px 15px rgba(0, 0, 0, 0.08) !important;
-
-  /* Content Spacing */
-  // Use shorthand: Top, Right, Bottom, Left
-  // Adjust these values to your preference
-  padding: 1.5rem 4rem 1.5rem 4rem !important;
-  width: 20rem !important;
-  max-height: 25rem !important;
-  overflow-y: auto !important;
-
-  /* TEXT SYNC: High-Density Terminal Style */
-  font-family: 'Inter', sans-serif !important;
-  font-size: var(--bodyFontSize) !important;
+.recent-notes li a {
+  all: unset !important;
   font-weight: 400 !important;
-  color: var(--darkgray) !important;
-  line-height: 1.6 !important;
-
-  /* Header/Title Sync */
-  h1, .popover-title {
-    font-size: 1.3rem !important;
-    font-weight: 500 !important;
-    color: #3d5261 !important; // Slate Blue
-    text-transform: lowercase !important;
-    margin-top: 0 !important;
-    margin-bottom: 0.75rem !important;
-    display: block !important;
-    
-    &::first-letter {
-      text-transform: uppercase !important;
-    }
-  }
-}
-
-/* 3. DARK MODE: The 'Terminal' flip */
-[saved-theme="dark"] .popover > .popover-inner {
-  background-color: #0d0d0d !important; // Deep charcoal
-  border: 1px solid #222 !important;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important;
-  
-  p, span, li, div {
-    color: var(--lightgray) !important;
-  }
-}
-// =============================================================================
-// POPOVER CONTENT CLEANUP
-// =============================================================================
-
-/* 1. Target all possible breadcrumb identifiers inside the popover */
-.popover-inner .breadcrumbs,
-.popover-inner .breadcrumb-container,
-.popover-inner nav[aria-label="breadcrumbs"],
-.popover-inner .folder-outer { 
-  display: none !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  visibility: hidden !important;
-}
-
-/* 2. Remove the "Top Margin" that usually leaves a gap where breadcrumbs were */
-.popover-inner article > h1:first-child,
-.popover-inner .popover-title {
-  margin-top: 0 !important;
+  color: var(--secondary) !important;
 }
 
 // =============================================================================
-// CENTER COLUMN: 4-SIDE PADDING CONTROL
+// 7. TAGS (REVERSED/DARKER)
 // =============================================================================
-
-.center {
-  /* 1. THE PADDING: [TOP] [RIGHT] [BOTTOM] [LEFT] */
-  /* Adjust these values to find your perfect 'Terminal' frame */
-  padding: 3rem 3rem 8rem 5rem !important;
-
-  /* 2. THE SYMMETRY LOCK */
-  margin-left: auto !important;
-  margin-right: auto !important;
-  
-  /* This ensures the padding is included in the total width calculation */
-  box-sizing: border-box !important;
-  
-  /* 3. THE WIDTH: If this is too high, you get a 'runway' effect on the right */
-  max-width: 850px !important; 
-  width: 100% !important;
-
-  /* 4. CONTENT ALIGNMENT */
-  article {
-    width: 97% !important;
-    margin-top: 2.5rem !important;
-    padding: 0rem 0rem 0rem 0rem !important;
-    // Optional: Uncomment the next line if you want perfectly flush edges on both sides
-    // text-align: justify; 
-  }
+a.internal.tag-link, .tags li a, .section-tag {
+  background-color: #8e9196 !important; /* Darker accent */
+  color: var(--light) !important;       /* Light text */
+  font-weight: 400 !important;
+  font-size: 0.75rem !important;
+  padding: 2px 10px !important;
+  border-radius: 6px !important;
+  display: inline-block !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.2s ease-out !important;
 }
 
-/* MOBILE OVERRIDE: Prevent the desktop padding from squishing the phone view */
-@media all and (max-width: 768px) {
-  .center {
-    padding: 1.25rem 1.45rem 4rem 2rem !important; // Tighter for mobile
-    max-width: 100% !important;
-
-article {
-    width: 100% !important;
-    margin-top: 2.5rem !important;
-    padding: 0rem 0rem 0rem 0rem !important;
-    // Optional: Uncomment the next line if you want perfectly flush edges on both sides
-    // text-align: justify; 
-}
-}
-}
-.page-header {
-  margin-top: 0 !important;
-  margin-bottom: 1rem !important;
-}
-// =============================================================================
-// ARTICLE METADATA (Date & Reading Time)
-// =============================================================================
-
-
-/* Target the metadata container */
-.content-meta {
-  font-size: 0 !important; /* Hides the text comma between spans */
-  color: transparent !important; /* Secondary safety to hide the comma */
-
-  /* Restore visibility and size for the actual data (Date & Time) */
-  & > span, 
-  & > time,
-  & > a {
-    font-size: 0.85rem !important; /* Matches your preferred metadata size */
-    color: var(--gray) !important;
-    display: inline-block;
-  }
-
-}
-@media all and (max-width: 768px) {
-  .content-meta {
-    /* Shrink the title so it doesn't take up the whole screen */
-    font-size: .85rem !important; 
-    line-height: 1.3 !important;
-    margin-bottom: 0.75rem !important;
-    letter-spacing: -0.02em !important; // Tighter tracking looks better on mobile
-    padding: 0rem 0rem 0rem 0rem !important;
-  }
-}
-
-// =============================================================================
-// SIDEBAR ELEVATION (Left & Right)
-// =============================================================================
-
-/* 1. Remove padding from the sidebar containers */
-.left, .right {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-  
-  /* Targets the internal components like Explorer or TOC */
-  & > .sidebar {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-  }
-}
-
-/* 2. Adjust the main Page Wrapper gap */
-.page {
-  /* This is the master gap at the very top of the site */
-  margin-top: 1rem !important; 
-  
-  /* If your layout uses a Header, reduce its bottom margin */
-  header {
-    margin-bottom: 0.5rem !important;
-  }
-}
-
-/* 3. Specific Component Adjustments */
-.page-title a, .page-title, .graph {
-  margin-top: 3rem !important;
-  padding-top: 0 !important;
-}
-/* 1. The Container - Standard State */
-details {
-  border-radius: 8px;
-  margin-bottom: 20px;
-  padding: 0rem .5rem 1rem .5rem !important;
-  background-color: transparent;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth lift transition */
-  margin-left: -1rem; /* Ensures the box starts at the exact edge of the text container */
-  margin-right: 0;
-  width: 100%;    /* Ensures it spans the same width as your paragraphs */
-  box-sizing: border-box; /* Prevents padding from pushing the box wider than the text */
-}
-
-
-/* 3. The Chevron (Steel Blue) */
-details summary {
-  display: flex;
-  align-items: center;   /* This is the magic for vertical centering */
-  cursor: pointer;
-  list-style: none;
-  font-weight: bold;
-  
-  padding: 1rem 0;       /* Adds vertical breathing room to the clickable area */
-
-}
-
-/* Remove the default chevron in browsers like Chrome/Safari */
-details summary::-webkit-details-marker {
-  display: none;
-}
-
-details summary::before {
-  content: '❯';
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0rem 0.5rem 0rem 0rem;
-  font-size: 1.4em;      
-  margin-right: 12px; 
-  margin-top: 1.8rem;
- 
-  
-  /* REMOVED: margin-top: 20px and !important padding */
-  /* These were causing the "drift" when closed */
-  
-  transition: transform 0.2s ease;
-  
-  /* Use a very small translate only if your specific font-family sits low */
-  transform: translateY(-1px); 
-}
-
-/* Ensure the rotation stays centered on its own axis */
-details[open] summary::before {
-  transform: translateY(-1px) rotate(90deg);
-  margin-top: 2.2rem !important;
-  
-}
-
-// =============================================================================
-// BREADCRUMB ALIGNMENT (Force Horizontal)
-// =============================================================================
-
-.breadcrumb-container, 
-.breadcrumbs,
-nav[aria-label="breadcrumbs"] {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important; // Prevents them from dropping to the next line
-  align-items: center !important;
-  gap: 0.5rem !important; // Space between items
-  overflow-x: auto !important; // Adds a scrollbar if they get too long on mobile
-  white-space: nowrap !important;
-  
-  /* Ensure the individual items behave */
-  & > a, & > span {
-    display: inline-flex !important;
-    align-items: center !important;
-  }
-
-  /* Optional: Style the separator (usually / or >) */
-  .separator {
-    margin: 0 0.25rem !important;
-    opacity: 0.5;
-  }
-}
-/* The container for the labels */
-.meta-line {
-  font-family: 'JetBrains Mono', 'Courier New', monospace; /* Monospace feels like a 'dossier' */
-  font-size: 0.75rem;
-  color: #6a737d; /* Muted gray */
-  margin-top: 2px;
-  display: block;
-}
-
-/* Individual labels inside the meta-line */
-.meta-label {
-  border-right: 1px solid #d1d5da;
-  padding-right: 8px;
-  margin-right: 8px;
-}
-
-/* The last label doesn't need a border */
-.meta-label:last-child {
-  border-right: none;
-}
-
-/* Optional: Highlight 'Processed' in your Steel Blue */
-.status-done {
-  color: #4682B4;
-  font-weight: bold;
-}
-/* Targets the main list items */
-li {
-  line-height: 1.6; /* The 'Golden Ratio' for readability */
-  margin-bottom: 1.2rem; /* Adds space between the 'blocks' of sources */
-}
-
-/* Keeps the metadata/summary sub-bullets slightly tighter but still readable */
-li li {
-  line-height: 1.4;
-  margin-top: 0.5rem;
-  color: #4a4a4a; /* Makes the summary slightly softer than the link */
+a.internal.tag-link:hover {
+  transform: translateY(-2px) !important;
+  opacity: 0.9 !important;
 }

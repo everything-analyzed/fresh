@@ -5,7 +5,7 @@ tags:
 pillar:
 publish:
 draft: false
-status: Glimmer
+status: 🐝 Pollinating
 cssclasses:
 ---
 For centuries, we defined the end of life by the "cardiopulmonary" standard: if the heart stopped, the person was gone. The invention of the [[positive-pressure ventilator]] in the 1950s changed the parameters. 

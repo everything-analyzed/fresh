@@ -1,5 +1,5 @@
 ---
-status: ☁️ Drifting
+status: 🌸 Flowering
 tags:
   - society
   - identity

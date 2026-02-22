@@ -1,5 +1,5 @@
 ---
-status: ✨Glimmer
+status: 🐝 Pollinating
 tags:
   - autonomy
   - society

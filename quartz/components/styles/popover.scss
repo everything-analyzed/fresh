@@ -4,13 +4,12 @@
   0% {
     opacity: 0;
     visibility: hidden;
-  }
-  1% {
-    opacity: 0;
+    transform: translateY(4px);
   }
   100% {
     opacity: 1;
     visibility: visible;
+    transform: translateY(0);
   }
 }
 
@@ -25,24 +24,78 @@
 
   & > .popover-inner {
     position: relative;
-    width: 30rem;
-    max-height: 20rem;
-    padding: 0 1rem 1rem 1rem;
-    font-weight: initial;
-    font-style: initial;
-    line-height: normal;
-    font-size: initial;
+    width: 28rem;
+    max-height: 22rem;
+    padding: 1.5rem;
+    
+    
+    /* THE LIFTED LOOK */
     font-family: var(--bodyFont);
-    border: 1px solid var(--lightgray);
+    border: none !important;
     background-color: var(--light);
-    border-radius: 5px;
-    box-shadow: 6px 6px 36px 0 rgba(0, 0, 0, 0.25);
-    overflow: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    
+    overflow: hidden;
     overscroll-behavior: contain;
     white-space: normal;
     user-select: none;
     cursor: default;
+
+    /* THIN NOTE TITLES - SOFTENED COLOR */
+    h1, h2, h3, h4, .title, a {
+      font-weight: 200 !important;
+      font-family: var(--headerFont) !important;
+      font-size: 1rem !important;
+      color: var(--slate-blue) !important;
+      margin: 0 0rem 0.4rem 0.6rem !important;
+      letter-spacing: -0.02em !important;
+      text-decoration: none !important;
+      line-height: 1.2 !important;
+    }
+
+    /* LESS PROMINENT DATES - FADED COLOR */
+    .meta, time, .content-meta {
+      display: block !important;
+      font-weight: 300 !important;
+      font-size: 0.7rem !important;
+      color: #b2ada9 !important; /* faded stone */
+      
+      margin-bottom: 1rem !important;
+    }
+
+    /* THE DESCRIPTION PREVIEW - MUTED COLOR */
+    p {
+      font-weight: 300 !important;
+      font-size: 0.85rem !important;
+      line-height: 1.6 !important;
+      color: #a09c98 !important; /* neutral mid-gray */
+      margin: 0 !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 4; 
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
   }
+  /* force the summary/description to show */
+.popover-inner .description,
+.popover-inner p,
+.popover-inner .summary {
+  display: block !important;
+  margin-top: 10px !important;
+}
+/* the "reveal" fix */
+.popover-inner {
+  .markdown-embed, 
+  .popover-body, 
+  p {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: #a09c98 !important; /* ensure it's not white-on-white */
+  }
+}
+
 
   & > .popover-inner[data-content-type] {
     &[data-content-type*="pdf"],
@@ -54,7 +107,7 @@
     &[data-content-type*="image"] {
       img {
         margin: 0;
-        border-radius: 0;
+        border-radius: 8px;
         display: block;
       }
     }
@@ -64,10 +117,6 @@
         width: 100%;
       }
     }
-  }
-
-  h1 {
-    font-size: 1.5rem;
   }
 
   visibility: hidden;
