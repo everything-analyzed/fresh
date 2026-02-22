@@ -29,24 +29,24 @@ const config: QuartzConfig = {
   },
   colors: {
   lightMode: {
-    light: "#faf9f6",       // warm parchment
-    lightgray: "#f0eee9",   // soft sand
-    gray: "#8a8682",        // warm stone
-    darkgray: "#4f4c4a",    // earthy charcoal
-    dark: "#3d3a38",        // deep coffee
-    secondary: "#8095a6",   // your steel blue
-    tertiary: "#a3b1bc",    // soft sky stone
-    highlight: "rgba(128, 149, 166, 0.12)",
-  },
-  darkMode: {
-    light: "#121110",       // warm off-black
-    lightgray: "#2d2b2a",   // dark cocoa
-    gray: "#66625f",        // muted taupe
-    darkgray: "#d6d3d0",    // soft warm silver
-    dark: "#e8e6e3",        // creamy light gray
-    secondary: "#a3b1bc",   // soft sky stone
-    tertiary: "#8095a6",    // steel blue
-    highlight: "rgba(163, 177, 188, 0.15)",
+  light: "#efeeea",       // page background
+  lightgray: "#fdfdfc",   // panel background
+  gray: "#b8b4af",        
+  darkgray: "#4a4846",    
+  dark: "#2b2a29",        
+  secondary: "#5d676f",   
+  tertiary: "#8a959e",    
+  highlight: "rgba(93, 103, 111, 0.07)",
+},
+    darkMode: {
+      light: "#121412",
+      lightgray: "#1a1c1a",
+      gray: "#646464",
+      darkgray: "#d1d1cc",
+      dark: "#ebebeb",
+      secondary: "#a3b3a3",
+      tertiary: "#84a59d",
+      highlight: "rgba(143, 159, 169, 0.15)",
         },
       },
     },

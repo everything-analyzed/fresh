@@ -8,32 +8,23 @@
 // 1. CORE THEME & VARIABLES
 // =============================================================================
 :root {
-  --steel-blue: #8a96a1;   /* slightly warmer blue */
-  --slate-blue: #525c66;   /* muted, less "icy" */
-  --light: #faf9f6 !important; /* warm parchment white */
-  --page-bg: #f5f4f0 !important; /* soft sand background */
-  --panel-bg: #ffffff;
-  --darkgray: #4f4c4a !important; /* earthy charcoal */
-}
-:root[saved-theme="light"] {
-  --light: #f4f4f7 !important; 
+  /* page background: warm stone gray */
+  --light: #efeeea !important; 
+  --page-bg: #efeeea !important;
+
+  /* center panel: warm bone white */
+  --panel-bg: #fdfdfc !important; 
+  
+  /* text: deep mocha gray */
+  --darkgray: #4a4846 !important;
+  --slate-blue: #5d676f !important;
 }
 
 [user-color-scheme="darkMode"], [saved-theme="dark"] {
-  --light: #121110 !important;     /* warm off-black */
-  --page-bg: #121110 !important;
-  --panel-bg: #1a1918 !important;   /* dark chocolate/raisin tint */
-  --panel-border: 1px solid #2d2b2a !important;
-  --darkgray: #d6d3d0 !important;   /* soft warm silver */
-  --slate-blue: #e8e6e3 !important; /* creamy light gray */
-  --secondary: #a3b1bc !important;  /* soft sky stone */
-  --highlight: rgba(163, 177, 188, 0.12) !important;
-}
-body, .article-title + p, section {
-  /* #555 is a standard 'professional' gray for long-form reading */
-  color: #555555 !important;
-  font-size: .9rem !important;
-  -webkit-font-smoothing: antialiased;
+  body, #quartz-root, .page, .center {
+    background-color: #161514 !important;
+    box-shadow: none !important;
+  }
 }
 
 @mixin floating-panel {
@@ -47,114 +38,38 @@ body, .article-title + p, section {
 // =============================================================================
 // 2. TYPOGRAPHY (Headers 500 / Links & Explorer 400)
 // =============================================================================
-body {
-  background-color: var(--light) !important;
-  font-family: 'Inter', sans-serif !important;
-  color: var(--darkgray) !important;
-}
-
-/* Headers: Weight 500 */
-h1, h2, h3, h4 {
-  font-weight: 500 !important; 
-  color: var(--slate-blue) !important;
-  letter-spacing: 0.00em !important;
-  margin-bottom: .2rem !important;
-  
+body, .article-title + p, section {
+  color: #433f3d !important; /* deep warm charcoal */
+  font-size: 0.95rem !important; /* slightly larger for comfort */
+  line-height: 1.7 !important; /* more breathing room */
+  -webkit-font-smoothing: antialiased;
 }
 /* Headers: Weight 500 */
-.article-title {
-  font-weight: 500 !important; 
-  color: var(--slate-blue) !important;
-  letter-spacing: 0.00em !important;
-  
+h1, h2, h3, h4, .article-title, .page-title a, .page-title {
+  font-weight: 400 !important; 
+  color: #5d6d7e !important; /* muted stone blue */
+  letter-spacing: -0.01em !important; /* tighter look */
+  margin-bottom: 0.5rem !important;
+  line-height: 1.2 !important;
 }
-/* Headers: Weight 500 */
-h3, h4 {
-  font-weight: 500 !important; 
-  color: var(--slate-blue) !important;
-  letter-spacing: 0.00em !important;
-  
-}
-/* Page Title: Weight 500 */
-.page-title a, .page-title {
-  font-weight: 500 !important; 
-  color: var(--slate-blue) !important;
-  letter-spacing: 0.00em !important;
-  margin-bottom: 1.5rem !important;
-}
-
-/* ALL Links (Wiki, Sidebar, Footer): Weight 400 */
-a, .internal, .alias, .footer a {
-  font-weight: 400 !important;
-  text-decoration: none !important;
-}
-/* Sidebar: Weight 400 */
 .explorer a, .toc a {
-font-weight: 400 !important;
-text-decoration: none !important;
-font-size: .9rem !important;
-line-height: .1rem !important;
-color: var(--slate-blue) !important;
+  color: #7a8691 !important; /* softer stone gray-blue */
+  transition: color 0.2s ease;
 
+  &:hover {
+    color: #5d6d7e !important; /* darkens on hover */
+  }
 }
-/* 2. MOBILE SETTINGS (Phones and small tablets) */
-@media all and (max-width: 768px) {
-  .article-title {
-    /* Shrink the title so it doesn't take up the whole screen */
-    font-size: 1.75rem !important; 
-    line-height: 1.3 !important;
-    margin-bottom: 0.75rem !important;
-    letter-spacing: -0.02em !important; // Tighter tracking looks better on mobile
-    padding: 0rem 0rem 0rem 0rem !important;
-  }
-
-  /* You can also shrink the body text slightly for mobile if needed */
-  article p, article li {
-    font-size: 1rem !important;
-    line-height: 1.5 !important;
-  }
+.content-meta > span, 
+.content-meta > time,
+.content-meta > a {
+  color: #96918d !important; /* warm taupe */
+  font-size: 0.8rem !important;
 }
 
 
 
-// =============================================================================
-// 3. TAG CARDS (The "Footer" Fix)
-// =============================================================================
-/* Targeting the TagList component specifically to kill bullets */
-.tags, .tag-list, .tag-container, ul.section-ul {
-  list-style: none !important;
-  padding: 0 !important;
-  margin: 2rem 0 !important;
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 10px !important;
 
-  li {
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    &::before { content: none !important; display: none !important; }
-  }
-
-  /* The Card Design */
-  a, .tag-link {
-    @include floating-panel;
-    display: inline-flex !important;
-    padding: 0.3rem 0.8rem !important;
-    font-size: 0.8rem !important;
-    font-weight: 400 !important; // Slim text in cards
-    color: var(--secondary) !important;
-    background: transparent !important;
-    border-radius: 4px !important;
-    transition: all 0.2s ease;
-
-    &:hover {
-      background-color: var(--secondary) !important;
-      color: #ffffff !important;
-      transform: translateY(-2px);
-    }
-  }
-}
 
 // =============================================================================
 // 4. GRID & PANEL PERSISTENCE (Surgical Overlap Fix)
@@ -162,7 +77,7 @@ color: var(--slate-blue) !important;
 
 /* 1. THE CENTER PANEL: Look & Feel */
 .center {
-  background-color: #ffffff !important;
+  background-color: var(--panel-bg) !important;
   border-radius: 4px !important;
   box-shadow: var(--panel-shadow);
   padding: 1.5rem !important; 
@@ -172,9 +87,9 @@ color: var(--slate-blue) !important;
   box-sizing: border-box !important;
 }
 
-/* 2. THE BACKGROUND FLOOR */
+//* 2. THE BACKGROUND FLOOR */
 body, #quartz-root, .page {
-  background-color: #f5f5f5 !important; 
+  background-color: var(--light) !important; 
 }
 
 @media all and (min-width: 1200px) {
@@ -188,8 +103,7 @@ body, #quartz-root, .page {
     background-color: transparent !important;
     /* This is the secret: it keeps everything in its own row/column */
     align-items: start !important; 
-    
-  }
+    }
 
   .center { 
     padding: 0rem 3rem 2.5rem 3rem !important;
@@ -208,14 +122,6 @@ body, #quartz-root, .page {
     width: 100% !important; /* Makes it fill its 280px or 320px slot exactly */
     min-width: 0 !important;
     overflow-wrap: break-word !important;
-  }
-}
-
-/* Dark Mode */
-[user-color-scheme="darkMode"], [saved-theme="dark"] {
-  body, #quartz-root, .page, .center {
-    background-color: #000000 !important;
-    box-shadow: none !important;
   }
 }
 // =============================================================================
@@ -259,7 +165,7 @@ body, #quartz-root, .page {
   font-family: 'Inter', sans-serif !important;
   font-size: 1.3rem !important;
   font-weight: 500 !important;
-  color: var(--slate-blue) !important;
+  
 
 }
 
@@ -279,7 +185,7 @@ body, #quartz-root, .page {
   font-family: 'Inter', sans-serif !important;
   font-size: 1rem !important;
   font-weight: 400 !important;
-  color: var(--steel-blue) !important;
+  
   
   
   /* PADDING: The highlight area */
@@ -301,7 +207,6 @@ body, #quartz-root, .page {
 .recent-notes li p {
   padding: 0 !important;
   font-size: 0.85rem !important;
-  color: #666666 !important; /* Lighter body color */
   line-height: 1.2 !important;
   /* Keeps the description aligned with the header and link text */
   display: block !important; 
@@ -316,8 +221,6 @@ body, #quartz-root, .page {
   text-decoration: none !important;
   border-radius: 4px !important;
   transition: background 0.2s ease;
-  
-
   /* Ensure the links don't stack horizontally if they are short */
   width: auto !important;
 }
@@ -337,10 +240,6 @@ body, #quartz-root, .page {
 }
 
 /* 3. ENSURING THE HIGHLIGHT STAYS VISIBLE */
-.recent-notes li a:hover {
-  background-color: var(--highlight) !important; /* The subtle gray/blue tint */
-  color: var(--secondary) !important;
-}
 
 /* 4. THE ACTIVE STATE (If currently viewing that note) */
 .recent-notes li a.active, 
@@ -386,7 +285,6 @@ body, #quartz-root, .page {
   font-family: 'Inter', sans-serif !important;
   font-size: 0.9rem !important;
   font-weight: 400 !important;
-  color: #666666 !important; 
   line-height: 1.6 !important;
   
   /* 3. ALIGNMENT */
@@ -427,8 +325,7 @@ body, #quartz-root, .page {
   
   /* Font & Color to match your secondary metadata (Date) */
   font-family: 'Inter', sans-serif !important;
-  font-size: 0.75rem !important;
-  color: var(--steel-blue) !important; 
+  font-size: 0.75rem !important; 
   text-decoration: none !important;
 }
 
@@ -442,89 +339,105 @@ body, #quartz-root, .page {
 
 }
 // =============================================================================
-// RECENT NOTES: INDIVIDUAL CARD HOVER
+// RECENT NOTES: INTEGRATED CARD STYLE & HOVER
 // =============================================================================
 
 .recent-notes li {
-  /* 1. STRUCTURE: Each entry is a container */
+  /* 1. LAYOUT */
   display: flex !important;
   flex-direction: column !important;
-  padding: 12px 16px !important;  /* Space inside the 'card' */
-  margin-left: -16px !important;  /* Pulls it back to align text with the header */
-  margin-bottom: 8px !important;
-  border-radius: 4px !important;
-  transition: all 0.2s ease-in-out !important;
-  cursor: pointer;
-  background-color: transparent; /* Invisible until hover */
-}
-
-/* 2. THE HOVER EFFECT */
-.recent-notes li:hover {
-  /* LIGHT MODE: Very subtle grey-blue tint */
-  background-color: rgba(0, 0, 0, 0.02) !important; 
+  align-items: flex-start !important;
+  padding: 12px 16px !important;  
+  margin: 4px 0 8px -16px !important; /* pulls it left to align with header */
   
-  /* OR use your theme color with transparency (e.g., Slate Blue) */
-  // background-color: rgba(106, 115, 125, 0.08) !important;
+  /* 2. BASE LOOK */
+  list-style: none !important;
+  background-color: transparent !important; /* start invisible */
+  border-radius: 8px !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer;
+  position: relative;
 
-  box-shadow: none !important; /* Optional: remove shadow to keep it flat */
+  /* Kill the Quartz dot again just in case */
+  &::before { content: none !important; display: none !important; }
 }
 
-/* If you have a specific Dark Mode toggle, use this for the hover: */
-[saved-theme="dark"] .recent-notes li:hover {
-  background-color: rgba(255, 255, 255, 0.05) !important;
+/* the soft-edge stone hover */
+.recent-notes li:hover {
+  /* pulls from your #efeeea background at a soft 60% opacity */
+  background-color: rgba(239, 238, 234, 0.6) !important; 
+  
+  /* smoother, rounder corners to soften the look */
+  border-radius: 12px !important; 
+
+  /* wide, very faint shadow to eliminate harsh lines */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+  
+  /* slight move just to show life */
+  transform: translateX(4px) !important;
 }
 
-/* 3. RESET LINK BEHAVIOR (Since the card is now the focus) */
+/* keeps title text warm */
+.recent-notes li:hover a {
+  color: #4a4846 !important;
+}
+.recent-notes li:hover .desc,
+.recent-notes li:hover p,
+.recent-notes li:hover time {
+  color: #333333 !important; /* darkens slightly for focus */
+}
+
+/* 5. LINK OVERRIDES (No more individual pills) */
 .recent-notes li a {
-  background: none !important; /* Remove the individual title highlight */
-  padding: 0 !important;
-  margin: 0 !important;
+  all: unset !important;
   display: block !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1rem !important;
   font-weight: 500 !important;
+  
+  cursor: pointer !important;
+  margin-bottom: 4px !important;
 }
-
-/* 4. KEEPING THE TEXT ALIGNED */
-/* Since the card has 16px padding, we ensured the margin-left is -16px 
-   so the text still hits the same vertical line as your Page Header. */
 // =============================================================================
 // EXPLORER: COMPONENT-LEVEL OVERRIDE
 // =============================================================================
 
-/* 1. THE ARTICLE TITLES (Files) 
-   Component path: .explorer-content ul li > a
-*/
+/* 1. THE ARTICLE TITLES (Files) */
 .explorer-content ul li > a {
   all: unset !important; 
   display: inline-block !important;
   font-family: 'Inter', sans-serif !important;
   font-weight: 500 !important;
-  font-size: 0.9rem !important;      
+  font-size: 1rem !important;      
   color: var(--steel-blue) !important; 
-  opacity: 1 !important;             
-  line-height: 1.2 !important;
+  
+  /* TIGHT: The text itself stays compact */
+  line-height: 1.1 !important;
+  
+  /* LOOSER: This adds the "breathing room" between entries */
+  margin-bottom: 0.6rem !important; 
+  
   cursor: pointer !important;
-  padding: 2px 2px !important;
-  margin-bottom: .3rem !important;
+  padding: 2px 4px !important;
 
-  /* THE SENTENCE CASE LOGIC */
-  text-transform: lowercase !important; // Step 1: Lowercase the whole string
-
+  text-transform: lowercase !important;
   &::first-letter {
-    text-transform: uppercase !important; // Step 2: Capitalize ONLY the first letter
+    text-transform: uppercase !important;
   }
   
   &:hover {
-    color: var(--secondary) !important;
-    background-color: var(--highlight) !important;
-  }
-
-  &.active {
-    color: var(--secondary) !important;
-    font-weight: 500 !important;
-    opacity: 1 !important;
+    background-color: rgba(255, 255, 255, 0.6) !important;
+    color: #433f3d !important;
+    border-radius: 4px;
   }
 }
 
+/* Ensure the list items don't collapse the margin */
+.explorer li {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
 /* 2. THE FOLDER TITLES (Categories)
    Component path: .folder-container div > a OR .folder-container div > button span
 */
@@ -532,21 +445,19 @@ body, #quartz-root, .page {
 .folder-container div > button span {
   all: unset !important;
   font-family: 'Inter', sans-serif !important;
-  font-size: 0.90rem !important;      /* Adjust folder size here */
-  font-weight: 500 !important;        /* Bolder category header */
-  color: var(--slate-blue) !important; /* Your signature folder color */
-  line-height: 1.5rem !important;
+  font-size: .95rem !important;      /* Adjust folder size here */
+  font-weight: 400 !important;        /* Bolder category header */
+  line-height: 1.2rem !important;
   cursor: pointer !important;
   display: inline-block !important;
-
-  letter-spacing: 0.05em !important;
+  letter-spacing: 0.0em !important;
 }
 
 /* 3. THE FOLDER ICON (Arrow) 
    To match your Steel Blue theme
 */
 .folder-icon {
-  color: var(--steel-blue) !important;
+  
   opacity: 1 !important;
 }
 // =============================================================================
@@ -558,15 +469,13 @@ body, #quartz-root, .page {
 .explorer button.mobile-explorer h2 {
   /* Font & Color */
   font-family: 'Inter', sans-serif !important;
-  font-size: 1.1rem !important; 
-  font-weight: 500 !important;   
-  color: var(--slate-blue) !important;
-  letter-spacing: 0.05em !important;
+  font-size: 1.2rem !important; 
+  font-weight: 400 !important;   
+  letter-spacing: 0.0em !important;
+  margin-top: .5rem !important; 
  
-  
-  
   /* Resetting only the spacing that causes "disappearing" acts */
-  margin-bottom: .5rem !important;
+  margin-bottom: 1rem !important;
   padding: 0 !important;
   line-height: 1.2 !important;
   display: inline-block !important;
@@ -576,7 +485,7 @@ body, #quartz-root, .page {
 /* Specifically style the Chevron icon to match */
 .explorer button.desktop-explorer svg,
 .explorer button.mobile-explorer svg {
-  stroke: var(--steel-blue) !important;
+  
   width: .9rem !important;
   height: .9rem !important;
   visibility: visible !important;
@@ -702,6 +611,11 @@ details summary::before {
   /* ANIMATION */
   transition: transform 0.2s ease !important;
   transform-origin: center;
+}
+details[open] {
+  background-color: #fdfdfc !important; /* bone white */
+  border: 1px solid rgba(0, 0, 0, 0.03) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02) !important;
 }
 
 /* 3. ROTATE ON OPEN */
@@ -1031,7 +945,7 @@ details summary {
   cursor: pointer;
   list-style: none;
   font-weight: bold;
-  color: #4682B4;
+  
   padding: 1rem 0;       /* Adds vertical breathing room to the clickable area */
 
 }
