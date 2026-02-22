@@ -1,8 +1,8 @@
 ---
 tags:
-  - seedling
-pillar: The Human Body
+  - thehumanbody
+pillar:
 draft: true
 publish: "false"
+status: ✨Glimmer
 ---
-#status/seedling 

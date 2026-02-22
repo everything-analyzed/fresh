@@ -71,7 +71,7 @@ I think it's quite obvious that this choice was not made for virtuous reasons. I
 
 Without dismissing the fact that, according to our laws, he did commit a crime, self-righteousness was what convicted him. Dr. Kevorkian chose to pursue a personal vendetta at the expense of the ideology of death with dignity, the individuals who it would benefit, and his own personal freedom.
 
-Ironically, where Dr. Kevorkian had much success was in demonstrating our lack of [[Personal  Autonomy in Modern Society|personal autonomy]]. We operate within countless boundaries, even to the point of restricting our choices related to our own life or death. Was the circus surrounding Dr. Kevorkian an effective distraction from considering what freedoms we truly have as individuals?
+Ironically, where Dr. Kevorkian had much success was in demonstrating our lack of [[How free are we?|personal autonomy]]. We operate within countless boundaries, even to the point of restricting our choices related to our own life or death. Was the circus surrounding Dr. Kevorkian an effective distraction from considering what freedoms we truly have as individuals?
 
 ### Roots
 

@@ -1,7 +1,6 @@
 ---
 tags:
   - petroleum
-  - budding
 draft: true
 ---
 
@@ -48,21 +47,6 @@ The ultimate irony is that the transition to "green" energy currently requires a
     
 
 ---
-
-### The Relatable Intellectual’s Take
-
-We are like fish trying to describe the concept of "water." We are so immersed in a hydrocarbon-based reality that we think we can "divest" from oil by changing our car. In reality, unless you are standing naked in a forest eating wild berries, you are currently in a "handshake" with the petroleum industry.
-
-The question isn't whether we should stop using oil for fuel—physics and climate data suggest we must. The question is: **Do we realize that even if we stop burning it, we will still be living inside of it?**
+ that even if we stop burning it, we will still be living inside of it?**
 
 ---
-
-### The Handshake (Connections)
-
-- **Collective Fictions:** [[The Divestment Myth]] – Why selling oil stocks doesn't remove petroleum from your life.
-    
-- **How Stuff Works:** [[Synthetic Fertilizers and the Population Boom]] – How fossil fuels literally became the calories in our bodies.
-    
-- **Law & Material:** [[The USP Standard]] – When a refinery byproduct legally becomes a "medicine."
-    
-

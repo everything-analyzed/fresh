@@ -1,7 +1,5 @@
 ---
-tags:
-  - thehumanbody
-pillar:
 draft: true
 status: ✨Glimmer
 ---
+Title 

@@ -1,8 +1,8 @@
 ---
 tags:
-  - drifting
   - nature
-status:
+  - animals
+status: ✨Glimmer
 ---
 There are roosters everywhere in Key West, FL. In the street, on the sidewalks, in people's yards, at the parties.
 

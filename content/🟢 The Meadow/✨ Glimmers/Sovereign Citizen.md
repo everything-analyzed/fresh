@@ -1,7 +1,4 @@
 ---
-tags:
-  - society
 draft: true
 ---
-the irony 
 [[How free are we?]]

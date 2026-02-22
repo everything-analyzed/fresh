@@ -9,6 +9,6 @@ Criminology is the scientific study of the nonlegal aspects of crime and delinqu
 
 It draws from concepts of anthropology, biology, psychology, psychiatry, economics, sociology, and statistics. 
 
-l made the mistake of using "[[criminologist]]" and "[[criminal profiler]]" interchangeably but they are, in fact, different things. 
+
 
 https://www.britannica.com/science/criminology

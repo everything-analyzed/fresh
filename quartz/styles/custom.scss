@@ -8,28 +8,26 @@
 // 1. CORE THEME & VARIABLES
 // =============================================================================
 :root {
-  --steel-blue: #8095a6;
-  --slate-blue: #3d5261;
+  --steel-blue: #8a96a1;   /* slightly warmer blue */
+  --slate-blue: #525c66;   /* muted, less "icy" */
+  --light: #faf9f6 !important; /* warm parchment white */
+  --page-bg: #f5f4f0 !important; /* soft sand background */
   --panel-bg: #ffffff;
-  --panel-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  --panel-border: 1px solid rgba(0, 0, 0, 0.1);
-  --light: #ffffff; 
-  --darkgray: #2b2b2b;
+  --darkgray: #4f4c4a !important; /* earthy charcoal */
 }
 :root[saved-theme="light"] {
   --light: #f4f4f7 !important; 
 }
 
 [user-color-scheme="darkMode"], [saved-theme="dark"] {
-  --light: #000000 !important;
-  --page-bg: #000000 !important;
-  --panel-bg: #050505 !important; 
-  --panel-border: 1px solid #222 !important;
-  /* CHANGE THIS: From #d4d4d4 or white to a softer gray */
-  --darkgray: #b3b3b3 !important; 
-  --slate-blue: #ebebeb !important;
-  --secondary: #8095a6 !important;
-  --highlight: rgba(128, 149, 166, 0.15) !important;
+  --light: #121110 !important;     /* warm off-black */
+  --page-bg: #121110 !important;
+  --panel-bg: #1a1918 !important;   /* dark chocolate/raisin tint */
+  --panel-border: 1px solid #2d2b2a !important;
+  --darkgray: #d6d3d0 !important;   /* soft warm silver */
+  --slate-blue: #e8e6e3 !important; /* creamy light gray */
+  --secondary: #a3b1bc !important;  /* soft sky stone */
+  --highlight: rgba(163, 177, 188, 0.12) !important;
 }
 body, .article-title + p, section {
   /* #555 is a standard 'professional' gray for long-form reading */

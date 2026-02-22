@@ -20,33 +20,33 @@ const config: QuartzConfig = {
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
-      fontOrigin: "googleFonts",
-      cdnCaching: true,
-      typography: {
-        header: "Inter",
-        body: "Inter",
-        code: "IBM Plex Mono",
-      },
-      colors: {
-        lightMode: {
-          light: "#f0f0f0",
-          lightgray: "#e8e8e8",
-          gray: "#b0b0b0",
-          darkgray: "#4a4a4a",
-          dark: "#3d5261",
-          secondary: "#5a7a91",
-          tertiary: "#8095a6",
-          highlight: "rgba(61, 82, 97, 0.05)",
-        },
-        darkMode: {
-          light: "#000000",
-          lightgray: "#1a1a1a",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebeb",
-          secondary: "#5f9ea0",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
+  fontOrigin: "googleFonts",
+  cdnCaching: true,
+  typography: {
+    header: "Inter", // Matches your SCSS serif choice
+    body: "Inter",
+    code: "IBM Plex Mono",
+  },
+  colors: {
+  lightMode: {
+    light: "#faf9f6",       // warm parchment
+    lightgray: "#f0eee9",   // soft sand
+    gray: "#8a8682",        // warm stone
+    darkgray: "#4f4c4a",    // earthy charcoal
+    dark: "#3d3a38",        // deep coffee
+    secondary: "#8095a6",   // your steel blue
+    tertiary: "#a3b1bc",    // soft sky stone
+    highlight: "rgba(128, 149, 166, 0.12)",
+  },
+  darkMode: {
+    light: "#121110",       // warm off-black
+    lightgray: "#2d2b2a",   // dark cocoa
+    gray: "#66625f",        // muted taupe
+    darkgray: "#d6d3d0",    // soft warm silver
+    dark: "#e8e6e3",        // creamy light gray
+    secondary: "#a3b1bc",   // soft sky stone
+    tertiary: "#8095a6",    // steel blue
+    highlight: "rgba(163, 177, 188, 0.15)",
         },
       },
     },
