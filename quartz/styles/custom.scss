@@ -213,6 +213,31 @@ code {
   font-weight: 400 !important;
   color: var(--secondary) !important;
 }
+.recent-notes ul {
+  list-style: none !important; /* kills the bullets */
+  padding: 0 !important;      /* removes the bullet gap */
+  margin: 0 !important;
+}
+
+.recent-notes li {
+  list-style-type: none !important; /* double insurance */
+  padding: 12px 0 !important;       /* clean vertical spacing */
+  &::before {
+    content: none !important;       /* removes any custom quartz bullets */
+  }
+}
+.recent-notes ul li:nth-child(n+4) {
+  display: none !important;
+}
+/* hides the current page from the recent notes list */
+.recent-notes ul li:has(a.active) {
+  display: none !important;
+}
+
+/* keeps it strictly to 3 items regardless of the active page */
+.recent-notes ul li:nth-child(n+4) {
+  display: none !important;
+}
 
 // =============================================================================
 // 7. TAGS (REVERSED/DARKER)
