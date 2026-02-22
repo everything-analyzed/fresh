@@ -5,7 +5,7 @@ tags:
 title:
 description:
 publish: "true"
-status: ✨Glimmer
+status: 🐝 pollinating
 ---
  **This is a work in progress.** These are my incomplete thoughts while I build a "thinking" framework. 
  

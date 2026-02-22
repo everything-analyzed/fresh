@@ -3,5 +3,5 @@ tags:
   - thehumanbody
 pillar:
 draft: true
-status: ✨Glimmer
+status: 🐝 pollinating
 ---
