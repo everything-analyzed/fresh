@@ -14,12 +14,10 @@ export const sharedPageComponents: SharedLayout = {
 
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
-Component.DesktopOnly(
-  Component.ConditionalRender({
-    component: Component.Breadcrumbs(),
-    condition: (page) => page.fileData.slug !== "index",
-  })
-),
+    Component.ConditionalRender({
+      component: Component.DesktopOnly(Component.Breadcrumbs()),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
     Component.ArticleTitle(),
     Component.ContentMeta(),
     
@@ -107,10 +105,7 @@ Component.TagList(),
   
 Component.DesktopOnly(Component.TableOfContents()),
   ],
-  right: [
-  
-
-    
+  right: [   
     
   ],
 }

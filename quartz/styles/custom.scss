@@ -47,33 +47,37 @@ h1, h2, h3, h4, .article-title {
   color: var(--dark) !important; /* Lighter taupe (#b2ada9) */
   letter-spacing: -0.01em !important;
   line-height: 1.2 !important;
+  text-align: left !important; 
 }
 
-.page-title {
-  display: flex !important;
-  flex-direction: column !important; /* keeps the stack */
-  align-items: flex-end !important;   /* pushes both lines to the right */
-  text-align: left !important;      /* ensures text justifies right */
-width: auto !important; /* let it shrink to the text size */
-  margin-right: 8rem !important; 
-  margin-left: auto !important;
-  margin-bottom: 2rem !important;
-  font-weight: 300 !important; 
-  margin-top: 1rem !important;
-}
+/* only apply these specific title styles on mobile */
+@media all and (max-width: 768px) {
+  .page-title {
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: flex-end !important;   
+    text-align: left !important;      
+    width: auto !important; 
+    margin-right: 8rem !important; 
+    margin-left: auto !important;
+    margin-bottom: 2rem !important;
+    font-weight: 300 !important; 
+    margin-top: 1rem !important;
+  }
 
-.page-title a {
-  display: block !important;
-  line-height: 1.1 !important;       /* tightens the stack gap */
-  max-width: 200px !important;       /* controls where it breaks */
-   font-weight: 300 !important; 
-   font-size: 2.35rem !important;
-   text-align: left !important; 
+  .page-title a {
+    display: block !important;
+    line-height: 1.1 !important;       
+    max-width: 200px !important;       
+    font-weight: 300 !important; 
+    font-size: 2.35rem !important;
+    text-align: left !important; 
+  }
 }
-
 .article-title {
   font-size: 1.6rem !important; 
   margin-top: 0 !important;
+  
 }
 
 strong {
@@ -102,7 +106,6 @@ html, body, .page {
 @media all and (min-width: 769px) {
   #quartz-body {
     display: grid !important;
-    /* narrowed the 2nd column from 900px to 700px */
     grid-template-columns: 400px 900px 1fr !important; 
     column-gap: 30px !important;
     width: 100% !important;
@@ -111,26 +114,100 @@ html, body, .page {
     padding: 0 40px !important;
     align-items: start !important; 
   }
+  .center {
+    background-color: var(--light) !important;
+    border-radius: 12px !important;
+    padding: 0rem 4rem 4rem 4rem!important; /* Adjust this for more/less breathing room */
+    box-sizing: border-box !important;
+    width: 900px !important; /* Match the grid column */
+    margin: 0 !important;
+    align-items: flex-start !important; /* Fixes title drift */
+  }
 
+  /* Force the sidebar to behave like a simple vertical stack */
   .sidebar.left {
     display: flex !important;
     flex-direction: column !important;
-    width: 100% !important;
-    background-color: var(--light) !important;
+    background-color: var(--light) !important; /* white sidebar */
     border-radius: 12px !important;
+    align-items: flex-start;
     padding: 2.5rem !important;
-    position: sticky !important;
-    top: 2rem;
+    
   }
 
-  .center { 
-    background-color: var(--light) !important; 
-    border-radius: 24px !important;
-    padding: 3rem 4rem !important;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06) !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
+  /* 1. Title */
+.page-title {
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: flex-start !important;   
+    text-align: left !important;      
+    width: auto !important; 
+    margin-right: 8rem !important; 
+    margin-left: auto !important;
+    margin-bottom: 2rem !important;
+    font-weight: 300 !important; 
+    margin-top: 1rem !important;
+    order: -10 !important; /* super low number to force it to the very top */
   }
+
+  .page-title a {
+    display: block !important;
+    line-height: 1.1 !important;       
+    max-width: 200px !important;       
+    font-weight: 300 !important; 
+    font-size: 2.35rem !important;
+    text-align: left !important; 
+    order: -10 !important; /* super low number to force it to the very top */
+  }
+
+  /* 2. Search Wrapper */
+  /* This targets the div Quartz creates to hold the Search/Darkmode components */
+  .sidebar.left > div:has(.search),
+  .sidebar.left > .flex,
+  .search { 
+    order: -5 !important; 
+    width: 80% !important;
+   
+    
+  }
+
+  /* 3. Graph - order 3 to sit under search */
+  .graph { 
+    order: 3 !important; 
+    height: 300px !important; 
+    width: 100% !important; 
+    margin-right: 8rem !important; 
+    left: 0 !important;
+
+   
+  }
+
+  /* Target the internal canvas to make sure it doesn't shift */
+  .graph > .graph-outer,
+  .graph canvas {
+    left: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0rem !important;
+  }
+
+  /* 4. Explorer */
+  .explorer { 
+    order: 10 !important; 
+  }
+  .sidebar.right {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+ .article {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1.5rem !important; /* nice breathability for text */
+    box-sizing: border-box !important;
+    overflow-wrap: break-word !important; /* stops long text runoff */
+     align-items: center !important; /* this centers the children */
+    
+}
 }
 
 /* 3. MOBILE (768px and down) */
@@ -142,9 +219,9 @@ html, body, .page {
     padding: 0 !important;
     margin: 0 !important;
     overflow-x: hidden !important; /* kills the horizontal scroll */
+    
    }
   
-  /* Title first */
 .search {
     display: flex !important;
     flex-direction: column !important; 
@@ -172,6 +249,7 @@ html, body, .page {
     text-align: left !important;      
     margin: 2.5rem 0 1rem 1.5rem !important; 
     width: calc(100% - 3rem) !important;
+    font-weight: 300 !important;
   }
 
   .page-title a {
@@ -186,6 +264,9 @@ html, body, .page {
     font-size: 1.6rem !important; 
     font-weight: 300 !important;
     flex-direction: column !important;
+    position: sticky !important;
+    top: 0;
+    z-index: 100; /* keeps it above the article text */
 
     .search {
     display: flex !important;
@@ -204,7 +285,7 @@ html, body, .page {
     align-content: left! important; 
   }
   }
-}
+
 
 
 
@@ -224,7 +305,7 @@ html, body, .page {
     overflow-wrap: break-word !important; /* breaks long links */
     word-wrap: break-word !important;
     /* flexbox insurance */
-    align-items: center !important; /* this centers the children */
+ 
    
      display: flex !important;
     flex-direction: column !important;
@@ -276,11 +357,14 @@ html, body, .page {
     box-sizing: border-box !important;
     overflow-wrap: break-word !important; /* stops long text runoff */
      align-items: center !important; /* this centers the children */
+    margin: 2rem 1.5rem 1rem 1rem !important;
+     
   }
 .sidebar.right {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
+}
 }
 
 // =============================================================================
@@ -380,5 +464,17 @@ a.internal.tag-link:hover {
   opacity: 0.9 !important;
 }
 
+/* changes the search magnifying glass color */
+.search button svg, 
+.search .search-icon svg {
+  stroke: var(--darkgray) !important; /* using your taupe variable */
+  fill: none !important; 
+  opacity: 0.8;
+}
 
+/* optional: make it pop a bit more when you hover */
+.search button:hover svg {
+  stroke: var(--steel-blue) !important;
+  opacity: 1;
+}
 
