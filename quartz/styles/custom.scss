@@ -99,7 +99,7 @@ code {
 /* 1. GLOBAL RESET */
 html, body, .page {
   background-color: var(--lightgray) !important; 
-  overflow-x: hidden !important; /* stops the side-scrolling */
+  
 }
 
 /* 2. DESKTOP & TABLET (769px and up) */
@@ -116,7 +116,7 @@ html, body, .page {
   }
   .center {
     background-color: var(--light) !important;
-    border-radius: 12px !important;
+    border-radius: 8px !important;
     padding: 0rem 4rem 4rem 4rem!important; /* Adjust this for more/less breathing room */
     box-sizing: border-box !important;
     width: 900px !important; /* Match the grid column */
@@ -129,7 +129,7 @@ html, body, .page {
     display: flex !important;
     flex-direction: column !important;
     background-color: var(--light) !important; /* white sidebar */
-    border-radius: 12px !important;
+    border-radius: 8px !important;
     align-items: flex-start;
     padding: 2.5rem !important;
     
@@ -167,27 +167,31 @@ html, body, .page {
   .search { 
     order: -5 !important; 
     width: 80% !important;
+    margin-bottom: 2.5rem !important;
    
     
   }
 
   /* 3. Graph - order 3 to sit under search */
-  .graph { 
+  .graph, .graph-window { 
     order: 3 !important; 
     height: 300px !important; 
     width: 100% !important; 
     margin-right: 8rem !important; 
     left: 0 !important;
+    margin-top: 1rem !important;
+    
 
    
   }
 
   /* Target the internal canvas to make sure it doesn't shift */
   .graph > .graph-outer,
-  .graph canvas {
+  .graph canvas, .graph-window {
     left: 0 !important;
     margin-left: 0 !important;
     margin-right: 0rem !important;
+    margin-top: 1rem !important;
   }
 
   /* 4. Explorer */
@@ -206,7 +210,10 @@ html, body, .page {
     box-sizing: border-box !important;
     overflow-wrap: break-word !important; /* stops long text runoff */
      align-items: center !important; /* this centers the children */
-    
+    }
+    /* adds space below the search bar */
+.search {
+  margin-bottom: 2.5rem !important;
 }
 }
 
@@ -218,7 +225,7 @@ html, body, .page {
     width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
-    overflow-x: hidden !important; /* kills the horizontal scroll */
+  
     
    }
   
@@ -264,9 +271,7 @@ html, body, .page {
     font-size: 1.6rem !important; 
     font-weight: 300 !important;
     flex-direction: column !important;
-    position: sticky !important;
-    top: 0;
-    z-index: 100; /* keeps it above the article text */
+   
 
     .search {
     display: flex !important;
@@ -295,7 +300,7 @@ html, body, .page {
     order: 2 !important;
     background-color: var(--light) !important;
     padding: 1.5rem !important;
-    border-radius: 12px !important;
+    border-radius: 8px !important;
     box-sizing: border-box !important;
     /* Use percentages so it scales to any phone width */
    /* These values shrink the column */
@@ -311,6 +316,7 @@ html, body, .page {
     flex-direction: column !important;
     min-width: 0 !important;
   flex-basis: auto !important;
+   align-content: left! important; 
   }
 
   /* Graph fourth */
@@ -318,7 +324,7 @@ html, body, .page {
     order: 5 !important;
     background-color: var(--light) !important;
     margin: 0 1rem 2rem 1rem !important;
-    border-radius: 12px !important;
+    border-radius: 8px !important;
     height: 350px !important;
     box-sizing: border-box !important;
     width: 100% !important;
@@ -478,3 +484,93 @@ a.internal.tag-link:hover {
   opacity: 1;
 }
 
+   .sidebar.left {
+    display: block !important;
+    max-width: 100% !important; 
+    font-size: 1.6rem !important; 
+    font-weight: 300 !important;
+    flex-direction: column !important;
+    position: sticky !important;
+    top: 0;
+    z-index: 100; /* keeps it above the article text */
+    max-height: 100vh !important; /* keeps it from going past the screen */
+  overflow-y: auto !important;  /* adds a scrollbar inside t */
+   }
+   /* Thins out "Explorer" title and folder names */
+#explorer-title, 
+.folder-button {
+  font-weight: 400 !important;
+  letter-spacing: 0.5px; /* optional: makes thin text easier to read */
+  margin-bottom: 2rem !important;
+  
+}
+
+/* Target everything inside the explorer */
+.explorer, 
+.explorer a, 
+.explorer-header h2,
+#explorer-content ul li {
+  font-weight: 300 !important;
+  line-height: 1.3rem
+  
+}
+
+.explorer button,  {
+  font-weight: 300 !important;
+  
+}
+/* This is the actual clickable folder title */
+.folder-button span {
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+    margin-bottom: 1rem !important;
+    
+}
+
+
+
+
+
+
+/* target the actual folder text label */
+.explorer .folder-container > .folder-button > span,
+.explorer .folder-button h3,
+.explorer .folder-button h2,
+.explorer .folder-button {
+  font-weight: 800 !important; /* making it heavy */
+  font-size: 1.1rem !important;
+  color: var(--darkgray) !important;
+  
+}
+
+
+/* target the folder arrow icon */
+.folder-icon {
+  margin-right: 8px !important;
+  color: var(--darkgray) !important;
+}
+
+/* make the icon bigger and heavier */
+.folder-icon svg {
+  width: 14px !important;
+  height: 14px !important;
+  stroke-width: 3px !important; /* makes the arrow lines thicker */
+  transition: transform 0.2s ease;
+  margin-top: 1rem !important;
+}
+
+/* specific color when the folder is open */
+.folder-container:not(.collapsed) .folder-icon svg {
+  stroke: #a39193 !important; /* your clay color */
+  margin-top: 1rem !important;
+}
+/* target desktop only */
+@media all and (min-width: 768px) {
+  .graph, .graph-window {
+    margin-top: 2rem !important;
+  }
+}
+/* adds space below the search bar */
+.search {
+  margin-bottom: 2.5rem !important;
+}
