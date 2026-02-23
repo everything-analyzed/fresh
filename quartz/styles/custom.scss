@@ -146,7 +146,7 @@ html, body, .page {
     margin-left: auto !important;
     margin-bottom: 2rem !important;
     font-weight: 300 !important; 
-    margin-top: 1rem !important;
+    margin-top: .5rem !important;
     order: -10 !important; /* super low number to force it to the very top */
   }
 
@@ -167,7 +167,7 @@ html, body, .page {
   .search { 
     order: -5 !important; 
     width: 80% !important;
-    margin-bottom: 2.5rem !important;
+    margin-bottom: .5rem !important;
    
     
   }
@@ -235,7 +235,7 @@ html, body, .page {
     align-items: flex-start !important; 
     text-align: left !important;      
     margin: 1.5rem 0 1rem 1.5rem !important; 
-    width: calc(100% - 3rem) !important;
+    width: 80% !important;
   }
 
   .Darkmode {
@@ -243,50 +243,53 @@ html, body, .page {
     flex-direction: column !important; 
     align-items: left !important; 
     text-align: left !important;      
-    margin: 2.5rem 0 5rem 1.5rem !important; 
+    margin: 2.5rem 0 5rem 1.5rem !important;
+    width: 80% !important; 
+
    
   }
 
   /* Title first */
 .page-title {
     order: 1 !important; 
-    display: flex !important;
-    flex-direction: column !important; 
+    
+   
     align-items: flex-start !important; 
     text-align: left !important;      
     margin: 2.5rem 0 1rem 1.5rem !important; 
-    width: calc(100% - 3rem) !important;
+    width: 100%!important;
     font-weight: 300 !important;
   }
 
   .page-title a {
-    display: block !important;
-    max-width: 150px !important; 
+    display: flex !important;
+    max-width: 600px !important; 
     font-size: 1.6rem !important; 
     font-weight: 300 !important;
   }
    .sidebar.left {
-    display: block !important;
+    display: flex!important;
     max-width: 100% !important; 
     font-size: 1.6rem !important; 
     font-weight: 300 !important;
-    flex-direction: column !important;
+    flex-direction: row !important;
    
 
     .search {
     display: flex !important;
-    flex-direction: column !important; 
+    flex-direction: row !important; 
     align-items: left !important; 
     text-align: left !important;      
-    margin: 1rem 10rem 1rem 1.5rem !important; 
+    margin: .5rem 10rem 1rem 1.5rem !important; 
     align-content: left! important; 
+    width: 80% !important; 
   }
   .darkmode {
-    display: block !important;
-    flex-direction: column !important; 
+    display: flex !important;
+    flex-direction: row !important; 
     align-items: left !important; 
     text-align: left !important;      
-    margin: 1rem 10rem 1rem 1.5rem !important; 
+    margin: 1rem 8rem 1rem 0rem !important; 
     align-content: left! important; 
   }
   }
@@ -305,13 +308,10 @@ html, body, .page {
     /* Use percentages so it scales to any phone width */
    /* These values shrink the column */
     margin: 1rem !important;
-   
-    
+    padding-top: 3rem !important;
     overflow-wrap: break-word !important; /* breaks long links */
     word-wrap: break-word !important;
     /* flexbox insurance */
- 
-   
      display: flex !important;
     flex-direction: column !important;
     min-width: 0 !important;

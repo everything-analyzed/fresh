@@ -18,6 +18,19 @@ export const defaultContentPageLayout: PageLayout = {
       component: Component.DesktopOnly(Component.Breadcrumbs()),
       condition: (page) => page.fileData.slug !== "index",
     }),
+    Component.MobileOnly(Component.Explorer({
+    title: "Explorer",
+    folderClickBehavior: "link",
+    folderDefaultState: "collapsed",
+    useSavedState: true,
+    displayClass: "desktop-only",
+    mapFn: (node) => {
+      node.displayName = node.displayName
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (l) => l.toUpperCase())
+    },
+  }),
+    ),
     Component.ArticleTitle(),
     Component.ContentMeta(),
     
@@ -55,7 +68,7 @@ export const defaultContentPageLayout: PageLayout = {
   ),
 
   // Your exact explorer settings kept here
-  Component.Explorer({
+  Component.DesktopOnly(Component.Explorer({
     title: "Explorer",
     folderClickBehavior: "link",
     folderDefaultState: "collapsed",
@@ -67,12 +80,13 @@ export const defaultContentPageLayout: PageLayout = {
         .replace(/\b\w/g, (l) => l.toUpperCase())
     },
   }),
+  ),
   // Mobile search/moon row
   Component.MobileOnly(
     Component.Flex({
       direction: "row",
       components: [
-        { Component: Component.Search(), grow: true },
+        { Component: Component.Search(), grow: false },
         { Component: Component.Darkmode() },
       ],
     })
