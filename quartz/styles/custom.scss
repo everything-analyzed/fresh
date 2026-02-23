@@ -225,18 +225,24 @@ code {
   &::before {
     content: none !important;       /* removes any custom quartz bullets */
   }
+  // =============================================================================
+// Backlinks
+//
 }
-.recent-notes ul li:nth-child(n+4) {
-  display: none !important;
-}
-/* hides the current page from the recent notes list */
-.recent-notes ul li:has(a.active) {
-  display: none !important;
+.backlinks ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-/* keeps it strictly to 3 items regardless of the active page */
-.recent-notes ul li:nth-child(n+4) {
-  display: none !important;
+.backlinks li {
+  list-style-type: none !important;
+  padding: 0.5rem 0 !important; /* gives the notes some room */
+}
+
+/* this nixes any custom dots quartz might be sneaking in */
+.backlinks li::before {
+  content: none !important;
 }
 
 // =============================================================================
@@ -257,4 +263,80 @@ a.internal.tag-link, .tags li a, .section-tag {
 a.internal.tag-link:hover {
   transform: translateY(-2px) !important;
   opacity: 0.9 !important;
+}
+
+@media all and (max-width: 768px) {
+  /* This lets us reorder the sidebar items on mobile */
+  .sidebar.left {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    padding: 1rem !important;
+  }
+
+ @media all and (max-width: 768px) {
+  /* 1. the magic trick to move items out of the sidebar */
+  #quartz-body {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .sidebar.left {
+    display: contents !important; /* lets children move freely in the body */
+  }
+
+  /* 2. keep title, search, and dark mode at the very top */
+  .page-title {
+    order: -2 !important; 
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: flex-start !important; /* aligns children to the left */
+    text-align: left !important;      
+    padding: 0 !important;
+    width: auto !important;
+    /* change 'auto' to '0' to kill the centering */
+    margin: 2.5rem 0 2rem 1rem !important; 
+  }
+
+  .page-title a {
+    display: block !important;
+    line-height: 1.1 !important;
+    max-width: 150px !important; 
+    font-size: 1.6rem !important; 
+    /* remove the auto margin here too */
+    margin: 0 !important; 
+  }
+  .sidebar.left > .flex {
+    order: -1 !important;
+    justify-content: center !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* 3. the article stays in the middle */
+  .center {
+    order: 1 !important;
+    margin-top: 2rem !important; /* adjust this number to change the gap */
+    padding-top: 1rem !important;
+  }
+
+  /* 4. move the graph to the bottom */
+  .graph {
+    order: 5 !important;
+    height: 350px !important;
+    margin: 2rem 0 !important;
+    background: var(--panel-bg) !important;
+    border-radius: 12px !important;
+  }
+
+  /* 5. hide the "graph view" text label if it's floating */
+  .sidebar.left h3 {
+    display: none !important;
+  }
+  /* 2. the footer - give it a high order so it stays at the very bottom */
+  footer {
+    order: 10 !important;
+    margin-top: auto !important;
+    padding: 2rem 0 !important;
+  }
+}
 }
