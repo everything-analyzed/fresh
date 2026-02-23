@@ -8,7 +8,10 @@
 // 1. CORE THEME & VARIABLES
 // =============================================================================
 :root {
-  --light: #efeeea !important; 
+  /* THE FIX: make sure these are different colors */
+  --light: #fdfdfc !important;      /* the white for your panels */
+  --lightgray: #efeeea !important;  /* the taupe for your background */
+  
   --page-bg: #efeeea !important;
   --panel-bg: #fdfdfc !important; 
   --darkgray: #4a4846 !important;
@@ -65,6 +68,7 @@ width: auto !important; /* let it shrink to the text size */
   max-width: 200px !important;       /* controls where it breaks */
    font-weight: 300 !important; 
    font-size: 2.35rem !important;
+   text-align: left !important; 
 }
 
 .article-title {
@@ -87,85 +91,196 @@ code {
 // =============================================================================
 // 3. LAYOUT & PANELS
 // =============================================================================
-@media all and (min-width: 1200px) {
+
+/* 1. GLOBAL RESET */
+html, body, .page {
+  background-color: var(--lightgray) !important; 
+  overflow-x: hidden !important; /* stops the side-scrolling */
+}
+
+/* 2. DESKTOP & TABLET (769px and up) */
+@media all and (min-width: 769px) {
   #quartz-body {
     display: grid !important;
-    /* wider sidebar (400px) | main content | spacer */
+    /* narrowed the 2nd column from 900px to 700px */
     grid-template-columns: 400px 900px 1fr !important; 
-    column-gap: 30px !important; /* tighter gap to save space */
+    column-gap: 30px !important;
     width: 100% !important;
-    max-width: 1600px !important; /* increased max-width for the new size */
+    max-width: 1400px !important;
     margin: 3rem auto !important; 
     padding: 0 40px !important;
     align-items: start !important; 
   }
-  .center { 
-  background-color: var(--panel-bg) !important;
-  border-radius: 24px !important; /* extra round for that soft look */
-  padding: 4rem 5rem !important;  /* big padding so text feels premium */
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06) !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  margin-bottom: 4rem !important; /* space at the bottom of the page */
-  border: 1px solid rgba(0,0,0,0.02); /* tiny hint of a border */
-}
 
   .sidebar.left {
-    width: 400px !important; /* matches the grid column */
-    background-color: var(--panel-bg) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    background-color: var(--light) !important;
     border-radius: 12px !important;
-    padding: 2.5rem !important; /* extra room for the graph edges */
+    padding: 2.5rem !important;
     position: sticky !important;
     top: 2rem;
   }
-}
 
-/* ensure the graph fills the container */
-.graph {
-  width: 100% !important;
-  height: 400px !important; /* gives it a nice square-ish frame */
-  margin-top: 2rem;
-}
-  .sidebar.right {
-    display: none !important;
+  .center { 
+    background-color: var(--light) !important; 
+    border-radius: 24px !important;
+    padding: 3rem 4rem !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
-
-// =============================================================================
-// 4. EXPLORER & SIDEBAR
-// =============================================================================
-.folder-container div > a,
-.folder-container div > button span {
-  font-weight: 500 !important;   
-  font-size: 1rem !important;
-  color: var(--dark) !important;
-  margin-top: 2rem !important;
 }
 
-/* 2. THE FILE TITLES (Articles) */
-.explorer-content ul li > a {
-  font-weight: 500 !important; /* bumped up from 400 for weight */
-  font-size: 0.9rem !important; 
-  margin-bottom: 0.4rem !important;
-  color: var(--darkgray) !important; /* changed from --gray to --darkgray */
-  text-transform: lowercase !important;
+/* 3. MOBILE (768px and down) */
+@media all and (max-width: 768px) {
+  #quartz-body {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-x: hidden !important; /* kills the horizontal scroll */
+   }
   
-  &::first-letter {
-    text-transform: uppercase !important;
+  /* Title first */
+.search {
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: flex-start !important; 
+    text-align: left !important;      
+    margin: 1.5rem 0 1rem 1.5rem !important; 
+    width: calc(100% - 3rem) !important;
+  }
+
+  .Darkmode {
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: left !important; 
+    text-align: left !important;      
+    margin: 2.5rem 0 5rem 1.5rem !important; 
+   
+  }
+
+  /* Title first */
+.page-title {
+    order: 1 !important; 
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: flex-start !important; 
+    text-align: left !important;      
+    margin: 2.5rem 0 1rem 1.5rem !important; 
+    width: calc(100% - 3rem) !important;
+  }
+
+  .page-title a {
+    display: block !important;
+    max-width: 150px !important; 
+    font-size: 1.6rem !important; 
+    font-weight: 300 !important;
+  }
+   .sidebar.left {
+    display: block !important;
+    max-width: 100% !important; 
+    font-size: 1.6rem !important; 
+    font-weight: 300 !important;
+    flex-direction: column !important;
+
+    .search {
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: left !important; 
+    text-align: left !important;      
+    margin: 1rem 10rem 1rem 1.5rem !important; 
+    align-content: left! important; 
+  }
+  .darkmode {
+    display: block !important;
+    flex-direction: column !important; 
+    align-items: left !important; 
+    text-align: left !important;      
+    margin: 1rem 10rem 1rem 1.5rem !important; 
+    align-content: left! important; 
+  }
   }
 }
 
-.explorer-content ul li > a::first-letter {
-  text-transform: uppercase !important;
-}
 
-.explorer a:hover {
-  color: var(--secondary) !important;
-  text-decoration: underline dotted;
-}
 
-.folder-icon, .folder-container svg {
-  opacity: 0.4 !important;
-  color: var(--dark) !important;
+
+  /* Article third - fixed width to stop runoff */
+  .center {
+    order: 2 !important;
+    background-color: var(--light) !important;
+    padding: 1.5rem !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+    /* Use percentages so it scales to any phone width */
+   /* These values shrink the column */
+    margin: 1rem !important;
+   
+    
+    overflow-wrap: break-word !important; /* breaks long links */
+    word-wrap: break-word !important;
+    /* flexbox insurance */
+    align-items: center !important; /* this centers the children */
+   
+     display: flex !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+  flex-basis: auto !important;
+  }
+
+  /* Graph fourth */
+  .graph {
+    order: 5 !important;
+    background-color: var(--light) !important;
+    margin: 0 1rem 2rem 1rem !important;
+    border-radius: 12px !important;
+    height: 350px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+  }
+
+/* Explorer fifth */
+  .explorer {
+    margin: 0 1.5rem 1rem !important;
+    width: calc(100% - 3rem) !important;
+  }
+
+  footer {
+    order: 10 !important; /* high number keeps it at the bottom */
+    margin-top: 2rem !important;
+    width: 100% !important;
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+  }
+ 
+  /* hide breadcrumbs container and the actual text */
+  .breadcrumbs, 
+  .breadcrumb-container,
+  nav[aria-label="breadcrumbs"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .article {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1.5rem !important; /* nice breathability for text */
+    box-sizing: border-box !important;
+    overflow-wrap: break-word !important; /* stops long text runoff */
+     align-items: center !important; /* this centers the children */
+  }
+.sidebar.right {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 // =============================================================================
@@ -265,78 +380,5 @@ a.internal.tag-link:hover {
   opacity: 0.9 !important;
 }
 
-@media all and (max-width: 768px) {
-  /* This lets us reorder the sidebar items on mobile */
-  .sidebar.left {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    padding: 1rem !important;
-  }
 
- @media all and (max-width: 768px) {
-  /* 1. the magic trick to move items out of the sidebar */
-  #quartz-body {
-    display: flex !important;
-    flex-direction: column !important;
-  }
 
-  .sidebar.left {
-    display: contents !important; /* lets children move freely in the body */
-  }
-
-  /* 2. keep title, search, and dark mode at the very top */
-  .page-title {
-    order: -2 !important; 
-    display: flex !important;
-    flex-direction: column !important; 
-    align-items: flex-start !important; /* aligns children to the left */
-    text-align: left !important;      
-    padding: 0 !important;
-    width: auto !important;
-    /* change 'auto' to '0' to kill the centering */
-    margin: 2.5rem 0 2rem 1rem !important; 
-  }
-
-  .page-title a {
-    display: block !important;
-    line-height: 1.1 !important;
-    max-width: 150px !important; 
-    font-size: 1.6rem !important; 
-    /* remove the auto margin here too */
-    margin: 0 !important; 
-  }
-  .sidebar.left > .flex {
-    order: -1 !important;
-    justify-content: center !important;
-    margin-bottom: 1.5rem !important;
-  }
-
-  /* 3. the article stays in the middle */
-  .center {
-    order: 1 !important;
-    margin-top: 2rem !important; /* adjust this number to change the gap */
-    padding-top: 1rem !important;
-  }
-
-  /* 4. move the graph to the bottom */
-  .graph {
-    order: 5 !important;
-    height: 350px !important;
-    margin: 2rem 0 !important;
-    background: var(--panel-bg) !important;
-    border-radius: 12px !important;
-  }
-
-  /* 5. hide the "graph view" text label if it's floating */
-  .sidebar.left h3 {
-    display: none !important;
-  }
-  /* 2. the footer - give it a high order so it stays at the very bottom */
-  footer {
-    order: 10 !important;
-    margin-top: auto !important;
-    padding: 2rem 0 !important;
-  }
-}
-}
