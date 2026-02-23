@@ -34,7 +34,7 @@ const config: QuartzConfig = {
         gray: "#9ca3af",
         darkgray: "#4e4e4e",
         dark: "#8e8a87",      // slightly darker for headers
-        secondary: "#8e8a87", // keeps explorer titles in sync
+        secondary: "#84a59d", // keeps explorer titles in sync
         tertiary: "#8e9196",  // swap: darker tone for accents
         highlight: "rgba(143, 159, 169, 0.15)",
 },

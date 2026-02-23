@@ -12,7 +12,7 @@
   --light: #fdfdfc !important;      /* the white for your panels */
   --lightgray: #efeeea !important;  /* the taupe for your background */
   
-  --page-bg: #efeeea !important;
+  --page-bg: #faf9f6 !important;
   --panel-bg: #fdfdfc !important; 
   --darkgray: #4a4846 !important;
   --slate-blue: #5d676f !important;
@@ -44,7 +44,7 @@ body, section, p, li {
 
 h1, h2, h3, h4, .article-title {
   font-weight: 300 !important; 
-  color: var(--dark) !important; /* Lighter taupe (#b2ada9) */
+  color: var(--secondary) !important; /* Lighter taupe (#b2ada9) */
   letter-spacing: -0.01em !important;
   line-height: 1.2 !important;
   text-align: left !important; 
@@ -334,7 +334,7 @@ html, body, .page {
 
 /* Explorer fifth */
   .explorer {
-    margin: 0 1.5rem 1rem !important;
+    margin: 0 1.5rem 2rem 1rem!important;
     width: calc(100% - 3rem) !important;
   }
 
