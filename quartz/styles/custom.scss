@@ -250,23 +250,23 @@ html, body, .page {
   }
 
   /* Title first */
-.page-title {
-    order: 1 !important; 
-    
-   
-    align-items: flex-start !important; 
-    text-align: left !important;      
-    margin: 2.5rem 0 1rem 1.5rem !important; 
-    width: 100%!important;
-    font-weight: 300 !important;
+
+  .page-title {
+     order: 1 !important; 
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 1.5rem !important;
+    text-align: left; /* or center if you want it balanced */
+    margin-left: 2rem;
   }
 
+  /* Ensures the link inside the title behaves like a block */
   .page-title a {
-    display: flex !important;
-    max-width: 600px !important; 
-    font-size: 1.6rem !important; 
-    font-weight: 300 !important;
+    display: block;
+    font-size: 1.8rem !important; /* makes it nice and big on mobile */
+    margin-left: 2rem;
   }
+
    .sidebar.left {
     display: flex!important;
     max-width: 100% !important; 
