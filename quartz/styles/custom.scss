@@ -132,6 +132,7 @@ html, body, .page {
     border-radius: 8px !important;
     align-items: flex-start;
     padding: 2.5rem !important;
+ width: 100% !important;
     
   }
 
@@ -244,7 +245,7 @@ html, body, .page {
     align-items: left !important; 
     text-align: left !important;      
     margin: 2.5rem 0 5rem 1.5rem !important;
-    width: 80% !important; 
+    width: 100% !important; 
 
    
   }
@@ -272,22 +273,22 @@ html, body, .page {
     max-width: 100% !important; 
     font-size: 1.6rem !important; 
     font-weight: 300 !important;
-    flex-direction: row !important;
+    flex-direction: column !important;
     width: 100% !important;
    
 
     .search {
     display: flex !important;
-    flex-direction: row !important; 
+    flex-direction: column !important; 
     align-items: left !important; 
     text-align: left !important;      
     margin: .5rem 10rem 1rem 1.5rem !important; 
     align-content: left! important; 
-    width: 80% !important; 
+    width: 100% !important; 
   }
   .darkmode {
     display: flex !important;
-    flex-direction: row !important; 
+    flex-direction: column !important; 
     align-items: left !important; 
     text-align: left !important;      
     margin: 1rem 8rem 1rem 0rem !important; 
