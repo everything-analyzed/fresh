@@ -273,6 +273,7 @@ html, body, .page {
     font-size: 1.6rem !important; 
     font-weight: 300 !important;
     flex-direction: row !important;
+    width: 100% !important;
    
 
     .search {
@@ -317,6 +318,7 @@ html, body, .page {
     min-width: 0 !important;
   flex-basis: auto !important;
    align-content: left! important; 
+margin-top: 2rem !important;
   }
 
   /* Graph fourth */
