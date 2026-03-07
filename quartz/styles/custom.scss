@@ -12,9 +12,9 @@
   --light: #fdfdfc !important;      /* the white for your panels */
   --lightgray: #efeeea !important;  /* the taupe for your background */
   
-  --page-bg: #faf9f6 !important;
+  --page-bg: #faf9f6!important;
   --panel-bg: #fdfdfc !important; 
-  --darkgray: #4a4846 !important;
+  --darkgray: #433f3d !important;
   --slate-blue: #5d676f !important;
   --steel-blue: #4682B4 !important;
 }
@@ -36,20 +36,26 @@
 // 2. TYPOGRAPHY
 // =============================================================================
 body, section, p, li {
-  color: var(--darkgray) !important;
-  font-size: 0.95rem !important;
+  color: #909090 !important;
+  font-size: 1rem !important;
   line-height: 1.7 !important;
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, .article-title {
+h1, h2, h3, h4 {
   font-weight: 300 !important; 
-  color: var(--secondary) !important; /* Lighter taupe (#b2ada9) */
+  color: #4a766b !important; /* Lighter taupe (#b2ada9) */
   letter-spacing: -0.01em !important;
   line-height: 1.2 !important;
   text-align: left !important; 
 }
-
+h2, h3, h4 {
+  font-weight: 300 !important; 
+  color: #4a766b !important; /* Lighter taupe (#b2ada9) */
+  letter-spacing: -0.01em !important;
+  line-height: 1.2 !important;
+  text-align: left !important; 
+}
 /* only apply these specific title styles on mobile */
 @media all and (max-width: 768px) {
   .page-title {
@@ -75,13 +81,30 @@ h1, h2, h3, h4, .article-title {
   }
 }
 .article-title {
-  font-size: 1.6rem !important; 
+  font-size: 2rem !important; 
   margin-top: 0 !important;
+  font-weight: 300 !important;
+  letter-spacing: -0.01em !important;
   
 }
-
+h3 {
+  font-weight: 600 !important; 
+  color: #4a766b !important; /* Lighter taupe (#b2ada9) */
+  letter-spacing: -0.01em !important;
+  line-height: 1.2 !important;
+  text-align: left !important; 
+  font-size: 1.4rem !important; 
+}
+h2 {
+  font-weight: 600 !important; 
+  color: #4a766b !important; /* Lighter taupe (#b2ada9) */
+  letter-spacing: -0.01em !important;
+  line-height: 1.2 !important;
+  text-align: left !important; 
+  font-size: 1.6rem !important; 
+}
 strong {
-  color: #a39193 !important; /* soft clay accent */
+  color: #4a766b !important; /* soft clay accent */
   font-weight: 600;
 }
 
@@ -98,31 +121,148 @@ code {
 
 /* 1. GLOBAL RESET */
 html, body, .page {
-  background-color: var(--lightgray) !important; 
+  background-color: var(--page-bg) !important; 
   
 }
 
 /* 2. DESKTOP & TABLET (769px and up) */
 @media all and (min-width: 769px) {
   #quartz-body {
-    display: grid !important;
-    grid-template-columns: 400px 900px 1fr !important; 
-    column-gap: 30px !important;
-    width: 100% !important;
-    max-width: 1400px !important;
-    margin: 3rem auto !important; 
+    /* Tightens the gap and fixes the sidebar positions */
+    grid-template-columns: 320px 720px 350px !important; 
+    column-gap: 30px !important; 
+    justify-content: center !important; 
+    align-items: start !important; /* CRITICAL: Stops the sidebar from dropping low */
     padding: 0 40px !important;
-    align-items: start !important; 
   }
+  body, section, p, li {
+  color: #909090 !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  -webkit-font-smoothing: antialiased;
+}
+.backlinks li a {
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+  color: var(--secondary) !important;
+  display: block !important;
+  margin-bottom: 2px !important;
+}
+.backlinks li p, 
+.backlinks .overflow {
+  font-size: 1rem !important;
+  line-height: 1.4 !important;
+  color: var(--gray) !important;
+  margin-top: 0 !important;
+  opacity: 0.8;
+}
+
+  .sidebar.right {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 340px !important;
+    padding: 0 !important; /* Keep this 0 so the shadow card sits clean */
+    margin: 0 !important;
+    justify-content: flex-start !important;
+    height: auto !important;
+    
+  }
+   
+
+  /* This makes the Recent Notes card sit perfectly level with your article */
+  .sidebar.right .recent-notes {
+    background-color: var(--light) !important;
+    border-radius: 8px !important;
+    padding: 1.5rem !important;
+    margin-top: 0 !important; /* Ensures it starts at the very top */
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+      0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  overflow: hidden !important; /* Clips any weird hover overflow */
+  }
+ 
+/* 1. The Container */
+.sidebar.left .flex:has(.search) {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important; /* This forces both cards to be the same height */
+  gap: 10px !important;
+  width: 100% !important;
+  margin-bottom: 2rem !important;
+}
+
+/* 2. The Search Card */
+.sidebar.left .search {
+  background-color: var(--light) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
+  padding: 0 1.2rem !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-grow: 1 !important;
+  height: 45px !important; /* Set a fixed height */
+  margin-bottom: 2rem !important;
+}
+
+/* 3. The Darkmode Card */
+.sidebar.left .darkmode {
+  background-color: var(--light) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
+  width: 45px !important; /* Match the height for a perfect square */
+  height: 45px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  margin-bottom: 2rem !important;
+}
+
+
+
+/* Ensure the button inside doesn't have a second shadow */
+.sidebar.left .search button {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
   .center {
     background-color: var(--light) !important;
     border-radius: 8px !important;
-    padding: 0rem 4rem 4rem 4rem!important; /* Adjust this for more/less breathing room */
+    padding: 0rem 2.5rem  2.5rem  2.5rem  !important; /* Adjust this for more/less breathing room */
     box-sizing: border-box !important;
-    width: 900px !important; /* Match the grid column */
+    width: 100% !important; /* Match the grid column */
+    max-width: 750px !important;
     margin: 0 !important;
     align-items: flex-start !important; /* Fixes title drift */
+    /* The "lift" effect using a soft shadow */
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.05), /* Inner shadow */
+    0 10px 15px -3px rgba(0, 0, 0, 0.08) !important; /* Main lift shadow */
+    box-sizing: border-box !important;
+  transition: box-shadow 0.2s ease !important; /* Smooth on load */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
   }
+  /* Optional: Subtle hover interaction to emphasize the lift */
+.center:hover {
+   box-shadow: 
+    0 6px 12px -2px rgba(0, 0, 0, 0.08),
+    0 15px 25px -5px rgba(0, 0, 0, 0.12) !important;
+}
+.center article {
+  max-width: 620px !important; /* This stops the text runoff */
+  margin-left: 0 !important;   /* Keeps it aligned with your titles */
+  margin-right: auto !important; 
+  width: 100% !important;
+  padding-left: 1rem !important; 
+}
 
   /* Force the sidebar to behave like a simple vertical stack */
   .sidebar.left {
@@ -131,9 +271,11 @@ html, body, .page {
     background-color: var(--light) !important; /* white sidebar */
     border-radius: 8px !important;
     align-items: flex-start;
+    width: 320px !important;
     padding: 2.5rem !important;
-    
-  }
+    margin: 0 !important;
+    height: auto !important;
+     }
 
   /* 1. Title */
 .page-title {
@@ -160,18 +302,6 @@ html, body, .page {
     order: -10 !important; /* super low number to force it to the very top */
   }
 
-  /* 2. Search Wrapper */
-  /* This targets the div Quartz creates to hold the Search/Darkmode components */
-  .sidebar.left > div:has(.search),
-  .sidebar.left > .flex,
-  .search { 
-    order: -5 !important; 
-    width: 80% !important;
-    margin-bottom: .5rem !important;
-   
-    
-  }
-
   /* 3. Graph - order 3 to sit under search */
   .graph, .graph-window { 
     order: 3 !important; 
@@ -180,9 +310,6 @@ html, body, .page {
     margin-right: 8rem !important; 
     left: 0 !important;
     margin-top: 1rem !important;
-    
-
-   
   }
 
   /* Target the internal canvas to make sure it doesn't shift */
@@ -198,11 +325,7 @@ html, body, .page {
   .explorer { 
     order: 10 !important; 
   }
-  .sidebar.right {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
+
  .article {
     width: 100% !important;
     max-width: 100% !important;
@@ -210,12 +333,11 @@ html, body, .page {
     box-sizing: border-box !important;
     overflow-wrap: break-word !important; /* stops long text runoff */
      align-items: center !important; /* this centers the children */
+     
     }
-    /* adds space below the search bar */
-.search {
-  margin-bottom: 2.5rem !important;
 }
-}
+
+
 
 /* 3. MOBILE (768px and down) */
 @media all and (max-width: 768px) {
@@ -225,89 +347,133 @@ html, body, .page {
     width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
-  
-    
    }
-  
-.search {
-    display: flex !important;
-    flex-direction: column !important; 
-    align-items: flex-start !important; 
-    text-align: left !important;      
-    margin: 1.5rem 0 1rem 1.5rem !important; 
-    width: 80% !important;
-  }
-
-  .Darkmode {
-    display: flex !important;
-    flex-direction: column !important; 
-    align-items: left !important; 
-    text-align: left !important;      
-    margin: 2.5rem 0 5rem 1.5rem !important;
-    width: 80% !important; 
-
    
+    .sidebar.left {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    padding: 0 !important; /* Keep this 0 so the shadow card sits clean */
+    margin: 0 !important;
+    justify-content: flex-start !important;
+    height: auto !important;
+   background-color: var(--light) !important;
+    border-radius: 8px !important;
+    padding: 1.5rem !important;
+    margin-top: 0 !important; /* Ensures it starts at the very top */
+    box-shadow: none;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  height: auto !important;
+  position: relative !important; /* Stops it from sticking/blocking content */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
   }
+  /* 1. The Container */
+.sidebar.left .flex:has(.search) {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important; /* This forces both cards to be the same height */
+  gap: 10px !important;
+  width: calc(100% - 2rem) !important;
+  margin: 0.5rem 1rem 1.5rem 1rem !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* 2. The Search Card */
+.sidebar.left .search {
+  background-color: var(--light) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
+  padding: .5rem 1rem 0rem 1rem;
+  display: flex !important;
+  align-items: center !important;
+  flex-grow: 1 !important;
+  height: 45px !important; /* Set a fixed height */
+  width: 100% !important;
+  margin: 0rem 1rem .5rem 1rem !important;
+  
+}
+
+
+/* 3. The Darkmode Card */
+.sidebar.left .darkmode {
+  background-color: var(--light) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
+  width: 100% !important; /* Match the height for a perfect square */
+  height: 45px !important;
+ flex-grow: 1 !important;
+  margin: 1.5rem 1rem 1.5rem 1rem !important;
+  padding: 1rem 0rem 0rem 1rem;
+  align-items: center !important;
+}
+
+
+/* Ensure the button inside doesn't have a second shadow */
+.sidebar.left .search button {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+.darkmode {
+  background-color: var(--light) !important;
+  border-radius: 8px !important;
+  width: 100% !important; /* Match the height for a perfect square */
+}
+  
+/* Force the explorer to stay open on mobile since the button is stuck */
+@media all and (max-width: 768px) {
+  .explorer #explorer-content {
+    display: block !important;
+    max-height: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Hide the broken arrow/button icon to keep it clean */
+  .explorer .folder-icon, 
+  .explorer button#explorer-toggle {
+    display: none !important;
+  }
+  
+  /* Give the folders some breathing room so they are easy to tap */
+  .explorer li {
+    padding: 8px 0 !important;
+    border-bottom: 1px solid var(--lightgray);
+  }
+  
+}
 
   /* Title first */
 
   .page-title {
      order: 1 !important; 
     display: block !important;
-    width: 100% !important;
-    margin-bottom: 1.5rem !important;
+    width: auto !important;
+    margin: 1.5rem 1rem 1.5rem 1rem !important;
     text-align: left; /* or center if you want it balanced */
-    margin-left: 2rem;
   }
 
   /* Ensures the link inside the title behaves like a block */
   .page-title a {
     display: block;
     font-size: 1.8rem !important; /* makes it nice and big on mobile */
-    margin-left: 2rem;
+    margin-left: .5rem;
   }
-
-   .sidebar.left {
-    display: flex!important;
-    max-width: 100% !important; 
-    font-size: 1.6rem !important; 
-    font-weight: 300 !important;
-    flex-direction: row !important;
-   
-
-    .search {
-    display: flex !important;
-    flex-direction: row !important; 
-    align-items: left !important; 
-    text-align: left !important;      
-    margin: .5rem 10rem 1rem 1.5rem !important; 
-    align-content: left! important; 
-    width: 80% !important; 
-  }
-  .darkmode {
-    display: flex !important;
-    flex-direction: row !important; 
-    align-items: left !important; 
-    text-align: left !important;      
-    margin: 1rem 8rem 1rem 0rem !important; 
-    align-content: left! important; 
-  }
-  }
-
-
-
 
 
   /* Article third - fixed width to stop runoff */
   .center {
     order: 2 !important;
     background-color: var(--light) !important;
-    padding: 1.5rem !important;
+    padding: 2.5rem !important;
     border-radius: 8px !important;
     box-sizing: border-box !important;
     /* Use percentages so it scales to any phone width */
    /* These values shrink the column */
-    margin: 1rem !important;
+    margin: 1rem 1rem 1.5rem 1rem !important;
     padding-top: 3rem !important;
     overflow-wrap: break-word !important; /* breaks long links */
     word-wrap: break-word !important;
@@ -315,28 +481,65 @@ html, body, .page {
      display: flex !important;
     flex-direction: column !important;
     min-width: 0 !important;
-  flex-basis: auto !important;
-   align-content: left! important; 
+   align-content: left! important;
+   width: calc(100% - 2rem) !important;
+   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+   height: auto;
   }
 
-  /* Graph fourth */
+  /* 5. Graph View - Full Width & Correct Order */
   .graph {
     order: 5 !important;
+    display: flex !important; /* Keep as flex to respect order */
     background-color: var(--light) !important;
-    margin: 0 1rem 2rem 1rem !important;
+    margin: 1rem !important;
     border-radius: 8px !important;
     height: 350px !important;
+    width: calc(100% - 2rem) !important; /* Full width minus margins */
     box-sizing: border-box !important;
-    width: 100% !important;
-    margin-left: 10% !important;
-    margin-right: 10% !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
   }
+
+  /* Force the actual canvas inside to stop being skinny */
+  .graph > .graph-outer,
+  .graph-window,
+  .graph canvas {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    left: 0 !important;
+  }
+
+
 
 /* Explorer fifth */
   .explorer {
-    margin: 0 1.5rem 2rem 1rem!important;
-    width: calc(100% - 3rem) !important;
+    margin-top: 0rem;
+    width: 100% !important;
+   }
+@media all and (max-width: 768px) {
+  /* Keep the explorer locked in place at the bottom */
+  
+/* Force the content to expand downward, not over the page */
+  .explorer #explorer-content {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
   }
+/* If Quartz adds an 'open' class that tries to fix it to the top, kill it */
+  .explorer.open, 
+  .sidebar.left.open .explorer {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
 
   footer {
     order: 10 !important; /* high number keeps it at the bottom */
@@ -363,7 +566,7 @@ html, body, .page {
     box-sizing: border-box !important;
     overflow-wrap: break-word !important; /* stops long text runoff */
      align-items: center !important; /* this centers the children */
-    margin: 2rem 1.5rem 1rem 1rem !important;
+    margin: 2rem 1.5rem .5rem 1rem !important;
      
   }
 .sidebar.right {
@@ -371,7 +574,54 @@ html, body, .page {
   width: 0 !important;
   height: 0 !important;
 }
+/* 1. Hide the extra sidebar graph */
+  .sidebar.left .graph,
+  .sidebar.left .graph-window {
+    display: none !important;
+  }
+
+  /* 2. The main graph - keep it at the bottom */
+  #quartz-body > .graph {
+    order: 5 !important;
+    display: flex !important;
+    background-color: var(--light) !important;
+    margin: 1rem !important;
+    border-radius: 8px !important;
+    height: 300px !important;
+    width: calc(100% - 2rem) !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+    position: relative !important;
+  }
+
+  /* 3. Force the canvas to be full width */
+  .graph canvas, 
+  .graph-window, 
+  .graph-outer {
+    width: 100% !important;
+    height: 100% !important;
+    left: 0 !important;
+  }
+
+article-title {
+  font-size: 2rem !important; 
+  margin-top: 0 !important;
+  font-weight: 300 !important;
+  letter-spacing: -0.01em !important;
+  padding-left: 0rem !important; 
+  }
+  .center .tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin-bottom: 2rem !important;
+  }
+
 }
+}
+
 
 // =============================================================================
 // 5. BREADCRUMBS & META
@@ -392,25 +642,42 @@ html, body, .page {
   text-transform: lowercase !important;
 }
 
-.content-meta, .content-meta * {
-  display: inline !important; 
+.content-meta {
+  display: flex !important; /* Changed from inline */
+  flex-wrap: wrap;
+  gap: 0.5rem;
   font-size: 0.75rem !important;
   color: var(--gray) !important; 
   font-weight: 300 !important;
+  margin-bottom: 3rem !important; /* This will work now! */
+  padding-left: .3rem !important; 
+  margin-top: 5 !important;
+  
+}
+
+/* This keeps the stuff inside (date, reading time) sitting next to each other */
+.content-meta * {
+  display: inline-block !important;
 }
 
 // =============================================================================
 // 6. RECENT NOTES
 // =============================================================================
 .recent-notes li {
-  padding: 12px 16px !important;  
+  
   border-radius: 8px !important;
   transition: all 0.25s ease !important;
+  overflow-wrap: anywhere !important; 
+  hyphens: auto !important;
+  margin-left: 10 !important;
+  
 }
 
 .recent-notes li:hover {
-  background-color: rgba(239, 238, 234, 0.6) !important; 
-  transform: translateX(4px) !important;
+  background-color: rgba(52, 63, 58, 0.15) !important;
+  color: #343f3a !important; /* Your Spruce color */
+  border-radius: 4px;
+  
 }
 
 .recent-notes li a {
@@ -420,7 +687,8 @@ html, body, .page {
 }
 .recent-notes ul {
   list-style: none !important; /* kills the bullets */
-  padding: 0 !important;      /* removes the bullet gap */
+width: 100% !important;
+  padding: 0 !important;
   margin: 0 !important;
 }
 
@@ -429,7 +697,27 @@ html, body, .page {
   padding: 12px 0 !important;       /* clean vertical spacing */
   &::before {
     content: none !important;       /* removes any custom quartz bullets */
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
   }
+  .recent-notes li p {
+  margin: 4px 0 0 0 !important;
+  /* This stops the runoff */
+  font-size: 0.8rem !important;
+  line-height: 1.2 !important;
+  color: var(--gray) !important;
+  overflow-wrap: anywhere !important; 
+  hyphens: auto !important;
+}
+
+/* Also ensure the list items don't overflow */
+.recent-notes li {
+ overflow-wrap: anywhere !important; 
+  hyphens: auto !important;
+  
+}
   // =============================================================================
 // Backlinks
 //
@@ -449,26 +737,51 @@ html, body, .page {
 .backlinks li::before {
   content: none !important;
 }
+.backlinks > h3, 
+.backlinks > h1 {
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 1rem !important;
+  text-transform: lowercase !important; /* Optional: matches your minimalist vibe */
+}
+.backlinks li a {
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+  color: var(--secondary) !important;
+  display: block !important;
+  margin-bottom: 2px !important;
+}
+.backlinks li p, 
+.backlinks .overflow {
+  font-size: 1rem !important;
+  line-height: 1.4 !important;
+  color: var(--gray) !important;
+  margin-top: 0 !important;
+  opacity: 0.8;
+}
 
 // =============================================================================
 // 7. TAGS (REVERSED/DARKER)
 // =============================================================================
-a.internal.tag-link, .tags li a, .section-tag {
-  background-color: #8e9196 !important; /* Darker accent */
-  color: var(--light) !important;       /* Light text */
-  font-weight: 400 !important;
-  font-size: 0.75rem !important;
-  padding: 2px 10px !important;
-  border-radius: 6px !important;
-  display: inline-block !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
-  transition: all 0.2s ease-out !important;
+a.internal.tag-link, .tags li a {
+  background-color: #e6ece9 !important; /* Misty Green */
+  color: #84a59d !important; /* Eucalyptus text */
+  font-size: 0.8rem !important;
+  text-transform: lowercase;
+  letter-spacing: 0.05em;
+  padding: 3px 10px !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease;
+  margin-bottom: 2rem !important;
+  
 }
 
 a.internal.tag-link:hover {
-  transform: translateY(-2px) !important;
-  opacity: 0.9 !important;
+  background-color: var(--secondary) !important; /* Fill with Eucalyptus */
+  color: var(--light) !important; /* White text */
+  border-color: var(--secondary) !important;
 }
+
 
 /* changes the search magnifying glass color */
 .search button svg, 
@@ -570,7 +883,43 @@ a.internal.tag-link:hover {
     margin-top: 2rem !important;
   }
 }
-/* adds space below the search bar */
-.search {
-  margin-bottom: 2.5rem !important;
+/* This kills the text but keeps the graph */
+.graph > h3, 
+.graph > h6,
+.graph .graph-title {
+  display: none !important;
+}
+/* 1. The main site title (top left) */
+.page-title a, 
+.page-title {
+  text-transform: lowercase !important;
+}
+
+/* 2. The article title (top of the page) */
+.article-title, 
+.center h1 {
+  text-transform: lowercase !important;
+}
+
+/* 3. Section headers (H2, H3, H4 inside your notes) */
+.center h2, 
+.center h3, 
+.center h4, 
+.center h5 {
+  text-transform: lowercase !important;
+}
+
+/* 4. Explorer and Sidebar titles (folders, backlinks, etc.) */
+#explorer-title, 
+.backlinks > h3, 
+.recent-notes > h3,
+.folder-button span {
+  text-transform: lowercase !important;
+}
+
+/* 5. Individual file names in lists */
+.explorer a, 
+.recent-notes li a, 
+.backlinks li a {
+  text-transform: lowercase !important;
 }

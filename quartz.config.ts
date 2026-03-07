@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Everything, Analyzed.",
+    pageTitle: "everything, analyzed.",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -29,14 +29,13 @@ const config: QuartzConfig = {
   },
   colors: {
   lightMode: {
-      light: "#fbfcfc",
-        lightgray: "#f1f3f5",
-        gray: "#9ca3af",
-        darkgray: "#4e4e4e",
-        dark: "#8e8a87",      // slightly darker for headers
-        secondary: "#84a59d", // keeps explorer titles in sync
-        tertiary: "#8e9196",  // swap: darker tone for accents
-        highlight: "rgba(143, 159, 169, 0.15)",
+     light: "#faf9f6",          // Your Parchment background
+  lightgray: "#f1f2e1",      // Pale Olive (Tag Cards)
+  gray: "#9a9e80",           // Sagey-Olive (Metadata/Dates)
+  darkgray: "#424536",       // Dark Moss (Body Text - very readable)
+  secondary: "#84a59d",      // Eucalyptus Green (Titles/Links)
+  tertiary: "#7d825c",       // Deep Olive (Hover state)
+  highlight: "rgba(241, 242, 225, 0.5)", // Olive-tinted highlight
 },
     darkMode: {
       light: "#121412",
@@ -68,7 +67,7 @@ const config: QuartzConfig = {
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
-      Plugin.Description({ descriptionLength: 300 }),
+      Plugin.Description({ descriptionLength: 150 }),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
     filters: [Plugin.RemoveDrafts()],

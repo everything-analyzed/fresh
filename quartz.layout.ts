@@ -18,6 +18,80 @@ export const defaultContentPageLayout: PageLayout = {
       component: Component.DesktopOnly(Component.Breadcrumbs()),
       condition: (page) => page.fileData.slug !== "index",
     }),
+   
+    Component.ArticleTitle(),
+    Component.ContentMeta(),
+    
+  ],
+  left: [
+  Component.DesktopOnly(Component.PageTitle()),
+  Component.MobileOnly(Component.Spacer()),
+  
+  Component.DesktopOnly(Component.Graph({
+    localGraph: {
+      opacityScale: 3,
+      fontSize: 0.6,
+    },
+    globalGraph: {
+      opacityScale: 3,
+      fontSize: 0.6,
+    },
+  }),
+  ),
+  Component.DesktopOnly(
+    Component.Flex({
+      direction: "row",
+      components: [
+        { Component: Component.Search(), grow: true },
+        { Component: Component.Darkmode() },
+      ],
+    })
+  ),  
+  Component.DesktopOnly(Component.TableOfContents()),
+  Component.MobileOnly(Component.TagList()),
+    Component.DesktopOnly(Component.Explorer({
+    title: "Explorer",
+    folderClickBehavior: "link",
+    folderDefaultState: "collapsed",
+    useSavedState: true,
+    displayClass: "desktop-only",
+    mapFn: (node) => {
+      node.displayName = node.displayName
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (l) => l.toUpperCase())
+    },
+  }),
+  ),
+
+ 
+  Component.MobileOnly(
+    Component.Flex({
+      direction: "row",
+      components: [
+        { Component: Component.Search(), grow: false },
+        { Component: Component.Darkmode() },
+      ],
+    })
+  ),
+     
+],
+  afterBody: [
+     Component.MobileOnly(Component.TagList()),
+    Component.Backlinks({
+      showExcerpts: true, 
+    }),
+   
+    Component.MobileOnly(Component.Graph({
+      localGraph: {
+        opacityScale: 3,
+        fontSize: 0.6,
+      },
+      globalGraph: {
+        opacityScale: 3,
+        fontSize: 0.6,
+      },
+    }),
+    ),
     Component.MobileOnly(Component.Explorer({
     title: "Explorer",
     folderClickBehavior: "link",
@@ -31,99 +105,18 @@ export const defaultContentPageLayout: PageLayout = {
     },
   }),
     ),
-    Component.ArticleTitle(),
-    Component.ContentMeta(),
-    
+    Component.DesktopOnly(Component.TableOfContents()),
   ],
-  left: [
-  // Title stays first for both
-  // Component.MobileOnly(Component.PageTitle()),
-  Component.DesktopOnly(Component.PageTitle()),
-  Component.MobileOnly(Component.Spacer()),
-
-  
-
-  // Desktop search/moon row
-  Component.DesktopOnly(
-    Component.Flex({
-      direction: "row",
-      components: [
-        { Component: Component.Search(), grow: true },
-        { Component: Component.Darkmode() },
-      ],
-    })
-  ),
-
-  // Your exact graph settings kept here
-  Component.DesktopOnly(Component.Graph({
-    localGraph: {
-      opacityScale: 3,
-      fontSize: 0.6,
-    },
-    globalGraph: {
-      opacityScale: 3,
-      fontSize: 0.6,
-    },
-  }),
-  ),
-
-  // Your exact explorer settings kept here
-  Component.DesktopOnly(Component.Explorer({
-    title: "Explorer",
-    folderClickBehavior: "link",
-    folderDefaultState: "collapsed",
-    useSavedState: true,
-    displayClass: "desktop-only",
-    mapFn: (node) => {
-      node.displayName = node.displayName
-        .replace(/-/g, " ")
-        .replace(/\b\w/g, (l) => l.toUpperCase())
-    },
-  }),
-  ),
-  // Mobile search/moon row
-  Component.MobileOnly(
-    Component.Flex({
-      direction: "row",
-      components: [
-        { Component: Component.Search(), grow: false },
-        { Component: Component.Darkmode() },
-      ],
-    })
-  ),
-],
-  afterBody: [
-    (props) => props.fileData.slug === "index" 
-      ? Component.RecentNotes({ 
+  right: [ 
+    
+    // Moved from afterBody to here!
+    Component.RecentNotes({ 
           title: "Recently Pollinated 🐝",
           showDescription: true, 
           limit: 4 
-        })(props) 
-      : null,
-    Component.Backlinks({
-  showExcerpts: true, // This enables the text snippets
-}),
-Component.TagList(),
-// Your exact graph settings kept here
-  Component.MobileOnly(Component.Graph({
-    localGraph: {
-      opacityScale: 3,
-      fontSize: 0.6,
-    },
-    globalGraph: {
-      opacityScale: 3,
-      fontSize: 0.6,
-    },
-  }),
-  ),
-  
-Component.DesktopOnly(Component.TableOfContents()),
-  ],
-  right: [   
-    
+        }),
   ],
 }
-
 export const defaultListPageLayout: PageLayout = {
   beforeBody: [Component.ArticleTitle(), Component.ContentMeta(), Component.DesktopOnly( // <--- Wrap the whole logic block
     Component.ConditionalRender({
@@ -159,5 +152,27 @@ export const defaultListPageLayout: PageLayout = {
   center: [
     Component.FolderContent({ showDescription: true }),
   ],
-  right: [],
+  right: [
+    // Moved from afterBody to here!
+     Component.RecentNotes({ 
+          title: "Recently Pollinated 🐝",
+          showDescription: true, 
+          limit: 4 
+        }),
+
+     Component.DesktopOnly(Component.Explorer({
+    title: "Explorer",
+    folderClickBehavior: "link",
+    folderDefaultState: "collapsed",
+    useSavedState: true,
+    displayClass: "mobile-only",
+    mapFn: (node) => {
+      node.displayName = node.displayName
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (l) => l.toUpperCase())
+    },
+  }),
+  ),
+
+  ],
 }
