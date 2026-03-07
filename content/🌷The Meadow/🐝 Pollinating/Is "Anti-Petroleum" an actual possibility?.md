@@ -1,6 +1,8 @@
 ---
 tags:
-  - petroleum
+  - material-truth
+  - the-swarm
+  - collective-fictions
 draft: true
 status: 🐝 Pollinating
 ---

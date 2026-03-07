@@ -1,10 +1,8 @@
 ---
 status: 🐝 Pollinating
 tags:
-  - identity
-  - society
-  - autonomy
-  - culture
+  - the-edit
+  - the-swarm
 ---
 Thinking about what purpose cultivating personal identity serves in the grand scheme. Is it actually possible? Is it purely self serving?
 

@@ -1,7 +1,6 @@
 ---
 tags:
-  - law
-  - society
+  - the-swarm
 draft: false
 status: 🐝 Pollinating
 ---

@@ -2,7 +2,7 @@
 description:
 summary:
 tags:
-  - thehumanbody
+  - the-pulse
 draft: true
 status: 🐝 Pollinating
 ---

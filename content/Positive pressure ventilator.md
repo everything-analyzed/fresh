@@ -1,7 +1,5 @@
 ---
 tags:
-  - the-pulse
-pillar:
-draft: true
+  - the-motherboard
 status: 🐝 Pollinating
 ---

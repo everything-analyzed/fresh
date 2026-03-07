@@ -1,5 +1,5 @@
 ---
-title: Welcome to The Porch 🍵
+title: Welcome to my front porch 🍵
 aliases:
   - The porch
 ---

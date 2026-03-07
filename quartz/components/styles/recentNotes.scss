@@ -1,7 +1,10 @@
 .recent-notes {
   & > h3 {
-    margin: 0.5rem 0 0 0;
-    font-size: 1rem;
+    margin: 2.5rem 0 0 .5rem;
+    font-size: .9rem;
+    text-transform: lowercase !important;
+    margin-left: 20 !important;
+   
   }
 
   & > ul.recent-ul {
@@ -10,7 +13,7 @@
     padding-left: 0;
 
    & > li {
-      margin: 4.5rem 0; // Increased from 1rem to 2.5rem for more gap
+      margin: 2.5rem 0; // Increased from 1rem to 2.5rem for more gap
       
       // Optional: Add a separator line for better visual distinction
       border-bottom: 1px solid var(--lightgray);

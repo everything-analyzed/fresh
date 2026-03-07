@@ -1,7 +1,6 @@
 ---
 tags:
-  - society
-  - autonomy
+  - the-system
 title:
 description:
 publish: "true"

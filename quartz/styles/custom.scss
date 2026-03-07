@@ -35,40 +35,74 @@
 // =============================================================================
 // 2. TYPOGRAPHY
 // =============================================================================
-body, section, p, li {
+@media all and (min-width: 769px) {
+body, section, p, li, text {
   color: #909090 !important;
   font-size: 1rem !important;
   line-height: 1.7 !important;
   -webkit-font-smoothing: antialiased;
+  
+}
+/* Target only the list items, not the containers */
+.center article li {
+  color: #909090 !important;
+  font-size: .9rem !important; 
+  line-height: 1.7 !important;
+  font-weight: 300 !important;
+margin-bottom: 0.75rem !important; /* The gap between items */
+justify-content: left;
+  -webkit-font-smoothing: antialiased !important;
 }
 
-h1, h2, h3, h4 {
+/* Ensure the paragraph text is identical */
+.center article p {
+  color: #909090 !important;
+  font-size: .9rem !important;
+  line-height: 1.7 !important;
+  font-weight: 300 !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+h1, h4 {
   font-weight: 300 !important; 
-  color: #4a766b !important; /* Lighter taupe (#b2ada9) */
+  color: #84a59d !important; /* Lighter taupe (#b2ada9) */
   letter-spacing: -0.01em !important;
   line-height: 1.2 !important;
   text-align: left !important; 
 }
-h2, h3, h4 {
-  font-weight: 300 !important; 
-  color: #4a766b !important; /* Lighter taupe (#b2ada9) */
+h3 {
+  font-weight: 400 !important; 
+  color: #84a59d !important; /* Lighter taupe (#b2ada9) */
   letter-spacing: -0.01em !important;
   line-height: 1.2 !important;
   text-align: left !important; 
+  font-size: 1.4rem !important; 
 }
-/* only apply these specific title styles on mobile */
-@media all and (max-width: 768px) {
-  .page-title {
+h2 {
+  font-weight: 400 !important; 
+  color: #84a59d !important; /* Lighter taupe (#b2ada9) */
+  letter-spacing: -0.01em !important;
+  line-height: 1.2 !important;
+  text-align: left !important; 
+  font-size: 1.6rem !important; 
+}
+strong {
+  color: #84a59d !important; /* soft clay accent */
+  font-weight: 600;
+}
+
+ /* 1. Title */
+.page-title {
     display: flex !important;
     flex-direction: column !important; 
-    align-items: flex-end !important;   
+    align-items: flex-start !important;   
     text-align: left !important;      
     width: auto !important; 
     margin-right: 8rem !important; 
     margin-left: auto !important;
     margin-bottom: 2rem !important;
-    font-weight: 300 !important; 
-    margin-top: 1rem !important;
+    margin-top: .5rem !important;
+    order: -10 !important; /* super low number to force it to the very top */
   }
 
   .page-title a {
@@ -76,43 +110,62 @@ h2, h3, h4 {
     line-height: 1.1 !important;       
     max-width: 200px !important;       
     font-weight: 300 !important; 
-    font-size: 2.35rem !important;
+    font-size: 2.1rem !important;
     text-align: left !important; 
+    order: -10 !important; /* super low number to force it to the very top */
   }
-}
+
+
 .article-title {
-  font-size: 2rem !important; 
+  font-size: 1.5rem !important; 
   margin-top: 0 !important;
   font-weight: 300 !important;
   letter-spacing: -0.01em !important;
   
 }
-h3 {
-  font-weight: 600 !important; 
-  color: #4a766b !important; /* Lighter taupe (#b2ada9) */
-  letter-spacing: -0.01em !important;
-  line-height: 1.2 !important;
-  text-align: left !important; 
-  font-size: 1.4rem !important; 
-}
-h2 {
-  font-weight: 600 !important; 
-  color: #4a766b !important; /* Lighter taupe (#b2ada9) */
-  letter-spacing: -0.01em !important;
-  line-height: 1.2 !important;
-  text-align: left !important; 
-  font-size: 1.6rem !important; 
-}
-strong {
-  color: #4a766b !important; /* soft clay accent */
-  font-weight: 600;
-}
+
 
 code {
   background-color: var(--lightgray);
   color: var(--darkgray);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
+}
+strong {
+  color: #84a59d !important; /* soft clay accent */
+  font-weight: 500;
+}
+/* Table of Contents */
+  .toc h3 {
+    font-size: 1.1rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.5rem !important;
+    font-weight: 400 !important;
+    text-transform: lowercase !important;
+  }
+  
+  .toc li a {
+    font-size: 0.9rem !important;
+    line-height: 1.2 !important; /* Plenty of space between links */
+    font-weight: 400 !important;
+  }
+
+  /* Explorer Elements */
+  .explorer h2, #explorer-title {
+    font-size: 1.1rem !important;
+    line-height: 1.2 !important;
+    font-weight: 400 !important;
+    margin-top: 0.8rem !important;
+    text-transform: lowercase !important;
+  }
+  .explorer .folder-button span {
+    font-size: 0.95rem !important;
+    line-height: 1.4 !important;
+  }
+  .explorer li a {
+    font-size: 0.9rem !important;
+    line-height: 2 !important; /* High line-height for a clean list */
+  }
 }
 
 // =============================================================================
@@ -135,12 +188,54 @@ html, body, .page {
     align-items: start !important; /* CRITICAL: Stops the sidebar from dropping low */
     padding: 0 40px !important;
   }
-  body, section, p, li {
-  color: #909090 !important;
-  font-size: 1rem !important;
-  line-height: 1.6 !important;
-  -webkit-font-smoothing: antialiased;
+
+
+
+  
+
+  /* The chevron icon itself */
+  .folder-icon svg, 
+  #explorer-toggle svg {
+    width: 4px !important;
+    height: 4px !important;
+    stroke-width: 2px !important; /* Thinner line */
+    transition: transform 0.2s ease !important;
+    vertical-align: middle !important;
+  }
+
+  /* Space between the chevron and the folder name */
+  .folder-icon {
+    margin-right: 8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  /* 2. The article title (top of the page) */
+.article-title, 
+.center h1 {
+  text-transform: lowercase !important;
+  margin-left: 1rem !important;
 }
+.content-meta {
+  display: flex !important; /* Changed from inline */
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.75rem !important;
+  color: var(--gray) !important; 
+  font-weight: 300 !important;
+  margin-bottom: 3rem !important; /* This will work now! */
+  margin-left: 1rem !important; 
+  margin-top: 5 !important;
+  
+}
+
+/* This keeps the stuff inside (date, reading time) sitting next to each other */
+.content-meta * {
+  display: inline-block !important;
+}
+ // =============================================================================
+// 5. BACKLINKS
+// =============================================================================
 .backlinks li a {
   font-size: 1.1rem !important;
   font-weight: 500 !important;
@@ -156,7 +251,9 @@ html, body, .page {
   margin-top: 0 !important;
   opacity: 0.8;
 }
-
+ // =============================================================================
+// 6. SIDEBAR RIGHT
+// =============================================================================
   .sidebar.right {
     display: flex !important;
     flex-direction: column !important;
@@ -174,7 +271,7 @@ html, body, .page {
     background-color: var(--light) !important;
     border-radius: 8px !important;
     padding: 1.5rem !important;
-    margin-top: 0 !important; /* Ensures it starts at the very top */
+    margin-top: 1rem !important; /* Ensures it starts at the very top */
     box-shadow: 
       0 4px 6px -1px rgba(0, 0, 0, 0.05), 
       0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
@@ -183,6 +280,9 @@ html, body, .page {
   overflow: hidden !important; /* Clips any weird hover overflow */
   }
  
+  // =============================================================================
+// 6. SIDEBAR LEFT
+// =============================================================================
 /* 1. The Container */
 .sidebar.left .flex:has(.search) {
   display: flex !important;
@@ -231,6 +331,10 @@ html, body, .page {
   padding: 0 !important;
   width: 100% !important;
 }
+
+ // =============================================================================
+// 6. CENTER
+// =============================================================================
   .center {
     background-color: var(--light) !important;
     border-radius: 8px !important;
@@ -241,15 +345,17 @@ html, body, .page {
     margin: 0 !important;
     align-items: flex-start !important; /* Fixes title drift */
     /* The "lift" effect using a soft shadow */
-  box-shadow: 
+    box-shadow: 
     0 4px 6px -1px rgba(0, 0, 0, 0.05), /* Inner shadow */
     0 10px 15px -3px rgba(0, 0, 0, 0.08) !important; /* Main lift shadow */
     box-sizing: border-box !important;
-  transition: box-shadow 0.2s ease !important; /* Smooth on load */
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
+    transition: box-shadow 0.2s ease !important; /* Smooth on load */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    margin-top: 1rem !important; 
   }
+
   /* Optional: Subtle hover interaction to emphasize the lift */
 .center:hover {
    box-shadow: 
@@ -257,7 +363,7 @@ html, body, .page {
     0 15px 25px -5px rgba(0, 0, 0, 0.12) !important;
 }
 .center article {
-  max-width: 620px !important; /* This stops the text runoff */
+  max-width: 600px !important; /* This stops the text runoff */
   margin-left: 0 !important;   /* Keeps it aligned with your titles */
   margin-right: auto !important; 
   width: 100% !important;
@@ -273,34 +379,11 @@ html, body, .page {
     align-items: flex-start;
     width: 320px !important;
     padding: 2.5rem !important;
-    margin: 0 !important;
+   margin-top: 1rem !important; 
     height: auto !important;
      }
 
-  /* 1. Title */
-.page-title {
-    display: flex !important;
-    flex-direction: column !important; 
-    align-items: flex-start !important;   
-    text-align: left !important;      
-    width: auto !important; 
-    margin-right: 8rem !important; 
-    margin-left: auto !important;
-    margin-bottom: 2rem !important;
-    font-weight: 300 !important; 
-    margin-top: .5rem !important;
-    order: -10 !important; /* super low number to force it to the very top */
-  }
 
-  .page-title a {
-    display: block !important;
-    line-height: 1.1 !important;       
-    max-width: 200px !important;       
-    font-weight: 300 !important; 
-    font-size: 2.35rem !important;
-    text-align: left !important; 
-    order: -10 !important; /* super low number to force it to the very top */
-  }
 
   /* 3. Graph - order 3 to sit under search */
   .graph, .graph-window { 
@@ -329,12 +412,96 @@ html, body, .page {
  .article {
     width: 100% !important;
     max-width: 100% !important;
-    padding: 1.5rem !important; /* nice breathability for text */
+    padding: 2.5rem !important; /* nice breathability for text */
     box-sizing: border-box !important;
     overflow-wrap: break-word !important; /* stops long text runoff */
      align-items: center !important; /* this centers the children */
      
     }
+
+  
+
+ 
+
+    // =============================================================================
+// 6. RECENT NOTES
+// =============================================================================
+.recent-notes li {
+  
+  border-radius: 8px !important;
+  transition: all 0.25s ease !important;
+  overflow-wrap: anywhere !important; 
+  hyphens: auto !important;
+  margin-left: 10 !important;
+  margin-top: 1.8rem !important;
+  margin-left: 20 !important;
+  
+  
+  
+}
+.recent-notes a.internal.tag-link, .tags li a  {
+  margin-left: -15 !important;
+  
+}
+.recent-notes li, p { /* description */
+ font-size: .85rem !important;
+ margin-bottom: 0;
+}
+
+.recent-notes li:hover {
+  background-color: rgba(52, 63, 58, 0.15) !important;
+  color: #343f3a !important; /* Your Spruce color */
+  border-radius: 4px;
+  
+}
+
+.recent-notes li a { /* note titles */
+  all: unset !important;
+  font-weight: 400 !important;
+  color: var(--secondary) !important;
+  font-size: 1rem !important;
+  
+  
+}
+.recent-notes ul { 
+  list-style: none !important; /* kills the bullets */
+width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  
+  
+}
+
+.recent-notes li {
+  list-style-type: none !important; /* double insurance */
+  padding: 12px 0 !important;       /* clean vertical spacing */
+  &::before {
+    content: none !important;       /* removes any custom quartz bullets */
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  
+  
+  }
+  .recent-notes li p {
+  margin: 4px 0 0 0 !important;
+  /* This stops the runoff */
+  font-size: .8rem !important;
+  line-height: 1.2 !important;
+  color: var(--gray) !important;
+  overflow-wrap: anywhere !important; 
+  hyphens: auto !important;
+}
+
+/* Also ensure the list items don't overflow */
+.recent-notes li {
+ overflow-wrap: anywhere !important; 
+  hyphens: auto !important;
+}
+ 
+
+}
 }
 
 
@@ -348,6 +515,141 @@ html, body, .page {
     padding: 0 !important;
     margin: 0 !important;
    }
+   // =============================================================================
+// 2. TYPOGRAPHY
+// =============================================================================
+@media all and (max-width: 768px) {
+body, section, p, li, text {
+  color: #909090 !important;
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+  -webkit-font-smoothing: antialiased;
+  
+}
+/* Target only the list items, not the containers */
+.center article li {
+  color: #909090 !important;
+  font-size: .9rem !important; 
+  line-height: 1.7 !important;
+  font-weight: 300 !important;
+margin-bottom: 0.75rem !important; /* The gap between items */
+justify-content: left;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/* Ensure the paragraph text is identical */
+.center article p {
+  color: #909090 !important;
+  font-size: .9rem !important;
+  line-height: 1.7 !important;
+  font-weight: 300 !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+h1, h4 {
+  font-weight: 300 !important; 
+  color: #84a59d !important; /* Lighter taupe (#b2ada9) */
+  letter-spacing: -0.01em !important;
+  line-height: 1.2 !important;
+  text-align: left !important; 
+}
+h3 {
+  font-weight: 400 !important; 
+  color: #84a59d !important; /* Lighter taupe (#b2ada9) */
+  letter-spacing: -0.01em !important;
+  line-height: 1.2 !important;
+  text-align: left !important; 
+  font-size: 1.4rem !important; 
+}
+h2 {
+  font-weight: 400 !important; 
+  color: #84a59d !important; /* Lighter taupe (#b2ada9) */
+  letter-spacing: -0.01em !important;
+  line-height: 1.2 !important;
+  text-align: left !important; 
+  font-size: 1.6rem !important; 
+}
+strong {
+  color: #84a59d !important; /* soft clay accent */
+  font-weight: 600;
+}
+
+ /* 1. Title */
+.page-title {
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: flex-start !important;   
+    text-align: left !important;      
+    width: auto !important; 
+    margin-right: 8rem !important; 
+    margin-left: auto !important;
+    margin-bottom: 2rem !important;
+    margin-top: .5rem !important;
+    order: -10 !important; /* super low number to force it to the very top */
+  }
+
+  .page-title a {
+    display: block !important;
+    line-height: 1.1 !important;       
+    max-width: 200px !important;       
+    font-weight: 300 !important; 
+    font-size: 2.1rem !important;
+    text-align: left !important; 
+    order: -10 !important; /* super low number to force it to the very top */
+  }
+
+
+.article-title {
+  font-size: 1.5rem !important; 
+  margin-top: 0 !important;
+  font-weight: 300 !important;
+  letter-spacing: -0.01em !important;
+  
+}
+
+
+code {
+  background-color: var(--lightgray);
+  color: var(--darkgray);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+strong {
+  color: #84a59d !important; /* soft clay accent */
+  font-weight: 500;
+}
+/* Table of Contents */
+  .toc h3 {
+    font-size: 1.1rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.5rem !important;
+    font-weight: 400 !important;
+    text-transform: lowercase !important;
+  }
+  
+  .toc li a {
+    font-size: 0.9rem !important;
+    line-height: 1.2 !important; /* Plenty of space between links */
+    font-weight: 400 !important;
+  }
+
+  /* Explorer Elements */
+  .explorer h2, #explorer-title {
+    font-size: 1.1rem !important;
+    line-height: 1.2 !important;
+    font-weight: 400 !important;
+    margin-top: 0.8rem !important;
+    text-transform: lowercase !important;
+  }
+  .explorer .folder-button span {
+    font-size: 0.95rem !important;
+    line-height: 1.4 !important;
+  }
+  .explorer li a {
+    font-size: 0.9rem !important;
+    line-height: 2 !important; /* High line-height for a clean list */
+  }
+
    
     .sidebar.left {
     display: flex !important;
@@ -424,7 +726,6 @@ html, body, .page {
 }
   
 /* Force the explorer to stay open on mobile since the button is stuck */
-@media all and (max-width: 768px) {
   .explorer #explorer-content {
     display: block !important;
     max-height: none !important;
@@ -442,7 +743,7 @@ html, body, .page {
   .explorer li {
     padding: 8px 0 !important;
     border-bottom: 1px solid var(--lightgray);
-  }
+  
   
 }
 
@@ -454,6 +755,7 @@ html, body, .page {
     width: auto !important;
     margin: 1.5rem 1rem 1.5rem 1rem !important;
     text-align: left; /* or center if you want it balanced */
+    letter-spacing: -0.01em !important;
   }
 
   /* Ensures the link inside the title behaves like a block */
@@ -461,6 +763,7 @@ html, body, .page {
     display: block;
     font-size: 1.8rem !important; /* makes it nice and big on mobile */
     margin-left: .5rem;
+    letter-spacing: -0.01em !important;
   }
 
 
@@ -520,7 +823,78 @@ html, body, .page {
     margin-top: 0rem;
     width: 100% !important;
    }
-@media all and (max-width: 768px) {
+}
+
+   // =============================================================================
+// 6. RECENT NOTES
+// =============================================================================
+/* The "Recent Notes" Title */
+
+.recent-notes li {
+  
+  border-radius: 8px !important;
+  transition: all 0.25s ease !important;
+  overflow-wrap: anywhere !important; 
+  hyphens: auto !important;
+  margin-left: 10 !important;
+  
+  
+}
+
+.recent-notes li:hover {
+  background-color: rgba(52, 63, 58, 0.15) !important;
+  color: #343f3a !important; /* Your Spruce color */
+  border-radius: 4px;
+  
+}
+
+.recent-notes li a {
+  all: unset !important;
+  font-weight: 400 !important;
+  color: var(--secondary) !important;
+  
+}
+.recent-notes ul {
+  list-style: none !important; /* kills the bullets */
+width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.recent-notes li {
+  list-style-type: none !important; /* double insurance */
+  padding: 12px 0 !important;       /* clean vertical spacing */
+  &::before {
+    content: none !important;       /* removes any custom quartz bullets */
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  
+  }
+  .recent-notes li p {
+  margin: 4px 0 0 0 !important;
+  /* This stops the runoff */
+  font-size: 0.8rem !important;
+  line-height: 1.2 !important;
+  color: var(--gray) !important;
+  overflow-wrap: anywhere !important; 
+  hyphens: auto !important;
+}
+
+/* Also ensure the list items don't overflow */
+.recent-notes li {
+ overflow-wrap: anywhere !important; 
+  hyphens: auto !important;
+  
+}
+.recent-notes .tags {
+   
+    margin-left: 0 !important;
+   
+  }
+
+}
   /* Keep the explorer locked in place at the bottom */
   
 /* Force the content to expand downward, not over the page */
@@ -610,17 +984,28 @@ article-title {
   letter-spacing: -0.01em !important;
   padding-left: 0rem !important; 
   }
-  .center .tags {
+  .center {
     display: flex !important;
     flex-wrap: wrap !important;
     gap: 8px !important;
     list-style: none !important;
     padding: 0 !important;
     margin-bottom: 2rem !important;
+    
+  }
+   .tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin-bottom: 1rem !important;
+    
   }
 
+
 }
-}
+
 
 
 // =============================================================================
@@ -632,6 +1017,7 @@ article-title {
   align-items: center !important;
   gap: 0.4rem !important;
   margin-bottom: 1.5rem !important;
+  margin-left: 1rem !important;
 }
 
 .breadcrumbs *, nav[aria-label="breadcrumbs"] * {
@@ -649,7 +1035,7 @@ article-title {
   font-size: 0.75rem !important;
   color: var(--gray) !important; 
   font-weight: 300 !important;
-  margin-bottom: 3rem !important; /* This will work now! */
+  margin-bottom: 1rem !important; /* This will work now! */
   padding-left: .3rem !important; 
   margin-top: 5 !important;
   
@@ -660,68 +1046,10 @@ article-title {
   display: inline-block !important;
 }
 
-// =============================================================================
-// 6. RECENT NOTES
-// =============================================================================
-.recent-notes li {
-  
-  border-radius: 8px !important;
-  transition: all 0.25s ease !important;
-  overflow-wrap: anywhere !important; 
-  hyphens: auto !important;
-  margin-left: 10 !important;
-  
-}
 
-.recent-notes li:hover {
-  background-color: rgba(52, 63, 58, 0.15) !important;
-  color: #343f3a !important; /* Your Spruce color */
-  border-radius: 4px;
-  
-}
-
-.recent-notes li a {
-  all: unset !important;
-  font-weight: 400 !important;
-  color: var(--secondary) !important;
-}
-.recent-notes ul {
-  list-style: none !important; /* kills the bullets */
-width: 100% !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.recent-notes li {
-  list-style-type: none !important; /* double insurance */
-  padding: 12px 0 !important;       /* clean vertical spacing */
-  &::before {
-    content: none !important;       /* removes any custom quartz bullets */
-  width: 100% !important;
-  box-sizing: border-box !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  }
-  .recent-notes li p {
-  margin: 4px 0 0 0 !important;
-  /* This stops the runoff */
-  font-size: 0.8rem !important;
-  line-height: 1.2 !important;
-  color: var(--gray) !important;
-  overflow-wrap: anywhere !important; 
-  hyphens: auto !important;
-}
-
-/* Also ensure the list items don't overflow */
-.recent-notes li {
- overflow-wrap: anywhere !important; 
-  hyphens: auto !important;
-  
-}
   // =============================================================================
 // Backlinks
 //
-}
 .backlinks ul {
   list-style: none !important;
   padding: 0 !important;
@@ -773,6 +1101,7 @@ a.internal.tag-link, .tags li a {
   border-radius: 4px !important;
   transition: all 0.2s ease;
   margin-bottom: 2rem !important;
+
   
 }
 
@@ -857,25 +1186,14 @@ a.internal.tag-link:hover {
 }
 
 
-/* target the folder arrow icon */
-.folder-icon {
-  margin-right: 8px !important;
-  color: var(--darkgray) !important;
-}
 
-/* make the icon bigger and heavier */
-.folder-icon svg {
-  width: 14px !important;
-  height: 14px !important;
-  stroke-width: 3px !important; /* makes the arrow lines thicker */
-  transition: transform 0.2s ease;
-  margin-top: 1rem !important;
-}
+
+
 
 /* specific color when the folder is open */
 .folder-container:not(.collapsed) .folder-icon svg {
   stroke: #a39193 !important; /* your clay color */
-  margin-top: 1rem !important;
+  margin-top: 0rem !important;
 }
 /* target desktop only */
 @media all and (min-width: 768px) {
@@ -893,13 +1211,10 @@ a.internal.tag-link:hover {
 .page-title a, 
 .page-title {
   text-transform: lowercase !important;
+  letter-spacing: -0.01em !important;
 }
 
-/* 2. The article title (top of the page) */
-.article-title, 
-.center h1 {
-  text-transform: lowercase !important;
-}
+
 
 /* 3. Section headers (H2, H3, H4 inside your notes) */
 .center h2, 
@@ -911,10 +1226,10 @@ a.internal.tag-link:hover {
 
 /* 4. Explorer and Sidebar titles (folders, backlinks, etc.) */
 #explorer-title, 
-.backlinks > h3, 
-.recent-notes > h3,
+.backlinks > h3,
 .folder-button span {
   text-transform: lowercase !important;
+  font-weight: 800 !important; /* making it heavy */
 }
 
 /* 5. Individual file names in lists */

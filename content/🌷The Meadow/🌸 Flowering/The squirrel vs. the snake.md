@@ -1,9 +1,7 @@
 ---
 tags:
-  - animals
-  - society
-  - law
-  - crime
+  - wild
+  - the-edit
 status: 🌸 Flowering
 ---
 I'm thinking about how much life is a matter of perspective. I read an article about [[Rattlesnakes]] and the author talked about how we know if a squirrel approaches us we know it's not a threat, but we don't give snakes the same courtesy. 

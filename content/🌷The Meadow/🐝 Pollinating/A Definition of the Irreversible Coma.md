@@ -1,7 +1,6 @@
 ---
 tags:
   - the-pulse
-pillar:
-draft: true
+  - the-system
 status: 🐝 Pollinating
 ---

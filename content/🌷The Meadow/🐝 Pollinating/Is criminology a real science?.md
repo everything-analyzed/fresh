@@ -1,6 +1,5 @@
 ---
 tags:
-  - seedling
 draft: true
 status: 🐝 Pollinating
 ---

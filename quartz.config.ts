@@ -31,11 +31,11 @@ const config: QuartzConfig = {
   lightMode: {
      light: "#faf9f6",          // Your Parchment background
   lightgray: "#f1f2e1",      // Pale Olive (Tag Cards)
-  gray: "#9a9e80",           // Sagey-Olive (Metadata/Dates)
+  gray: "#909090",           // Sagey-Olive (Metadata/Dates)
   darkgray: "#424536",       // Dark Moss (Body Text - very readable)
   secondary: "#84a59d",      // Eucalyptus Green (Titles/Links)
   tertiary: "#7d825c",       // Deep Olive (Hover state)
-  highlight: "rgba(241, 242, 225, 0.5)", // Olive-tinted highlight
+  highlight: "rgba(132, 165, 157, 0.2)", // Olive-tinted highlight
 },
     darkMode: {
       light: "#121412",
