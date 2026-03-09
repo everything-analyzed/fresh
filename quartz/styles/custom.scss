@@ -755,7 +755,7 @@ strong {
   /* Title first */
 
   .page-title {
-     order: -10 !important; 
+     order: 1 !important; 
     display: block !important;
     width: auto !important;
     margin: 1.5rem 1rem 1.5rem 1rem !important;
@@ -767,12 +767,12 @@ strong {
   /* Ensures the link inside the title behaves like a block */
   .page-title a {
     display: block;
-    font-size: 1.8rem !important; /* makes it nice and big on mobile */
+    font-size: 1.4rem !important; /* makes it nice and big on mobile */
     margin-left: 2rem;
     letter-spacing: -0.01em !important;
     font-weight: 300 !important;
      margin-top: 1rem;
-  }
+  
 
 
   /* Article third - fixed width to stop runoff */
