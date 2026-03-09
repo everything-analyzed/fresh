@@ -32,6 +32,7 @@ const config: QuartzConfig = {
      light: "#faf9f6",          // Your Parchment background
   lightgray: "#f1f2e1",      // Pale Olive (Tag Cards)
   gray: "#909090",           // Sagey-Olive (Metadata/Dates)
+   dark: "#424536",       // Dark Moss (Body Text - very readable)
   darkgray: "#424536",       // Dark Moss (Body Text - very readable)
   secondary: "#84a59d",      // Eucalyptus Green (Titles/Links)
   tertiary: "#7d825c",       // Deep Olive (Hover state)

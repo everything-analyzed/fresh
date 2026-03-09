@@ -96,19 +96,7 @@ export const defaultContentPageLayout: PageLayout = {
         drag: true,
         zoom: true,
       },
-    })), // Fixed: Removed the extra parenthesis that was here
-    Component.MobileOnly(Component.Explorer({
-      title: "Explorer",
-      folderClickBehavior: "link",
-      folderDefaultState: "collapsed",
-      useSavedState: true,
-      // Fixed: Removed "desktop-only" displayClass so it actually shows on mobile
-      mapFn: (node) => {
-        node.displayName = node.displayName
-          .replace(/-/g, " ")
-          .replace(/\b\w/g, (l) => l.toUpperCase())
-      },
-    })),
+    })), 
   ],
   right: [ 
     

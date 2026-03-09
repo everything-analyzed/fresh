@@ -514,6 +514,7 @@ width: 100% !important;
     width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
+    overflow-x: hidden !important;
    }
    // =============================================================================
 // 2. TYPOGRAPHY
@@ -777,7 +778,7 @@ strong {
   .center {
     order: 3 !important;
     background-color: var(--light) !important;
-    padding: 2.5rem !important;
+    padding: 1.5rem !important;
     border-radius: 8px !important;
     box-sizing: border-box !important;
     /* Use percentages so it scales to any phone width */
@@ -790,10 +791,10 @@ strong {
      display: flex !important;
     flex-direction: column !important;
     min-width: 0 !important;
-   align-content: left! important;
+  align-items: flex-start !important;
    width: calc(100% - 2rem) !important;
    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
-   height: auto;
+   min-width: 0 !important;
   }
 // =============================================================================
 // Backlinks
@@ -841,6 +842,21 @@ strong {
     margin-top: 0rem;
     width: 100% !important;
    }
+
+
+
+}
+@media all and (max-width: 768px) {
+.sidebar.left .explorer,
+#explorer-content,
+#explorer-toggle {
+display: none !important;
+visibility: hidden !important;
+height: 0 !important;
+margin: 0 !important;
+padding: 0 !important;
+pointer-events: none !important;
+}
 }
 
    // =============================================================================
@@ -1057,7 +1073,6 @@ a.internal.tag-link, .tags li a {
   border-radius: 4px !important;
   transition: all 0.2s ease;
   margin-bottom: 2rem !important;
-
   
 }
 
@@ -1076,4 +1091,22 @@ a.internal.tag-link:hover {
   margin-bottom: 2rem !important;
   
 }
+
+/* Target the magnifying glass SVG inside the search button */
+.search-button svg,
+.search svg,
+.lucide-search {
+ stroke: none !important; 
+ fill: #84a59d !important;   
+ color: #84a59d !important;
+ opacity: 1 !important;
+}
+
+/* Also ensure the hover state stays green */
+.search-button:hover svg,
+.search:hover svg {
+ fill: #84a59d !important;
+ stroke: none !important;
+}
+
 
