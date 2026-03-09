@@ -48,7 +48,7 @@ export const defaultContentPageLayout: PageLayout = {
     })
   ),  
   Component.DesktopOnly(Component.TableOfContents()),
-  Component.MobileOnly(Component.TagList()),
+ 
     Component.DesktopOnly(Component.Explorer({
     title: "Explorer",
     folderClickBehavior: "link",
