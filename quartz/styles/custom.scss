@@ -342,8 +342,8 @@ html, body, .page {
     margin-right: 8rem !important; 
     font-weight: 300 !important;
     margin-bottom: 2rem !important;
-    margin-top: .5rem !important;
-    order: -10 !important; /* super low number to force it to the very top */
+    margin-top: 0 !important;
+    order: 1 !important; /* super low number to force it to the very top */
   }
 
   .page-title a {
@@ -352,7 +352,8 @@ html, body, .page {
     font-weight: 300 !important; 
     font-size: 2.1rem !important;
     text-align: left !important; 
-    order: -10 !important; /* super low number to force it to the very top */
+    order: 1 !important; /* super low number to force it to the very top */
+    margin-top: 0 !important;
   }
 
  // =============================================================================
@@ -361,7 +362,7 @@ html, body, .page {
   .center {
     background-color: var(--light) !important;
     border-radius: 8px !important;
-    padding: 0rem 2.5rem  2.5rem  2.5rem  !important; /* Adjust this for more/less breathing room */
+    padding: 0 2.5rem  2.5rem  2.5rem  !important; /* Adjust this for more/less breathing room */
     box-sizing: border-box !important;
     width: 100% !important; /* Match the grid column */
     max-width: 750px !important;
@@ -1109,4 +1110,13 @@ a.internal.tag-link:hover {
  stroke: none !important;
 }
 
-
+.graph > h3,
+.graph > h1,
+.graph-header,
+#graph-view-title {
+display: none !important;
+visibility: hidden !important;
+height: 0 !important;
+margin: 0 !important;
+padding: 0 !important;
+}
