@@ -272,6 +272,7 @@ html, body, .page {
     background-color: var(--light) !important;
     border-radius: 8px !important;
     padding: 1.5rem !important;
+    list-style: none;
     margin-top: 1rem !important; /* Ensures it starts at the very top */
     box-shadow: 
       0 4px 6px -1px rgba(0, 0, 0, 0.05), 
@@ -1031,19 +1032,9 @@ a.internal.tag-link:hover {
 }
 
 
-/* changes the search magnifying glass color */
-.search button svg, 
-.search .search-icon svg {
-  stroke: var(--darkgray) !important; /* using your taupe variable */
-  fill: none !important; 
-  opacity: 0.8;
-}
 
-/* optional: make it pop a bit more when you hover */
-.search button:hover svg {
-  stroke: var(--steel-blue) !important;
-  opacity: 1;
-}
+
+
 
    .sidebar.left {
     display: block !important;
@@ -1099,35 +1090,23 @@ a.internal.tag-link:hover {
 }
 
 
-/* specific color when the folder is open */
-.folder-container:not(.collapsed) .folder-icon svg {
-  stroke: #a39193 !important; /* your clay color */
-  margin-top: 0rem !important;
-}
 
-/* 1. Force a physical area for the JS to draw into */
-.graph {
-  display: block !important;
-  min-height: 350px !important; /* JS needs this number to calculate node positions */
-  width: 100% !important;
-  position: relative !important;
-}
 
-/* 2. Ensure the canvas isn't zeroed out */
-.graph > .graph-outer {
-  display: block !important;
-  height: 350px !important;
-  width: 100% !important;
-}
-
-canvas.graph-canvas {
-  display: block !important;
+/* FORCE DRAWING LAYER VISIBILITY */
+.graph-canvas, canvas {
   opacity: 1 !important;
+  visibility: visible !important;
 }
 
-/* 3. Essential Colors (Eucalyptus) */
-:root {
-  --graph-node: #84a59d !important;
-  --graph-line: #b2ada9 !important;
-  --graph-text: #433f3d !important;
+/* Force the nodes to have a physical 'fill' regardless of JS state */
+circle, .node, .graph-node {
+  fill: #84a59d !important;      /* Your Eucalyptus Green */
+  opacity: 1 !important;
+  r: 4px !important;             /* Force a radius so they aren't 0px wide */
+}
+
+line, .link, .graph-edge {
+  stroke: #b2ada9 !important;    /* Your Taupe line color */
+  stroke-width: 1.5px !important;
+  opacity: 1 !important;
 }

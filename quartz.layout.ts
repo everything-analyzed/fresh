@@ -86,13 +86,15 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Graph({
       localGraph: {
         opacityScale: 1,
-        fontSize: 0.6,
+        fontSize: 0.9,
         drag: true,
-        zoom: false, 
+        zoom: true, 
       },
       globalGraph: {
         opacityScale: 1,
         fontSize: 0.6,
+        drag: true,
+        zoom: true,
       },
     })), // Fixed: Removed the extra parenthesis that was here
     Component.MobileOnly(Component.Explorer({
