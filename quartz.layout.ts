@@ -31,12 +31,12 @@ export const defaultContentPageLayout: PageLayout = {
     Component.DesktopOnly(Component.Graph({
       localGraph: {
         opacityScale: 1,
-        fontSize: 0.5,
+        fontSize: 0.85,
         repelForce: 0.5,
       },
       globalGraph: {
         opacityScale: 1,
-        fontSize: 0.5,
+        fontSize: 0.85,
       },
     })),
   Component.DesktopOnly(

@@ -72,7 +72,7 @@ h1, h4 {
   text-align: left !important; 
 }
 h3 {
-  font-weight: 400 !important; 
+  font-weight: 300 !important; 
   color: #84a59d !important; /* Lighter taupe (#b2ada9) */
   letter-spacing: -0.01em !important;
   line-height: 1.2 !important;
@@ -80,7 +80,7 @@ h3 {
   font-size: 1.4rem !important; 
 }
 h2 {
-  font-weight: 400 !important; 
+  font-weight: 300 !important; 
   color: #84a59d !important; /* Lighter taupe (#b2ada9) */
   letter-spacing: -0.01em !important;
   line-height: 1.2 !important;
@@ -92,29 +92,6 @@ strong {
   font-weight: 600;
 }
 
- /* 1. Title */
-.page-title {
-    display: flex !important;
-    flex-direction: column !important; 
-    align-items: flex-start !important;   
-    text-align: left !important;      
-    width: auto !important; 
-    margin-right: 8rem !important; 
-    margin-left: auto !important;
-    margin-bottom: 2rem !important;
-    margin-top: .5rem !important;
-    order: -10 !important; /* super low number to force it to the very top */
-  }
-
-  .page-title a {
-    display: block !important;
-    line-height: 1.1 !important;       
-    max-width: 200px !important;       
-    font-weight: 300 !important; 
-    font-size: 2.1rem !important;
-    text-align: left !important; 
-    order: -10 !important; /* super low number to force it to the very top */
-  }
 
 
 .article-title {
@@ -189,9 +166,6 @@ html, body, .page {
     align-items: start !important; /* CRITICAL: Stops the sidebar from dropping low */
     padding: 0 40px !important;
   }
-
-
-
   
 
   /* The chevron icon itself */
@@ -237,8 +211,33 @@ html, body, .page {
  // =============================================================================
 // 5. BACKLINKS
 // =============================================================================
+// =============================================================================
+// Backlinks
+//
+.backlinks ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.backlinks li {
+  list-style-type: none !important;
+  padding: 0.5rem 0 !important; /* gives the notes some room */
+}
+
+/* this nixes any custom dots quartz might be sneaking in */
+.backlinks li::before {
+  content: none !important;
+}
+.backlinks > h3, 
+.backlinks > h1 {
+  font-size: 1.2rem !important;
+  font-weight: 300 !important;
+  margin-bottom: 1rem !important;
+  text-transform: lowercase !important; /* Optional: matches your minimalist vibe */
+}
 .backlinks li a {
-  font-size: 1.1rem !important;
+  font-size: 1rem !important;
   font-weight: 300 !important;
   color: var(--secondary) !important;
   display: block !important;
@@ -246,7 +245,7 @@ html, body, .page {
 }
 .backlinks li p, 
 .backlinks .overflow {
-  font-size: 1rem !important;
+  font-size: .9rem !important;
   line-height: 1.4 !important;
   color: var(--gray) !important;
   margin-top: 0 !important;
@@ -331,8 +330,30 @@ html, body, .page {
   box-shadow: none !important;
   border: none !important;
   padding: 0 !important;
-  width: 100% !important;
+  
 }
+/* 1. Title */
+.page-title {
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: flex-start !important;   
+    text-align: left !important;      
+    width: auto !important; 
+    margin-right: 8rem !important; 
+    font-weight: 300 !important;
+    margin-bottom: 2rem !important;
+    margin-top: .5rem !important;
+    order: -10 !important; /* super low number to force it to the very top */
+  }
+
+  .page-title a {
+    line-height: 1.1 !important;       
+    max-width: 200px !important;       
+    font-weight: 300 !important; 
+    font-size: 2.1rem !important;
+    text-align: left !important; 
+    order: -10 !important; /* super low number to force it to the very top */
+  }
 
  // =============================================================================
 // 6. CENTER
@@ -374,20 +395,15 @@ html, body, .page {
 
   /* Force the sidebar to behave like a simple vertical stack */
   .sidebar.left {
-    display: flex !important;
-    flex-direction: column !important;
+    display: block !important;
     background-color: var(--light) !important; /* white sidebar */
     border-radius: 8px !important;
     align-items: flex-start;
-    width: 320px !important;
-    padding: 2.5rem !important;
-   margin-top: 1rem !important; 
+    width: 100% !important;
+   margin-top: .5rem !important; 
     height: auto !important;
      }
 
-
-
-  
 
   /* 4. Explorer */
   .explorer { 
@@ -404,10 +420,6 @@ html, body, .page {
      
     }
 
-  
-
- 
-
     // =============================================================================
 // 6. RECENT NOTES
 // =============================================================================
@@ -420,10 +432,8 @@ html, body, .page {
   margin-left: 10 !important;
   margin-top: 1.8rem !important;
   margin-left: 20 !important;
-  
-  
-  
 }
+
 .recent-notes a.internal.tag-link, .tags li a  {
   margin-left: -15 !important;
   
@@ -437,7 +447,6 @@ html, body, .page {
   background-color: rgba(52, 63, 58, 0.15) !important;
   color: #343f3a !important; /* Your Spruce color */
   border-radius: 4px;
-  
 }
 
 .recent-notes li a { /* note titles */
@@ -453,8 +462,6 @@ html, body, .page {
 width: 100% !important;
   padding: 0 !important;
   margin: 0 !important;
-  
-  
 }
 
 .recent-notes li {
@@ -484,10 +491,18 @@ width: 100% !important;
  overflow-wrap: anywhere !important; 
   hyphens: auto !important;
 }
- 
+}
+.explorer li a {
+    font-size: 0.9rem !important;
+    line-height: 2 !important; /* High line-height for a clean list */
+    font-weight: 300 !important;
+  }
+}
 
-}
-}
+
+
+
+
 
 
 
@@ -566,21 +581,25 @@ strong {
     align-items: flex-start !important;   
     text-align: left !important;      
     width: auto !important; 
-    margin-right: 8rem !important; 
-    margin-left: auto !important;
+    
+    font-weight: 300 !important;
     margin-bottom: 2rem !important;
     margin-top: .5rem !important;
     order: -10 !important; /* super low number to force it to the very top */
   }
 
   .page-title a {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: flex-start !important;  
     line-height: 1.1 !important;       
     max-width: 200px !important;       
     font-weight: 300 !important; 
     font-size: 2.1rem !important;
     text-align: left !important; 
     order: -10 !important; /* super low number to force it to the very top */
+    width: 100% !important;
+
   }
 
 
@@ -633,36 +652,34 @@ strong {
   .explorer li a {
     font-size: 0.9rem !important;
     line-height: 2 !important; /* High line-height for a clean list */
+    font-weight: 300 !important;
   }
 
    
     .sidebar.left {
-    display: flex !important;
-    flex-direction: column !important;
+    display: block !important;
     width: 100% !important;
     padding: 0 !important; /* Keep this 0 so the shadow card sits clean */
-    margin: 0 !important;
-    justify-content: flex-start !important;
-    height: auto !important;
+  
    background-color: var(--light) !important;
     border-radius: 8px !important;
-    padding: 1.5rem !important;
     margin-top: 0 !important; /* Ensures it starts at the very top */
-    box-shadow: none;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  height: auto !important;
-  position: relative !important; /* Stops it from sticking/blocking content */
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
+
+  position: sticky !important;
+     z-index: 100; /* keeps it above the article text */
+    max-height: 100vh !important; /* keeps it from going past the screen */
   }
+
   /* 1. The Container */
 .sidebar.left .flex:has(.search) {
+  order: 2 !important;
   display: flex !important;
   flex-direction: row !important;
-  align-items: center !important; /* This forces both cards to be the same height */
-  gap: 10px !important;
-  width: calc(100% - 2rem) !important;
-  margin: 0.5rem 1rem 1.5rem 1rem !important;
+  align-content: left !important; /* This forces both cards to be the same height */
+  gap: 15px !important;
+  width: 100% !important;
+  justify-content: flex-start !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
 }
 
@@ -670,15 +687,17 @@ strong {
 .sidebar.left .search {
   background-color: var(--light) !important;
   border-radius: 8px !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
-  padding: .5rem 1rem 0rem 1rem;
-  display: flex !important;
-  align-items: center !important;
+  box-shadow: 2px 4px 6px -1px rgba(0, 0, 0, 0.05), 2px 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
+  padding: .5rem 0rem 0rem 0rem;
+  align-items: left !important;
   flex-grow: 1 !important;
   height: 45px !important; /* Set a fixed height */
   width: 100% !important;
-  margin: 0rem 1rem .5rem 1rem !important;
-  
+  display: flex !important;
+ flex-direction: row !important;
+ justify-content: flex-start !important;
+ margin: 1rem 1rem 2rem 2rem !important;
+
 }
 
 
@@ -686,13 +705,15 @@ strong {
 .sidebar.left .darkmode {
   background-color: var(--light) !important;
   border-radius: 8px !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
-  width: 100% !important; /* Match the height for a perfect square */
-  height: 45px !important;
+  box-shadow: 2px 4px 6px -1px rgba(0, 0, 0, 0.05), 2px 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
+  width: 55px !important; /* Match the height for a perfect square */
+  height: 55px !important;
  flex-grow: 1 !important;
-  margin: 1.5rem 1rem 1.5rem 1rem !important;
-  padding: 1rem 0rem 0rem 1rem;
+  margin: 0rem 1rem 1rem 1rem !important;
+  padding: .5rem 1rem 0rem 1rem;
   align-items: center !important;
+  margin: 1rem 1rem 2rem 2rem !important;
+
 }
 
 
@@ -701,14 +722,10 @@ strong {
   background: transparent !important;
   box-shadow: none !important;
   border: none !important;
-  padding: 0 !important;
   width: 100% !important;
+   padding: .5rem 0rem 0rem 1rem;
 }
-.darkmode {
-  background-color: var(--light) !important;
-  border-radius: 8px !important;
-  width: 100% !important; /* Match the height for a perfect square */
-}
+
   
 /* Force the explorer to stay open on mobile since the button is stuck */
   .explorer #explorer-content {
@@ -728,6 +745,7 @@ strong {
   .explorer li {
     padding: 8px 0 !important;
     border-bottom: 1px solid var(--lightgray);
+    font-weight: 300 !important;
   
   
 }
@@ -735,26 +753,29 @@ strong {
   /* Title first */
 
   .page-title {
-     order: 1 !important; 
+     order: -10 !important; 
     display: block !important;
     width: auto !important;
     margin: 1.5rem 1rem 1.5rem 1rem !important;
     text-align: left; /* or center if you want it balanced */
     letter-spacing: -0.01em !important;
+    font-weight: 300 !important;
   }
 
   /* Ensures the link inside the title behaves like a block */
   .page-title a {
     display: block;
     font-size: 1.8rem !important; /* makes it nice and big on mobile */
-    margin-left: .5rem;
+    margin-left: 2rem;
     letter-spacing: -0.01em !important;
+    font-weight: 300 !important;
+     margin-top: 1rem;
   }
 
 
   /* Article third - fixed width to stop runoff */
   .center {
-    order: 2 !important;
+    order: 3 !important;
     background-color: var(--light) !important;
     padding: 2.5rem !important;
     border-radius: 8px !important;
@@ -814,9 +835,6 @@ strong {
   margin-top: 0 !important;
   opacity: 0.8;
 }
-
-
-
 
 /* Explorer fifth */
   .explorer {
@@ -968,6 +986,24 @@ article-title {
     margin-bottom: 1rem !important;
     
   }
+  /* FORCE DRAWING LAYER VISIBILITY */
+.graph-canvas, canvas {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Force the nodes to have a physical 'fill' regardless of JS state */
+circle, .node, .graph-node {
+  fill: #84a59d !important;      /* Your Eucalyptus Green */
+  opacity: 1 !important;
+  border-radius: 4px !important;             /* Force a radius so they aren't 0px wide */
+}
+
+line, .link, .graph-edge {
+  stroke: #b2ada9 !important;    /* Your Taupe line color */
+  stroke-width: 1.5px !important;
+  opacity: 1 !important;
+}
 }
 
 // =============================================================================
@@ -1032,81 +1068,12 @@ a.internal.tag-link:hover {
 }
 
 
-
-
-
-
-   .sidebar.left {
-    display: block !important;
-    max-width: 100% !important; 
-    font-size: 1.6rem !important; 
-    font-weight: 300 !important;
-    flex-direction: column !important;
-    position: sticky !important;
-    top: 0;
-    z-index: 100; /* keeps it above the article text */
-    max-height: 100vh !important; /* keeps it from going past the screen */
-  overflow-y: auto !important;  /* adds a scrollbar inside t */
-   }
    /* Thins out "Explorer" title and folder names */
 #explorer-title, 
 .folder-button {
-  font-weight: 400 !important;
+  font-weight: 300 !important;
   letter-spacing: 0.5px; /* optional: makes thin text easier to read */
   margin-bottom: 2rem !important;
   
 }
 
-/* Target everything inside the explorer */
-.explorer, 
-.explorer a, 
-.explorer-header h2,
-#explorer-content ul li {
-  font-weight: 300 !important;
-  line-height: 1.3rem
-  
-}
-
-.explorer button,  {
-  font-weight: 300 !important;
-}
-
-/* This is the actual clickable folder title */
-.folder-button span {
-  font-weight: 600 !important;
-  font-size: 1.1rem !important;
-    margin-bottom: 1rem !important;
-}
-
-/* target the actual folder text label */
-.explorer .folder-container > .folder-button > span,
-.explorer .folder-button h3,
-.explorer .folder-button h2,
-.explorer .folder-button {
-  font-weight: 800 !important; /* making it heavy */
-  font-size: 1.1rem !important;
-  color: var(--darkgray) !important;
-  
-}
-
-
-
-
-/* FORCE DRAWING LAYER VISIBILITY */
-.graph-canvas, canvas {
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* Force the nodes to have a physical 'fill' regardless of JS state */
-circle, .node, .graph-node {
-  fill: #84a59d !important;      /* Your Eucalyptus Green */
-  opacity: 1 !important;
-  r: 4px !important;             /* Force a radius so they aren't 0px wide */
-}
-
-line, .link, .graph-edge {
-  stroke: #b2ada9 !important;    /* Your Taupe line color */
-  stroke-width: 1.5px !important;
-  opacity: 1 !important;
-}
