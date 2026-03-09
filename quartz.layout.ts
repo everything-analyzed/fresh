@@ -27,17 +27,18 @@ export const defaultContentPageLayout: PageLayout = {
   Component.DesktopOnly(Component.PageTitle()),
   Component.MobileOnly(Component.Spacer()),
   
-  Component.DesktopOnly(Component.Graph({
-    localGraph: {
-      opacityScale: 3,
-      fontSize: 0.6,
-    },
-    globalGraph: {
-      opacityScale: 3,
-      fontSize: 0.6,
-    },
-  }),
-  ),
+  // DESKTOP GRAPH: Lives in the left sidebar
+    Component.DesktopOnly(Component.Graph({
+      localGraph: {
+        opacityScale: 1,
+        fontSize: 0.5,
+        repelForce: 0.5,
+      },
+      globalGraph: {
+        opacityScale: 1,
+        fontSize: 0.5,
+      },
+    })),
   Component.DesktopOnly(
     Component.Flex({
       direction: "row",
@@ -81,31 +82,31 @@ export const defaultContentPageLayout: PageLayout = {
       showExcerpts: true, 
     }),
    
+ // MOBILE GRAPH: Lives below the article content
     Component.MobileOnly(Component.Graph({
       localGraph: {
-        opacityScale: 3,
+        opacityScale: 1,
         fontSize: 0.6,
+        drag: true,
+        zoom: false, 
       },
       globalGraph: {
-        opacityScale: 3,
+        opacityScale: 1,
         fontSize: 0.6,
       },
-    }),
-    ),
+    })), // Fixed: Removed the extra parenthesis that was here
     Component.MobileOnly(Component.Explorer({
-    title: "Explorer",
-    folderClickBehavior: "link",
-    folderDefaultState: "collapsed",
-    useSavedState: true,
-    displayClass: "desktop-only",
-    mapFn: (node) => {
-      node.displayName = node.displayName
-        .replace(/-/g, " ")
-        .replace(/\b\w/g, (l) => l.toUpperCase())
-    },
-  }),
-    ),
-    Component.DesktopOnly(Component.TableOfContents()),
+      title: "Explorer",
+      folderClickBehavior: "link",
+      folderDefaultState: "collapsed",
+      useSavedState: true,
+      // Fixed: Removed "desktop-only" displayClass so it actually shows on mobile
+      mapFn: (node) => {
+        node.displayName = node.displayName
+          .replace(/-/g, " ")
+          .replace(/\b\w/g, (l) => l.toUpperCase())
+      },
+    })),
   ],
   right: [ 
     

@@ -19,6 +19,7 @@
   --steel-blue: #4682B4 !important;
 }
 
+
 [user-color-scheme="darkMode"], [saved-theme="dark"] {
   body, #quartz-root, .page, .center {
     background-color: #161514 !important;
@@ -238,7 +239,7 @@ html, body, .page {
 // =============================================================================
 .backlinks li a {
   font-size: 1.1rem !important;
-  font-weight: 500 !important;
+  font-weight: 300 !important;
   color: var(--secondary) !important;
   display: block !important;
   margin-bottom: 2px !important;
@@ -385,24 +386,7 @@ html, body, .page {
 
 
 
-  /* 3. Graph - order 3 to sit under search */
-  .graph, .graph-window { 
-    order: 3 !important; 
-    height: 300px !important; 
-    width: 100% !important; 
-    margin-right: 8rem !important; 
-    left: 0 !important;
-    margin-top: 1rem !important;
-  }
-
-  /* Target the internal canvas to make sure it doesn't shift */
-  .graph > .graph-outer,
-  .graph canvas, .graph-window {
-    left: 0 !important;
-    margin-left: 0 !important;
-    margin-right: 0rem !important;
-    margin-top: 1rem !important;
-  }
+  
 
   /* 4. Explorer */
   .explorer { 
@@ -789,32 +773,47 @@ strong {
    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
    height: auto;
   }
+// =============================================================================
+// Backlinks
+//
+.backlinks ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
 
-  /* 5. Graph View - Full Width & Correct Order */
-  .graph {
-    order: 5 !important;
-    display: flex !important; /* Keep as flex to respect order */
-    background-color: var(--light) !important;
-    margin: 1rem !important;
-    border-radius: 8px !important;
-    height: 350px !important;
-    width: calc(100% - 2rem) !important; /* Full width minus margins */
-    box-sizing: border-box !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
-    position: relative !important;
-    left: 0 !important;
-    right: 0 !important;
-  }
+.backlinks li {
+  list-style-type: none !important;
+  padding: 0.5rem 0 !important; /* gives the notes some room */
+}
 
-  /* Force the actual canvas inside to stop being skinny */
-  .graph > .graph-outer,
-  .graph-window,
-  .graph canvas {
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
-    left: 0 !important;
-  }
+/* this nixes any custom dots quartz might be sneaking in */
+.backlinks li::before {
+  content: none !important;
+}
+.backlinks > h3, 
+.backlinks > h1 {
+  font-size: 1.2rem !important;
+  font-weight: 300 !important;
+  margin-bottom: 1rem !important;
+  text-transform: lowercase !important; /* Optional: matches your minimalist vibe */
+}
+.backlinks li a {
+  font-size: 1.1rem !important;
+  font-weight: 300 !important;
+  color: var(--secondary) !important;
+  display: block !important;
+  margin-bottom: 2px !important;
+}
+.backlinks li p, 
+.backlinks .overflow {
+  font-size: 1rem !important;
+  line-height: 1.4 !important;
+  color: var(--gray) !important;
+  margin-top: 0 !important;
+  opacity: 0.8;
+}
+
 
 
 
@@ -948,35 +947,9 @@ width: 100% !important;
   width: 0 !important;
   height: 0 !important;
 }
-/* 1. Hide the extra sidebar graph */
-  .sidebar.left .graph,
-  .sidebar.left .graph-window {
-    display: none !important;
-  }
 
-  /* 2. The main graph - keep it at the bottom */
-  #quartz-body > .graph {
-    order: 5 !important;
-    display: flex !important;
-    background-color: var(--light) !important;
-    margin: 1rem !important;
-    border-radius: 8px !important;
-    height: 300px !important;
-    width: calc(100% - 2rem) !important;
-    box-sizing: border-box !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
-    position: relative !important;
-  }
 
-  /* 3. Force the canvas to be full width */
-  .graph canvas, 
-  .graph-window, 
-  .graph-outer {
-    width: 100% !important;
-    height: 100% !important;
-    left: 0 !important;
-  }
-
+  
 article-title {
   font-size: 2rem !important; 
   margin-top: 0 !important;
@@ -984,15 +957,7 @@ article-title {
   letter-spacing: -0.01em !important;
   padding-left: 0rem !important; 
   }
-  .center {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 8px !important;
-    list-style: none !important;
-    padding: 0 !important;
-    margin-bottom: 2rem !important;
-    
-  }
+ 
    .tags {
     display: flex !important;
     flex-wrap: wrap !important;
@@ -1002,11 +967,7 @@ article-title {
     margin-bottom: 1rem !important;
     
   }
-
-
 }
-
-
 
 // =============================================================================
 // 5. BREADCRUMBS & META
@@ -1044,48 +1005,6 @@ article-title {
 /* This keeps the stuff inside (date, reading time) sitting next to each other */
 .content-meta * {
   display: inline-block !important;
-}
-
-
-  // =============================================================================
-// Backlinks
-//
-.backlinks ul {
-  list-style: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.backlinks li {
-  list-style-type: none !important;
-  padding: 0.5rem 0 !important; /* gives the notes some room */
-}
-
-/* this nixes any custom dots quartz might be sneaking in */
-.backlinks li::before {
-  content: none !important;
-}
-.backlinks > h3, 
-.backlinks > h1 {
-  font-size: 1.2rem !important;
-  font-weight: 600 !important;
-  margin-bottom: 1rem !important;
-  text-transform: lowercase !important; /* Optional: matches your minimalist vibe */
-}
-.backlinks li a {
-  font-size: 1.1rem !important;
-  font-weight: 500 !important;
-  color: var(--secondary) !important;
-  display: block !important;
-  margin-bottom: 2px !important;
-}
-.backlinks li p, 
-.backlinks .overflow {
-  font-size: 1rem !important;
-  line-height: 1.4 !important;
-  color: var(--gray) !important;
-  margin-top: 0 !important;
-  opacity: 0.8;
 }
 
 // =============================================================================
@@ -1159,20 +1078,14 @@ a.internal.tag-link:hover {
 
 .explorer button,  {
   font-weight: 300 !important;
-  
 }
+
 /* This is the actual clickable folder title */
 .folder-button span {
   font-weight: 600 !important;
   font-size: 1.1rem !important;
     margin-bottom: 1rem !important;
-    
 }
-
-
-
-
-
 
 /* target the actual folder text label */
 .explorer .folder-container > .folder-button > span,
@@ -1186,55 +1099,35 @@ a.internal.tag-link:hover {
 }
 
 
-
-
-
-
 /* specific color when the folder is open */
 .folder-container:not(.collapsed) .folder-icon svg {
   stroke: #a39193 !important; /* your clay color */
   margin-top: 0rem !important;
 }
-/* target desktop only */
-@media all and (min-width: 768px) {
-  .graph, .graph-window {
-    margin-top: 2rem !important;
-  }
-}
-/* This kills the text but keeps the graph */
-.graph > h3, 
-.graph > h6,
-.graph .graph-title {
-  display: none !important;
-}
-/* 1. The main site title (top left) */
-.page-title a, 
-.page-title {
-  text-transform: lowercase !important;
-  letter-spacing: -0.01em !important;
+
+/* 1. Force a physical area for the JS to draw into */
+.graph {
+  display: block !important;
+  min-height: 350px !important; /* JS needs this number to calculate node positions */
+  width: 100% !important;
+  position: relative !important;
 }
 
-
-
-/* 3. Section headers (H2, H3, H4 inside your notes) */
-.center h2, 
-.center h3, 
-.center h4, 
-.center h5 {
-  text-transform: lowercase !important;
+/* 2. Ensure the canvas isn't zeroed out */
+.graph > .graph-outer {
+  display: block !important;
+  height: 350px !important;
+  width: 100% !important;
 }
 
-/* 4. Explorer and Sidebar titles (folders, backlinks, etc.) */
-#explorer-title, 
-.backlinks > h3,
-.folder-button span {
-  text-transform: lowercase !important;
-  font-weight: 800 !important; /* making it heavy */
+canvas.graph-canvas {
+  display: block !important;
+  opacity: 1 !important;
 }
 
-/* 5. Individual file names in lists */
-.explorer a, 
-.recent-notes li a, 
-.backlinks li a {
-  text-transform: lowercase !important;
+/* 3. Essential Colors (Eucalyptus) */
+:root {
+  --graph-node: #84a59d !important;
+  --graph-line: #b2ada9 !important;
+  --graph-text: #433f3d !important;
 }

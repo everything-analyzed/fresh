@@ -1,35 +1,5 @@
----
-tags:
-  - the-pulse
-pillar:
-publish:
-draft: false
-status: 🐝 Pollinating
-cssclasses:
----
-I was watching some show and the person was talking about being in a medically induced coma. How exactly do you go about putting a person in a coma on purpose?
-
-### thoughts/questions
-1. What does a doctor actually do to induce a coma?
-2. Why does someone need to be put in a coma?
-
-### branches
-Separate but related questions that came up while I was looking into this:
-
-- [[coma v. brain death|whats the difference between a coma and brain death?]]
-- [[Why does brain death need to be distinct from regular death?]]
-
-
-
-
 This very question brought together the [[A Definition of the Irreversible Coma | 1968 Harvard Ad Hoc Committee]] to redefine the life-death boundary.
 
-
-
-
-
-
-  
 
 Fast fact: [Edwarda O'Bara](https://www.ladbible.com/news/us-news/edwarda-obara-worlds-longest-coma-474095-20250214) hold the record for the longest coma; about 42 years.
 

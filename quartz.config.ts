@@ -66,7 +66,10 @@ const config: QuartzConfig = {
       Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
-      Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
+      Plugin.CrawlLinks({ markdownLinkResolution: "shortest", 
+  prettyLinks: true, // Add this
+  lazyLoad: false    // Add this to ensure links are ready for the graph
+}),
       Plugin.Description({ descriptionLength: 150 }),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
@@ -80,6 +83,7 @@ const config: QuartzConfig = {
       Plugin.ContentIndex({
         enableSiteMap: true,
         enableRSS: true,
+        includeEmptyFiles: true, // Add this to help the graph see "stubs"
       }),
       Plugin.Assets(),
       Plugin.Static(),

@@ -7,7 +7,7 @@ tags:
 ---
 It's interesting to look at how much technology, law, money, and bureaucracy impact you even when you're dead (or not).
 
-[[Why does brain death need to be distinct from regular death?]]
+[[why can't dead just be dead]]
 
 [[how do they know?]]
 
