@@ -548,12 +548,20 @@ justify-content: left;
   -webkit-font-smoothing: antialiased !important;
 }
 
-h1, h4 {
+h1{
+  font-weight: 300 !important; 
+  color: #84a59d !important; /* Lighter taupe (#b2ada9) */
+  letter-spacing: -0.01em !important;
+  line-height: 1.4 !important;
+  text-align: left !important; 
+}
+h4 {
   font-weight: 300 !important; 
   color: #84a59d !important; /* Lighter taupe (#b2ada9) */
   letter-spacing: -0.01em !important;
   line-height: 1.2 !important;
   text-align: left !important; 
+  font-size: .85rem !important;
 }
 h3 {
   font-weight: 400 !important; 
@@ -561,7 +569,7 @@ h3 {
   letter-spacing: -0.01em !important;
   line-height: 1.2 !important;
   text-align: left !important; 
-  font-size: 1.4rem !important; 
+  font-size: 1rem !important; 
 }
 h2 {
   font-weight: 400 !important; 
@@ -569,41 +577,14 @@ h2 {
   letter-spacing: -0.01em !important;
   line-height: 1.2 !important;
   text-align: left !important; 
-  font-size: 1.6rem !important; 
+  font-size: 1.2rem !important; 
 }
 strong {
   color: #84a59d !important; /* soft clay accent */
   font-weight: 600;
 }
 
- /* 1. Title */
-.page-title {
-    display: flex !important;
-    flex-direction: column !important; 
-    align-items: flex-start !important;   
-    text-align: left !important;      
-    width: auto !important; 
-    
-    font-weight: 300 !important;
-    margin-bottom: 2rem !important;
-    margin-top: .5rem !important;
-    order: -10 !important; /* super low number to force it to the very top */
-  }
-
-  .page-title a {
-    display: flex !important;
-    flex-direction: column !important; 
-    align-items: flex-start !important;  
-    line-height: 1.1 !important;       
-    max-width: 200px !important;       
-    font-weight: 300 !important; 
-    font-size: 1.6rem !important;
-    text-align: left !important; 
-    order: -10 !important; /* super low number to force it to the very top */
-    width: 100% !important;
-
-  }
-
+ 
 
 .article-title {
   font-size: 2rem !important; 
