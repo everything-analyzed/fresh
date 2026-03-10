@@ -1,0 +1,5 @@
+---
+aliases:
+  - Sprouting
+title: Sprouting
+---

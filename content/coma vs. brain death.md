@@ -3,4 +3,9 @@ I just learned that a [[medically induced coma]] can help protect someone from b
 
 If I'm in a coma (regardless of how I ended up that way) and my body is never able to come out of it, am I considered brain dead? Or did a just die from my coma?
 
+I think the question is brain death the result of a "worst case" coma or something separate? 
+
 ## sprouts
+1. The difference between a coma and brain death is the level of brain activity and the possibility of reversal/recovery. 
+## branches
+[[how do they know?]]

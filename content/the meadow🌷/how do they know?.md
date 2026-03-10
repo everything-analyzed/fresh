@@ -6,7 +6,13 @@ status: 🐝 Pollinating
 ---
 How does a doctor decide you're brain dead?
 
-I already did some research about [[what is brain death?|what brain death is]], but how does a doctor actually make that determination?
+I already did some research about [[what is brain death?|what brain death is]], but how does a doctor actually make that determination? 
+
+### sprouts
+
+
+## branches
+- Considering the trust we have in technology specifically related to health and medicine. 
 
 Doctors do not "guess" brain death; they verify the collapse of the body’s most basic reflexes through a three-tiered clinical protocol:
 

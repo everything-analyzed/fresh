@@ -1,7 +1,7 @@
 {
 	"nodes":[
 		{"id":"a11b3a7be73ab1e2","type":"group","x":-60,"y":-400,"width":290,"height":240,"label":"Untitled group"},
-		{"id":"3fae9a05dc00646d","type":"file","file":"🌷The Meadow/🐝 Pollinating/Fire.md","x":-453,"y":-380,"width":400,"height":400},
+		{"id":"3fae9a05dc00646d","type":"file","file":"the meadow🌷/Fire.md","x":-453,"y":-380,"width":400,"height":400},
 		{"id":"0c2899f3f68e2ccc","type":"text","text":"the natural, unpredicatable nature of fire up against legal responsibility -- is it truly unpredictable?","x":-420,"y":20,"width":250,"height":120},
 		{"id":"a19bf4f3b28a0077","type":"text","text":"one guy being held responsible for a fire a week later","x":-378,"y":220,"width":250,"height":140},
 		{"id":"c5c0cd9b476794b8","type":"text","text":"Fire temperatures, how do things \"burst\" into flames","x":-40,"y":-380,"width":250,"height":60},
