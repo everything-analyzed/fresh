@@ -738,8 +738,8 @@ strong {
   .page-title {
      order: 1 !important; 
     display: block !important;
-    width: auto !important;
-    margin: 1.5rem 1rem 1.5rem 1rem !important;
+    width: 200px !important;
+    
     text-align: left; /* or center if you want it balanced */
     letter-spacing: -0.01em !important;
     font-weight: 300 !important;
@@ -752,7 +752,7 @@ strong {
     margin-left: 2rem;
     letter-spacing: -0.01em !important;
     font-weight: 300 !important;
-     margin-top: 1rem;
+    margin: 2rem 1rem .5rem 2rem !important;
   }
 
 
@@ -846,13 +846,16 @@ pointer-events: none !important;
 // =============================================================================
 /* The "Recent Notes" Title */
 
-.recent-notes li {
+.recent-notes li, p {
   
   border-radius: 8px !important;
   transition: all 0.25s ease !important;
   overflow-wrap: anywhere !important; 
   hyphens: auto !important;
-  margin-left: 10 !important;
+   padding-left: 10 !important;
+    padding-right: 10 !important;
+  
+  
   
   
 }
@@ -868,18 +871,21 @@ pointer-events: none !important;
   all: unset !important;
   font-weight: 400 !important;
   color: var(--secondary) !important;
-  
+  font-size: 1.2rem !important;
 }
+
 .recent-notes ul {
   list-style: none !important; /* kills the bullets */
 width: 100% !important;
-  padding: 0 !important;
+ 
   margin: 0 !important;
+  
+  
 }
 
 .recent-notes li {
   list-style-type: none !important; /* double insurance */
-  padding: 12px 0 !important;       /* clean vertical spacing */
+  padding-left: 0 !important;       /* clean vertical spacing */
   &::before {
     content: none !important;       /* removes any custom quartz bullets */
   width: 100% !important;
@@ -888,27 +894,58 @@ width: 100% !important;
   margin-right: 0 !important;
   
   }
-  .recent-notes li p {
-  margin: 4px 0 0 0 !important;
-  /* This stops the runoff */
-  font-size: 0.8rem !important;
-  line-height: 1.2 !important;
-  color: var(--gray) !important;
-  overflow-wrap: anywhere !important; 
-  hyphens: auto !important;
+  
+
+.recent-notes a.internal.tag-link, .tags li a  {
+    margin-left: 10 !important;
+     padding-left: 10 !important;
+     
+    
+   }
 }
 
-/* Also ensure the list items don't overflow */
-.recent-notes li {
- overflow-wrap: anywhere !important; 
-  hyphens: auto !important;
+
+ /* 2. Mobile Styles */
+@media all and (max-width: 768px) {
+ /* 1. Reset the Header/Button Container */
+.recent-notes h3 {
+  display: flex !important;
+  justify-content: flex-start !important; /* Forces content to the left */
+  align-items: flex-start !important;
+  margin-left: 0 !important;
+  padding-left: 10 !important;
+  width: 100% !important;
+  background: none !important; /* Removes button background if present */
+  border: none !important;
+  text-align: left !important;
   
 }
-.recent-notes .tags {
-   
-    margin-left: 0 !important;
-   
-  }
+
+
+
+/* 4. Kill any global centering on the card itself */
+.sidebar.right .recent-notes {
+  align-items: flex-start !important;
+  text-align: left !important;
+  padding: 10 !important;
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* TARGET ONLY THE HEADER TEXT AND NOT THE NOTE TITLES                       */
+/* ------------------------------------------------------------------------- */
+
+.recent-notes .recent-notes-header h3,
+.recent-notes > h3,
+.recent-notes button > h3 {
+  /* This scales the header only */
+  font-size: 1.6rem !important;
+  color: #84a59d !important;
+  margin-left: 0 !important;
+  padding-left: 10 !important;
+  display: flex !important;
+  justify-content: flex-start !important;
+}
 
 }
   /* Keep the explorer locked in place at the bottom */
@@ -959,12 +996,6 @@ width: 100% !important;
     margin: 2rem 1.5rem .5rem 1rem !important;
      
   }
-.sidebar.right {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-
 
   
 article-title {
@@ -1100,4 +1131,102 @@ visibility: hidden !important;
 height: 0 !important;
 margin: 0 !important;
 padding: 0 !important;
+}
+/* 1. Hide the lists by default in the right sidebar */
+.recent-notes .recent-notes:nth-of-type(1) {
+  display: none !important;
+}
+
+/* 2. Show 1st list on Home */
+body[data-slug="index"] .right .recent-notes:nth-of-type(1) {
+  display: block !important;
+}
+
+/* 3. Show 2nd list in Meadow */
+body[data-slug*="meadow"] .right .recent-notes:nth-of-type(2) {
+  display: block !important;
+}
+
+/* 4. Show 3rd list in Hive */
+body[data-slug*="hive"] .right .recent-notes:nth-of-type(3) {
+  display: block !important;
+}
+/* ------------------------------------------------------------------------- */
+/* MOBILE SIDEBAR FIX: SHOW RECENT NOTES BELOW THE ARTICLE                   */
+/* ------------------------------------------------------------------------- */
+
+@media all and (max-width: 768px) {
+  /* 1. Make the right sidebar visible and part of the vertical stack */
+  .sidebar.right {
+    display: flex !important;
+    visibility: visible !important;
+    width: 100% !important;
+    height: auto !important;
+    order: 6 !important; /* Positions it after the .center column (order 3) */
+    margin: 0 !important;
+    padding: 0 1rem 2rem 1rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2. Format the Recent Notes into a mobile-friendly card */
+  .sidebar.right .recent-notes {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 1rem !important;
+    background-color: var(--light) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+    padding: 1.5rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 3. Maintain your existing 'Meadow' and 'Hive' filters for mobile */
+  /* This ensures only the relevant list shows up on specific pages */
+  .sidebar.right .recent-notes:nth-of-type(1),
+  .sidebar.right .recent-notes:nth-of-type(2),
+  .sidebar.right .recent-notes:nth-of-type(3) {
+    display: none !important;
+  }
+
+  body[data-slug="index"] .sidebar.right .recent-notes:nth-of-type(1) {
+    display: block !important;
+  }
+
+  body[data-slug*="meadow"] .sidebar.right .recent-notes:nth-of-type(2) {
+    display: block !important;
+  }
+
+  body[data-slug*="hive"] .sidebar.right .recent-notes:nth-of-type(3) {
+    display: block !important;
+  }
+}
+/* ------------------------------------------------------------------------- */
+/* EXPAND RECENT NOTES PANEL TO FIT ALL CONTENT ON MOBILE                    */
+/* ------------------------------------------------------------------------- */
+
+@media all and (max-width: 768px) {
+  /* 1. Force the sidebar container to grow */
+  .sidebar.right {
+    height: auto !important;
+    min-height: min-content !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* 2. Remove any height restrictions on the white card */
+  .sidebar.right .recent-notes {
+    height: auto !important;
+    max-height: none !important; /* Overrides any desktop desktop scrolling */
+    overflow: visible !important; /* Ensures the shadow and background follow the text */
+    display: block !important;
+    padding-bottom: 2rem !important; /* Extra breathing room at the bottom */
+    margin-bottom: 2rem !important;
+  }
+
+  /* 3. Ensure the list items don't have a fixed height */
+  .recent-notes ul, 
+  .recent-notes li {
+    height: auto !important;
+    display: block !important;
+  }
 }

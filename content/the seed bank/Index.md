@@ -1,5 +1,5 @@
 ---
 aliases:
-  - Sprouting
-title: Sprouting
+  - the seed bank
+title: the seed bank
 ---

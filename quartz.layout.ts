@@ -81,6 +81,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Backlinks({
       showExcerpts: true, 
     }),
+
    
  // MOBILE GRAPH: Lives below the article content
     Component.MobileOnly(Component.Graph({
@@ -97,16 +98,31 @@ export const defaultContentPageLayout: PageLayout = {
         zoom: true,
       },
     })), 
+   
   ],
-  right: [ 
-    
-    // Moved from afterBody to here!
-    Component.RecentNotes({ 
-          title: "Recently Pollinated 🐝",
-          showDescription: true, 
-          limit: 4 
-        }),
-  ],
+  right: [
+  // 1. First Child: Home List
+  Component.RecentNotes({
+    title: "Recently Pollinated",
+    limit: 5,
+    filter: (f) => !f.slug?.includes("/") && !f.slug?.endsWith("index"),
+  }),
+
+  // 2. Second Child: Meadow List
+  Component.RecentNotes({
+    title: "explore the meadow 🌷",
+    limit: 5,
+    filter: (f) => f.slug?.includes("the-meadow") && !f.slug?.endsWith("index"),
+  }),
+
+  // 3. Third Child: Hive List
+  Component.RecentNotes({
+    title: "explore the hive 🐝",
+    limit: 5,
+    filter: (f) => f.slug?.includes("the-hive") && !f.slug?.endsWith("index"),
+  }),
+  
+],
 }
 export const defaultListPageLayout: PageLayout = {
   beforeBody: [Component.ArticleTitle(), Component.ContentMeta(), Component.DesktopOnly( // <--- Wrap the whole logic block

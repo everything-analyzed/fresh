@@ -10,7 +10,7 @@ My mind doesn’t move in a straight line. I’m a scanner—I follow threads of
 
 ### How to wander around
 This garden is divided into three distinct spaces to help you find your way:
- * 🗺️ [[content/the meadow🌷/index|The Meadow]] — The chronological stream of every observation. While it is organized by date, the internal links create bridges across time.
+ * 🗺️ [[index 1|The Meadow]] — The chronological stream of every observation. While it is organized by date, the internal links create bridges across time.
  * 🐝 [The Hive] — Curated collections. This is where I’ve gathered related threads from the Meadow into larger, interconnected themes.
  * 🌑 [The Seed Bank] — The waiting room. This houses raw data, cold leads, and research waiting for a new connection to wake it up.
  
