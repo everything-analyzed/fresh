@@ -4,6 +4,7 @@ aliases:
 title: the meadow
 layout: list
 ---
+npx quartz build
 
 *This is the stream of my ongoing observations.*
 

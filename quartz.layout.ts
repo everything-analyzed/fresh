@@ -133,8 +133,7 @@ export const defaultListPageLayout: PageLayout = {
   ),
   ],
   left: [
-   Component.MobileOnly(Component.PageTitle()), // <--- wrap this
-    Component.DesktopOnly(Component.PageTitle()), // <--- add this wrapped version
+   Component.PageTitle(), // This handles the site name globally
     Component.MobileOnly(Component.Spacer()),
     Component.Flex({
       direction: "row",
