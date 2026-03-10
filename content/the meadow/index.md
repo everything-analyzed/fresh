@@ -2,6 +2,7 @@
 aliases:
   - the meadow
 title: the meadow
+layout: list
 ---
 
 *This is the stream of my ongoing observations.*
@@ -11,12 +12,5 @@ My thoughts here move through seasons. While I tend to the garden daily, the ent
 ---
 ### 🌿 Explore the Stream
 (The list of your notes will automatically appear here once published)
-```dataview
-LIST
-FROM "content/the meadow🌷"
-SORT file.mtime DESC
-LIMIT 10
-```
-
 
 
